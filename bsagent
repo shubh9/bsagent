@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# Launcher for bsagent. Uses the project's venv and operates on $PWD.
+
+set -euo pipefail
+
+PROJECT_DIR="$(cd "$(dirname "$(readlink "${BASH_SOURCE[0]}" || echo "${BASH_SOURCE[0]}")")" && pwd)"
+PY="$PROJECT_DIR/.venv/bin/python"
+
+if [ ! -x "$PY" ]; then
+  echo "bsagent: venv missing at $PY" >&2
+  echo "  run: cd '$PROJECT_DIR' && python3 -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt" >&2
+  exit 1
+fi
+
+AGENT_WORKDIR="${AGENT_WORKDIR:-$PWD}" exec "$PY" "$PROJECT_DIR/agent.py" "$@"
