@@ -1,9 +1,10 @@
 """
-Tool definitions, dispatch, and the asyncio.Lock execution gate.
+Tool definitions, dispatch, and the fair read/write execution gate.
 
-Mirrors codex-rs tools/parallel.rs: both shell_command and apply_patch
-hold a single write-lock (_shell_lock) so they always run sequentially,
-even when the model batches multiple calls in one response.
+Mirrors codex-rs tools/parallel.rs: tools that opt into parallel execution
+hold a shared read lock, while side-effectful/exclusive tools hold a write
+lock. shell_command conditionally opts into parallel execution; apply_patch
+stays exclusive.
 """
 
 from __future__ import annotations
@@ -12,8 +13,14 @@ import asyncio
 import json
 import os
 import subprocess
+import time
+from collections import deque
+from contextlib import asynccontextmanager
 from pathlib import Path
-from typing import Any
+from collections.abc import Callable
+from typing import Any, AsyncIterator, Literal
+
+from unified_exec import process_manager
 
 
 # ─── Error types ──────────────────────────────────────────────────────────────
@@ -46,9 +53,194 @@ class ToolCallError(Exception):
 
 # ─── Execution gate ───────────────────────────────────────────────────────────
 
-# Both tools acquire this lock before doing any I/O.
-# Sequential by design — mirrors codex RwLock write-lock for shell/patch ops.
-_shell_lock = asyncio.Lock()
+class _RWWaiter:
+    def __init__(self, mode: Literal["read", "write"]) -> None:
+        self.mode = mode
+        self.future: asyncio.Future[None] = asyncio.get_running_loop().create_future()
+        self.acquired = False
+
+
+class _RWLease:
+    def __init__(self, lock: "FairRWLock", waiter: _RWWaiter) -> None:
+        self._lock = lock
+        self._waiter = waiter
+
+    async def __aenter__(self) -> None:
+        await self._lock._wait_for(self._waiter)
+
+    async def __aexit__(self, exc_type: object, exc: object, tb: object) -> None:
+        if self._waiter.mode == "read":
+            await self._lock.release_read()
+        else:
+            await self._lock.release_write()
+
+
+class FairRWLock:
+    """
+    FIFO async read/write lock.
+
+    Readers at the front of the queue run together. Writers run alone. Once a
+    writer is queued, later readers cannot jump ahead of it, which prevents a
+    stream of shell commands from starving apply_patch.
+    """
+
+    def __init__(self) -> None:
+        self._lock = asyncio.Lock()
+        self._queue: deque[_RWWaiter] = deque()
+        self._active_readers = 0
+        self._writer_active = False
+
+    @asynccontextmanager
+    async def read(self) -> AsyncIterator[None]:
+        async with await self.reserve_read():
+            yield
+
+    @asynccontextmanager
+    async def write(self) -> AsyncIterator[None]:
+        async with await self.reserve_write():
+            yield
+
+    async def reserve_read(self) -> _RWLease:
+        return _RWLease(self, await self._enqueue("read"))
+
+    async def reserve_write(self) -> _RWLease:
+        return _RWLease(self, await self._enqueue("write"))
+
+    async def acquire_read(self) -> None:
+        waiter = await self._enqueue("read")
+        await self._wait_for(waiter)
+
+    async def acquire_write(self) -> None:
+        waiter = await self._enqueue("write")
+        await self._wait_for(waiter)
+
+    async def release_read(self) -> None:
+        async with self._lock:
+            if self._active_readers <= 0:
+                raise RuntimeError("release_read called without an active reader")
+            self._active_readers -= 1
+            if self._active_readers == 0:
+                self._wake_waiters_unlocked()
+
+    async def release_write(self) -> None:
+        async with self._lock:
+            if not self._writer_active:
+                raise RuntimeError("release_write called without an active writer")
+            self._writer_active = False
+            self._wake_waiters_unlocked()
+
+    async def _enqueue(self, mode: Literal["read", "write"]) -> _RWWaiter:
+        waiter = _RWWaiter(mode)
+        async with self._lock:
+            self._queue.append(waiter)
+            self._wake_waiters_unlocked()
+        return waiter
+
+    async def _wait_for(self, waiter: _RWWaiter) -> None:
+        try:
+            await waiter.future
+        except BaseException:
+            async with self._lock:
+                if waiter.acquired:
+                    if waiter.mode == "read":
+                        self._active_readers -= 1
+                        if self._active_readers == 0:
+                            self._wake_waiters_unlocked()
+                    else:
+                        self._writer_active = False
+                        self._wake_waiters_unlocked()
+                else:
+                    try:
+                        self._queue.remove(waiter)
+                    except ValueError:
+                        pass
+                    self._wake_waiters_unlocked()
+            raise
+
+    def _wake_waiters_unlocked(self) -> None:
+        if self._writer_active or self._active_readers > 0:
+            while self._queue and self._queue[0].mode == "read":
+                waiter = self._queue.popleft()
+                waiter.acquired = True
+                self._active_readers += 1
+                if not waiter.future.done():
+                    waiter.future.set_result(None)
+            return
+
+        if not self._queue:
+            return
+
+        if self._queue[0].mode == "write":
+            waiter = self._queue.popleft()
+            waiter.acquired = True
+            self._writer_active = True
+            if not waiter.future.done():
+                waiter.future.set_result(None)
+            return
+
+        while self._queue and self._queue[0].mode == "read":
+            waiter = self._queue.popleft()
+            waiter.acquired = True
+            self._active_readers += 1
+            if not waiter.future.done():
+                waiter.future.set_result(None)
+
+
+_tool_lock = FairRWLock()
+
+# ─── Tool parallelism policy ---------------------------------------------------
+
+ToolParallelism = Literal["parallel", "exclusive"]
+ToolParallelismPolicy = ToolParallelism | Callable[[], ToolParallelism]
+
+TOOL_PARALLEL_CONFIG: dict[str, set[str]] = {
+    "parallel_tools": {"exec_command", "write_stdin"},
+    "exclusive_tools": {"apply_patch"},
+}
+
+
+def _env_flag_enabled(name: str, *, default: bool) -> bool:
+    value = os.environ.get(name)
+    if value is None:
+        return default
+    return value.strip().lower() not in {"0", "false", "no", "off"}
+
+
+def _shell_command_parallelism() -> ToolParallelism:
+    if "shell_command" in TOOL_PARALLEL_CONFIG["exclusive_tools"]:
+        return "exclusive"
+    env_value = os.environ.get("BSAGENT_PARALLEL_SHELL_COMMANDS")
+    if env_value is not None:
+        return (
+            "parallel"
+            if _env_flag_enabled("BSAGENT_PARALLEL_SHELL_COMMANDS", default=False)
+            else "exclusive"
+        )
+    if not _env_flag_enabled("BSAGENT_PARALLEL_SHELL_COMMANDS", default=True):
+        return "exclusive"
+    return (
+        "parallel"
+        if "shell_command" in TOOL_PARALLEL_CONFIG["parallel_tools"]
+        else "exclusive"
+    )
+
+
+def _configured_tool_parallelism(tool_name: str) -> ToolParallelism:
+    if tool_name in TOOL_PARALLEL_CONFIG["exclusive_tools"]:
+        return "exclusive"
+    if tool_name in TOOL_PARALLEL_CONFIG["parallel_tools"]:
+        return "parallel"
+    return "exclusive"
+
+
+# Unknown tools default to exclusive. This keeps new side-effectful tools safe
+# until they explicitly opt into parallel execution.
+TOOL_PARALLELISM: dict[str, ToolParallelismPolicy] = {
+    "shell_command": _shell_command_parallelism,
+    "exec_command": lambda: _configured_tool_parallelism("exec_command"),
+    "write_stdin": lambda: _configured_tool_parallelism("write_stdin"),
+    "apply_patch": lambda: _configured_tool_parallelism("apply_patch"),
+}
 
 # ─── Tool schemas (exact codex names and parameter shapes) ───────────────────
 
@@ -58,7 +250,9 @@ SHELL_COMMAND_TOOL: dict[str, Any] = {
     "description": (
         "Run a shell command in the working directory and return combined "
         "stdout + stderr. Use for reading files, running tests, searching "
-        "code, installing packages, or any other shell operation."
+        "code, installing packages, or any other shell operation. The runtime "
+        "can execute multiple shell_command calls from the same assistant "
+        "response concurrently when they are independent."
     ),
     "parameters": {
         "type": "object",
@@ -80,6 +274,57 @@ SHELL_COMMAND_TOOL: dict[str, Any] = {
             },
         },
         "required": ["command"],
+    },
+}
+
+EXEC_COMMAND_TOOL: dict[str, Any] = {
+    "type": "function",
+    "name": "exec_command",
+    "description": (
+        "Run a shell command in a managed PTY. Fast commands return output "
+        "directly; long-running commands return a session_id for polling or "
+        "interactive input via write_stdin."
+    ),
+    "parameters": {
+        "type": "object",
+        "properties": {
+            "cmd": {"type": "string", "description": "Shell command to execute."},
+            "workdir": {
+                "type": "string",
+                "description": "Working directory relative to the agent workdir.",
+            },
+            "yield_time_ms": {
+                "type": "integer",
+                "description": "Milliseconds to wait for output before yielding.",
+            },
+            "max_output_tokens": {
+                "type": "integer",
+                "description": "Approximate max output tokens to return.",
+            },
+        },
+        "required": ["cmd"],
+    },
+}
+
+WRITE_STDIN_TOOL: dict[str, Any] = {
+    "type": "function",
+    "name": "write_stdin",
+    "description": "Write characters to an existing exec_command session and return recent output.",
+    "parameters": {
+        "type": "object",
+        "properties": {
+            "session_id": {"type": "integer", "description": "Managed PTY session id."},
+            "chars": {"type": "string", "description": "Characters to write; empty string polls."},
+            "yield_time_ms": {
+                "type": "integer",
+                "description": "Milliseconds to wait for output before yielding.",
+            },
+            "max_output_tokens": {
+                "type": "integer",
+                "description": "Approximate max output tokens to return.",
+            },
+        },
+        "required": ["session_id"],
     },
 }
 
@@ -110,7 +355,7 @@ APPLY_PATCH_TOOL: dict[str, Any] = {
     },
 }
 
-ALL_TOOLS = [SHELL_COMMAND_TOOL, APPLY_PATCH_TOOL]
+ALL_TOOLS = [SHELL_COMMAND_TOOL, EXEC_COMMAND_TOOL, WRITE_STDIN_TOOL, APPLY_PATCH_TOOL]
 
 # ─── Tool implementations ─────────────────────────────────────────────────────
 
@@ -133,6 +378,73 @@ def _run_shell_command(command: str, cwd: Path, timeout: int) -> str:
         return f"exit={result.returncode}\n{out}" if out else f"exit={result.returncode}"
     except subprocess.TimeoutExpired:
         return f"[timeout after {timeout}s]"
+
+
+def _cap_text(text: str, max_output_tokens: int | None = None) -> str:
+    cap = OUTPUT_CAP
+    if max_output_tokens is not None:
+        cap = min(cap, max_output_tokens * APPROX_CHARS_PER_TOKEN)
+    if len(text) > cap:
+        return text[:cap] + f"\n... [truncated, {len(text) - cap} more chars]"
+    return text
+
+
+APPROX_CHARS_PER_TOKEN = 4
+
+
+async def _run_exec_command(
+    command: str,
+    cwd: Path,
+    *,
+    yield_time_ms: float,
+    max_output_tokens: int,
+) -> str:
+    started = time.monotonic()
+    session_id = await process_manager.allocate_id()
+    managed = await process_manager.spawn(session_id, command, cwd)
+    read = await asyncio.to_thread(
+        managed.session.read_until_idle_or_exit,
+        yield_time_ms / 1000,
+    )
+    payload: dict[str, Any] = {
+        "exit_code": read.exit_code,
+        "output": _cap_text(read.output, max_output_tokens),
+        "wall_time_seconds": round(time.monotonic() - started, 3),
+    }
+    if read.alive:
+        await process_manager.store(managed)
+        payload["session_id"] = session_id
+    return json.dumps(payload)
+
+
+async def _run_write_stdin(
+    session_id: int,
+    chars: str,
+    *,
+    yield_time_ms: float,
+    max_output_tokens: int,
+) -> str:
+    started = time.monotonic()
+    managed = await process_manager.get(session_id)
+    if managed is None:
+        raise ToolCallError.respond_to_model(f"unknown session_id: {session_id}")
+
+    async with managed.lock:
+        await asyncio.to_thread(managed.session.write, chars)
+        read = await asyncio.to_thread(
+            managed.session.read_until_idle_or_exit,
+            yield_time_ms / 1000,
+        )
+        payload: dict[str, Any] = {
+            "exit_code": read.exit_code,
+            "output": _cap_text(read.output, max_output_tokens),
+            "wall_time_seconds": round(time.monotonic() - started, 3),
+        }
+        if read.alive:
+            payload["session_id"] = session_id
+        else:
+            await process_manager.remove(session_id)
+        return json.dumps(payload)
 
 
 def _apply_patch(patch: str, workdir: Path) -> str:
@@ -161,7 +473,10 @@ def _apply_patch(patch: str, workdir: Path) -> str:
             i += 1
             content_lines: list[str] = []
             while i < len(lines) and not lines[i].startswith("***"):
-                content_lines.append(lines[i])
+                line_content = lines[i]
+                content_lines.append(
+                    line_content[1:] if line_content.startswith("+") else line_content
+                )
                 i += 1
             path.parent.mkdir(parents=True, exist_ok=True)
             path.write_text("\n".join(content_lines) + "\n", encoding="utf-8")
@@ -236,33 +551,68 @@ async def dispatch_tools(
     workdir: Path,
 ) -> list[dict[str, Any]]:
     """
-    Execute tool calls sequentially under the shell lock.
+    Execute tool calls under a fair read/write lock.
 
-    Both shell_command and apply_patch hold _shell_lock exclusively —
-    mirrors the codex RwLock write-lock pattern: side-effectful ops
-    never run in parallel.
+    shell_command holds a shared read lock, so independent shell calls from
+    the same model response can run concurrently. apply_patch and unknown
+    tools hold the exclusive write lock, so they block all other tool I/O.
 
     ToolCallError.respond_to_model is caught here and returned as a
     function_call_output so the model can see and correct its mistake.
     Any other exception (including ToolCallError with fatal=True) propagates
     and crashes the process — do not swallow unexpected failures.
     """
-    results: list[dict[str, Any]] = []
-    for tc in tool_calls:
-        call_id: str = tc.get("call_id", tc.get("id", ""))
-        async with _shell_lock:
-            try:
-                result = await _run_one(tc, workdir)
-            except ToolCallError as exc:
-                if exc.fatal:
-                    raise
-                result = {
-                    "type": "function_call_output",
-                    "call_id": call_id,
-                    "output": f"Error: {exc}",
-                }
-        results.append(result)
-    return results
+    # Reserve lock positions in model-output order before starting tasks.
+    # This keeps the RW lock fair even if asyncio schedules tasks differently.
+    lock_contexts = [
+        await (
+            _tool_lock.reserve_read()
+            if _supports_parallel_tool_calls(tc)
+            else _tool_lock.reserve_write()
+        )
+        for tc in tool_calls
+    ]
+    tasks = [
+        asyncio.create_task(_run_with_lock(tc, workdir, lock_context))
+        for tc, lock_context in zip(tool_calls, lock_contexts)
+    ]
+    return await asyncio.gather(*tasks)
+
+
+def _tool_parallelism(tc: dict[str, Any]) -> ToolParallelism:
+    policy = TOOL_PARALLELISM.get(tc.get("name", ""), "exclusive")
+    return policy() if callable(policy) else policy
+
+
+def tool_supports_parallel(tool_name: str) -> bool:
+    return _tool_parallelism({"name": tool_name}) == "parallel"
+
+
+def _supports_parallel_tool_calls(tc: dict[str, Any]) -> bool:
+    return _tool_parallelism(tc) == "parallel"
+
+
+async def _run_with_lock(
+    tc: dict[str, Any],
+    workdir: Path,
+    lock_context: _RWLease,
+) -> dict[str, Any]:
+    async with lock_context:
+        return await _run_one_safely(tc, workdir)
+
+
+async def _run_one_safely(tc: dict[str, Any], workdir: Path) -> dict[str, Any]:
+    call_id: str = tc.get("call_id", tc.get("id", ""))
+    try:
+        return await _run_one(tc, workdir)
+    except ToolCallError as exc:
+        if exc.fatal:
+            raise
+        return {
+            "type": "function_call_output",
+            "call_id": call_id,
+            "output": f"Error: {exc}",
+        }
 
 
 async def _run_one(tc: dict[str, Any], workdir: Path) -> dict[str, Any]:
@@ -289,7 +639,37 @@ async def _run_one(tc: dict[str, Any], workdir: Path) -> dict[str, Any]:
             candidate = Path(args["workdir"])
             cwd = candidate if candidate.is_absolute() else (workdir / candidate)
         timeout = int(args.get("timeout", 60))
-        output = _run_shell_command(command, cwd, timeout)
+        output = await asyncio.to_thread(_run_shell_command, command, cwd, timeout)
+
+    elif name == "exec_command":
+        command = args.get("cmd")
+        if not command:
+            raise ToolCallError.respond_to_model(
+                "exec_command requires a non-empty 'cmd' argument"
+            )
+        cwd = workdir
+        if "workdir" in args:
+            candidate = Path(args["workdir"])
+            cwd = candidate if candidate.is_absolute() else (workdir / candidate)
+        output = await _run_exec_command(
+            command,
+            cwd,
+            yield_time_ms=float(args.get("yield_time_ms", 1000)),
+            max_output_tokens=int(args.get("max_output_tokens", 2_000)),
+        )
+
+    elif name == "write_stdin":
+        session_id = args.get("session_id")
+        if session_id is None:
+            raise ToolCallError.respond_to_model(
+                "write_stdin requires a 'session_id' argument"
+            )
+        output = await _run_write_stdin(
+            int(session_id),
+            str(args.get("chars", "")),
+            yield_time_ms=float(args.get("yield_time_ms", 1000)),
+            max_output_tokens=int(args.get("max_output_tokens", 2_000)),
+        )
 
     elif name == "apply_patch":
         patch = args.get("patch")

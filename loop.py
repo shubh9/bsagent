@@ -32,6 +32,10 @@ shell redirection and produces clean diffs.
 Guidelines:
 - Explore the codebase before making changes (ls, cat, grep).
 - Prefer apply_patch over write-via-shell for editing existing files.
+- When the user asks to run independent shell commands in parallel, issue all
+  independent shell_command calls in the same assistant response. Do not wait
+  for one command's result before issuing the next unless the commands depend
+  on each other.
 - If a command fails, read the error and try a different approach.
 - When the task is complete, summarise what you did concisely.\
 """

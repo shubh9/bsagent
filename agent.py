@@ -15,6 +15,7 @@ from pathlib import Path
 from openai import OpenAI
 
 from loop import continue_agent, run_agent
+from unified_exec import process_manager
 
 
 # ─── Bootstrap ────────────────────────────────────────────────────────────────
@@ -53,30 +54,33 @@ async def repl(client: OpenAI) -> None:
     print("type a request, or 'exit' to quit.\n")
 
     history: list = []
-    while True:
-        try:
-            user_input = input(">>> ").strip()
-        except (EOFError, KeyboardInterrupt):
-            print()
-            break
-        if not user_input:
-            continue
-        if user_input.lower() in {"exit", "quit"}:
-            break
+    try:
+        while True:
+            try:
+                user_input = input(">>> ").strip()
+            except (EOFError, KeyboardInterrupt):
+                print()
+                break
+            if not user_input:
+                continue
+            if user_input.lower() in {"exit", "quit"}:
+                break
 
-        print()
-        final, history = await continue_agent(
-            user_input,
-            history,
-            client=client,
-            model=MODEL,
-            workdir=WORKDIR,
-            verbose=True,
-        )
-        # Print final message to stdout (tool output goes to stderr during the run)
-        if final:
-            print(final)
-        print()
+            print()
+            final, history = await continue_agent(
+                user_input,
+                history,
+                client=client,
+                model=MODEL,
+                workdir=WORKDIR,
+                verbose=True,
+            )
+            # Print final message to stdout (tool output goes to stderr during the run)
+            if final:
+                print(final)
+            print()
+    finally:
+        await process_manager.terminate_all()
 
 
 # ─── One-shot ─────────────────────────────────────────────────────────────────
@@ -86,15 +90,18 @@ async def one_shot(prompt: str, client: OpenAI) -> None:
     """Run a single prompt non-interactively and print the final message."""
     print(f"bsagent  model={MODEL}  workdir={WORKDIR}")
     print(f">>> {prompt}\n")
-    result = await run_agent(
-        prompt,
-        client=client,
-        model=MODEL,
-        workdir=WORKDIR,
-        verbose=True,
-    )
-    if result:
-        print(result)
+    try:
+        result = await run_agent(
+            prompt,
+            client=client,
+            model=MODEL,
+            workdir=WORKDIR,
+            verbose=True,
+        )
+        if result:
+            print(result)
+    finally:
+        await process_manager.terminate_all()
 
 
 # ─── Entry point ──────────────────────────────────────────────────────────────

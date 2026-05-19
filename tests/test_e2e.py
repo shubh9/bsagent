@@ -6,7 +6,7 @@ Each test:
   2. Runs the agent one-shot against that directory
   3. Asserts on filesystem state — not on exact LLM text output
 
-Model used: AGENT_MODEL env var (defaults to codex-mini-latest for speed/cost).
+Model used: AGENT_MODEL env var (defaults to gpt-5.5).
 """
 
 from __future__ import annotations
@@ -41,7 +41,7 @@ def run_agent(prompt: str, cwd: Path, timeout: int = 90) -> subprocess.Completed
     env = {
         **os.environ,
         "AGENT_WORKDIR": str(cwd),
-        "AGENT_MODEL": os.environ.get("AGENT_MODEL", "codex-mini-latest"),
+        "AGENT_MODEL": os.environ.get("AGENT_MODEL", "gpt-5.5"),
     }
     return subprocess.run(
         [PYTHON, str(AGENT_PY), prompt],
@@ -129,7 +129,10 @@ def test_adds_docstrings(tmp_path: Path) -> None:
     repo = fresh_repo(tmp_path)
 
     result = run_agent(
-        "Add a one-line docstring to every function in string_utils.py.",
+        (
+            "Use apply_patch to add a one-line triple-quoted docstring as the "
+            "first statement inside every function in string_utils.py."
+        ),
         cwd=repo,
     )
 
@@ -139,7 +142,8 @@ def test_adds_docstrings(tmp_path: Path) -> None:
     docstring_count = source.count('"""')
     assert docstring_count >= 6, (  # 3 functions × opening+closing quotes
         f"Expected at least 3 docstrings (6 triple-quote markers), "
-        f"found {docstring_count // 2}:\n{source}"
+        f"found {docstring_count // 2}:\n{source}\n\n"
+        f"stdout:\n{result.stdout}\n\nstderr:\n{result.stderr}"
     )
 
 
