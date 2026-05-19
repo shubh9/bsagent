@@ -2,3 +2,5 @@ openai>=1.78.0
 aiorwlock
 pexpect
 mcp
+rich
+textual

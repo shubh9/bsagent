@@ -16,6 +16,7 @@ from openai import OpenAI
 
 from loop import continue_agent, run_agent
 from mcp_bridge import McpManager, default_mcp_server_specs
+from terminal_ui import open_terminal_viewer, print_session_summary
 from unified_exec import SessionInfo, process_manager
 
 
@@ -66,6 +67,10 @@ def time_now() -> float:
 
 
 async def _handle_repl_command(user_input: str) -> bool:
+    if user_input == "/terminals":
+        await open_terminal_viewer()
+        return True
+
     if user_input == "/ps":
         sessions = await process_manager.list_sessions()
         if not sessions:
@@ -96,7 +101,7 @@ async def _handle_repl_command(user_input: str) -> bool:
 
 async def repl(client: OpenAI) -> None:
     print(f"bsagent ready  model={MODEL}  workdir={WORKDIR}")
-    print("type a request, '/ps', '/stop', or 'exit' to quit.\n")
+    print("type a request, '/terminals', '/ps', '/stop', or 'exit' to quit.\n")
 
     history: list = []
     mcp_manager = McpManager(default_mcp_server_specs(WORKDIR))
@@ -128,9 +133,7 @@ async def repl(client: OpenAI) -> None:
                 verbose=True,
                 mcp_manager=mcp_manager,
             )
-            # Print final message to stdout (tool output goes to stderr during the run)
-            if final:
-                print(final)
+            await print_session_summary()
             print()
     finally:
         await mcp_manager.aclose()
@@ -157,8 +160,7 @@ async def one_shot(prompt: str, client: OpenAI) -> None:
             verbose=True,
             mcp_manager=mcp_manager,
         )
-        if result:
-            print(result)
+        await print_session_summary()
     finally:
         await mcp_manager.aclose()
         await process_manager.terminate_all()

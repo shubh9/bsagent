@@ -18,6 +18,7 @@ from contextlib import asynccontextmanager
 from pathlib import Path
 from typing import TYPE_CHECKING, Any, AsyncIterator, Literal
 
+import remote_environments
 from unified_exec import OutputSnapshot, process_manager
 
 if TYPE_CHECKING:
@@ -324,7 +325,104 @@ APPLY_PATCH_TOOL: dict[str, Any] = {
     },
 }
 
-ALL_TOOLS = [SHELL_COMMAND_TOOL, EXEC_COMMAND_TOOL, WRITE_STDIN_TOOL, APPLY_PATCH_TOOL]
+START_REMOTE_ENVIRONMENT_TOOL: dict[str, Any] = {
+    "type": "function",
+    "name": "start_remote_environment",
+    "description": (
+        "Provision a fresh DigitalOcean Ubuntu VM for remote shell work. "
+        "Use this when commands need an isolated or longer-running remote machine."
+    ),
+    "parameters": {
+        "type": "object",
+        "properties": {
+            "size": {
+                "type": "string",
+                "description": "DigitalOcean Droplet size slug. Defaults to s-1vcpu-1gb.",
+            },
+            "ttl_minutes": {
+                "type": "integer",
+                "description": "Intended maximum lifetime in minutes. Defaults to 60.",
+            },
+        },
+        "required": [],
+    },
+}
+
+REMOTE_SHELL_COMMAND_TOOL: dict[str, Any] = {
+    "type": "function",
+    "name": "remote_shell_command",
+    "description": (
+        "Run a shell command over SSH in a started remote environment. "
+        "Returns output directly if the command finishes before timeout; "
+        "otherwise returns a command_id for polling with check_remote_command."
+    ),
+    "parameters": {
+        "type": "object",
+        "properties": {
+            "environment_id": {
+                "type": "string",
+                "description": "Remote environment id returned by start_remote_environment.",
+            },
+            "command": {"type": "string", "description": "Shell command to execute remotely."},
+            "workdir": {
+                "type": "string",
+                "description": "Absolute remote working directory. Defaults to /workspace.",
+            },
+            "timeout": {
+                "type": "integer",
+                "description": "Seconds to wait before returning a running command_id. Defaults to 60.",
+            },
+        },
+        "required": ["environment_id", "command"],
+    },
+}
+
+CHECK_REMOTE_COMMAND_TOOL: dict[str, Any] = {
+    "type": "function",
+    "name": "check_remote_command",
+    "description": "Poll a remote command and return its recent log output and exit status.",
+    "parameters": {
+        "type": "object",
+        "properties": {
+            "environment_id": {
+                "type": "string",
+                "description": "Remote environment id returned by start_remote_environment.",
+            },
+            "command_id": {
+                "type": "string",
+                "description": "Remote command id returned by remote_shell_command.",
+            },
+        },
+        "required": ["environment_id", "command_id"],
+    },
+}
+
+STOP_REMOTE_ENVIRONMENT_TOOL: dict[str, Any] = {
+    "type": "function",
+    "name": "stop_remote_environment",
+    "description": "Destroy a remote DigitalOcean environment and mark it stopped locally.",
+    "parameters": {
+        "type": "object",
+        "properties": {
+            "environment_id": {
+                "type": "string",
+                "description": "Remote environment id returned by start_remote_environment.",
+            },
+        },
+        "required": ["environment_id"],
+    },
+}
+
+ALL_TOOLS = [
+    SHELL_COMMAND_TOOL,
+    EXEC_COMMAND_TOOL,
+    WRITE_STDIN_TOOL,
+    APPLY_PATCH_TOOL,
+    START_REMOTE_ENVIRONMENT_TOOL,
+    REMOTE_SHELL_COMMAND_TOOL,
+    CHECK_REMOTE_COMMAND_TOOL,
+    STOP_REMOTE_ENVIRONMENT_TOOL,
+]
 
 # ─── Tool implementations ─────────────────────────────────────────────────────
 
@@ -697,6 +795,77 @@ async def _run_one(
                 "apply_patch requires a non-empty 'patch' argument"
             )
         output = _apply_patch(patch, workdir)
+
+    elif name == "start_remote_environment":
+        try:
+            output = await asyncio.to_thread(
+                remote_environments.start_environment,
+                size=str(args.get("size", remote_environments.DEFAULT_SIZE)),
+                ttl_minutes=int(
+                    args.get(
+                        "ttl_minutes",
+                        remote_environments.DEFAULT_TTL_MINUTES,
+                    )
+                ),
+            )
+        except remote_environments.RemoteEnvironmentError as exc:
+            raise ToolCallError.respond_to_model(str(exc)) from exc
+
+    elif name == "remote_shell_command":
+        environment_id = args.get("environment_id")
+        command = args.get("command")
+        if not environment_id:
+            raise ToolCallError.respond_to_model(
+                "remote_shell_command requires an 'environment_id' argument"
+            )
+        if not command:
+            raise ToolCallError.respond_to_model(
+                "remote_shell_command requires a non-empty 'command' argument"
+            )
+        try:
+            output = await asyncio.to_thread(
+                remote_environments.run_remote_command,
+                environment_id=str(environment_id),
+                command=str(command),
+                workdir=str(args.get("workdir", "/workspace")),
+                timeout=int(args.get("timeout", 60)),
+            )
+        except remote_environments.RemoteEnvironmentError as exc:
+            raise ToolCallError.respond_to_model(str(exc)) from exc
+
+    elif name == "check_remote_command":
+        environment_id = args.get("environment_id")
+        command_id = args.get("command_id")
+        if not environment_id:
+            raise ToolCallError.respond_to_model(
+                "check_remote_command requires an 'environment_id' argument"
+            )
+        if not command_id:
+            raise ToolCallError.respond_to_model(
+                "check_remote_command requires a 'command_id' argument"
+            )
+        try:
+            output = await asyncio.to_thread(
+                remote_environments.check_remote_command,
+                environment_id=str(environment_id),
+                command_id=str(command_id),
+            )
+        except remote_environments.RemoteEnvironmentError as exc:
+            raise ToolCallError.respond_to_model(str(exc)) from exc
+
+    elif name == "stop_remote_environment":
+        environment_id = args.get("environment_id")
+        if not environment_id:
+            raise ToolCallError.respond_to_model(
+                "stop_remote_environment requires an 'environment_id' argument"
+            )
+        try:
+            output = await asyncio.to_thread(
+                remote_environments.stop_environment,
+                environment_id=str(environment_id),
+            )
+        except remote_environments.RemoteEnvironmentError as exc:
+            raise ToolCallError.respond_to_model(str(exc)) from exc
 
     elif mcp_manager is not None and mcp_manager.is_mcp_tool(name):
         if not isinstance(args, dict):

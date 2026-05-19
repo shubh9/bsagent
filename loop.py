@@ -182,6 +182,35 @@ def _print_tool_call(tc: dict[str, Any]) -> None:
             "apply_patch",
         )
         sys.stderr.write(f"\n\033[36mtool=apply_patch\033[0m {preview.replace('*** ', '')}\n")
+    elif name == "start_remote_environment":
+        size = args.get("size", "s-1vcpu-1gb")
+        ttl = args.get("ttl_minutes", 60)
+        sys.stderr.write(
+            f"\n\033[34mtool=start_remote_environment\033[0m "
+            f"size={size} ttl={ttl}m "
+            f"\033[2m(~2-5 min; progress updates below)\033[0m\n"
+        )
+    elif name == "remote_shell_command":
+        env_id = args.get("environment_id", "")
+        timeout = args.get("timeout", 60)
+        cmd = args.get("command", "")
+        preview = cmd.splitlines()[0][:80] if cmd else ""
+        sys.stderr.write(
+            f"\n\033[34mtool=remote_shell_command\033[0m "
+            f"env={env_id} timeout={timeout}s "
+            f"\033[1m{preview}\033[0m\n"
+        )
+    elif name == "check_remote_command":
+        sys.stderr.write(
+            f"\n\033[34mtool=check_remote_command\033[0m "
+            f"env={args.get('environment_id', '')} "
+            f"cmd={args.get('command_id', '')}\n"
+        )
+    elif name == "stop_remote_environment":
+        sys.stderr.write(
+            f"\n\033[34mtool=stop_remote_environment\033[0m "
+            f"env={args.get('environment_id', '')}\n"
+        )
     elif name.startswith("mcp__"):
         sys.stderr.write(f"\n\033[34mtool={name}\033[0m\n")
     else:

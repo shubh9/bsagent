@@ -1,3 +1,6 @@
 .venv/
 __pycache__/
 *.pyc
+
+# Agent browser artifacts
+.agent-browser-artifacts/

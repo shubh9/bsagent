@@ -410,6 +410,13 @@ class ProcessManager:
         async with self._lock:
             return [managed.info() for managed in self._sessions.values()]
 
+    async def get_session_snapshots(self, max_chars_per: int) -> list[tuple[SessionInfo, str]]:
+        async with self._lock:
+            return [
+                (managed.info(), managed.output_buffer.snapshot_all(max_chars_per).output)
+                for managed in self._sessions.values()
+            ]
+
     async def prune_exited(self) -> None:
         async with self._lock:
             exited_ids = [
