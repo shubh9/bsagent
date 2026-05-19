@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 from typing import Any
 
+import remote_billing
 import remote_environments
 import tools
 
@@ -23,8 +24,10 @@ def test_start_environment_builds_droplet_and_registry(
 ) -> None:
     commands: list[list[str]] = []
     remote_scripts: list[str] = []
+    heartbeat_started: list[str] = []
 
     monkeypatch.setattr(remote_environments, "REGISTRY_DIR", tmp_path)
+    monkeypatch.setattr(remote_billing, "BILLING_FILE", tmp_path / "billing.json")
     monkeypatch.setenv("DIGITALOCEAN_ACCESS_TOKEN", "token")
     monkeypatch.setenv("DO_SSH_KEY_ID", "ssh-key")
     monkeypatch.setenv("GITHUB_TOKEN", "github-token")
@@ -44,6 +47,11 @@ def test_start_environment_builds_droplet_and_registry(
     monkeypatch.setattr(remote_environments, "_run_local", fake_run_local)
     monkeypatch.setattr(remote_environments, "_wait_for_ssh", fake_wait_for_ssh)
     monkeypatch.setattr(remote_environments, "_run_remote_script", fake_run_remote_script)
+    monkeypatch.setattr(
+        remote_billing,
+        "start_heartbeat",
+        lambda *, environment_id, **kwargs: heartbeat_started.append(environment_id),
+    )
 
     output = remote_environments.start_environment(size="s-2vcpu-4gb", ttl_minutes=30)
     payload = json.loads(output)
@@ -64,6 +72,133 @@ def test_start_environment_builds_droplet_and_registry(
     registry = json.loads(registry_path.read_text())
     assert registry["status"] == "ready"
     assert registry["ttl_minutes"] == 30
+    assert heartbeat_started == [payload["environment_id"]]
+
+    billing = json.loads((tmp_path / "billing.json").read_text())
+    billing_record = billing["environments"][payload["environment_id"]]
+    assert billing_record["status"] == "running"
+    assert billing_record["size"] == "s-2vcpu-4gb"
+
+
+def test_stop_environment_finalizes_billing_and_stops_heartbeat(
+    monkeypatch,
+    tmp_path: Path,
+) -> None:
+    stopped_heartbeats: list[str] = []
+    monkeypatch.setattr(remote_environments, "REGISTRY_DIR", tmp_path)
+    monkeypatch.setattr(remote_billing, "BILLING_FILE", tmp_path / "billing.json")
+    monkeypatch.setattr(
+        remote_environments,
+        "_run_local",
+        lambda command, *, timeout: "deleted\n",
+    )
+    monkeypatch.setattr(
+        remote_billing,
+        "stop_heartbeat",
+        lambda environment_id: stopped_heartbeats.append(environment_id),
+    )
+
+    metadata = {
+        "id": "renv_test",
+        "status": "ready",
+        "ip": "203.0.113.10",
+        "droplet_id": "12345",
+        "size": "s-1vcpu-1gb",
+        "command_ids": [],
+        "created_at": "2026-05-19T00:00:00+00:00",
+        "ttl_minutes": 60,
+    }
+    remote_environments._write_registry(metadata)
+    remote_billing.register_environment(metadata)
+
+    output = remote_environments.stop_environment(
+        environment_id="renv_test",
+        stopped_reason="test_stop",
+    )
+    payload = json.loads(output)
+
+    assert payload["status"] == "stopped"
+    assert stopped_heartbeats == ["renv_test"]
+    registry = json.loads((tmp_path / "renv_test.json").read_text())
+    assert registry["status"] == "stopped"
+
+    billing = json.loads((tmp_path / "billing.json").read_text())
+    billing_record = billing["environments"]["renv_test"]
+    assert billing_record["status"] == "stopped"
+    assert billing_record["stopped_reason"] == "test_stop"
+    assert billing_record["stopped_at"] is not None
+
+
+def test_billing_heartbeat_updates_cost_and_budget_stops(
+    monkeypatch,
+    tmp_path: Path,
+) -> None:
+    stops: list[tuple[str, str]] = []
+    monkeypatch.setattr(remote_billing, "BILLING_FILE", tmp_path / "billing.json")
+    monkeypatch.setattr(remote_billing, "BUDGET_USD", 0.000001)
+
+    metadata = {
+        "id": "renv_test",
+        "status": "ready",
+        "ip": "203.0.113.10",
+        "droplet_id": "12345",
+        "size": "s-1vcpu-1gb",
+        "created_at": "2000-01-01T00:00:00+00:00",
+    }
+    remote_billing.register_environment(metadata)
+
+    record = remote_billing.heartbeat_once(
+        environment_id="renv_test",
+        get_metadata=lambda: metadata,
+        is_alive=lambda metadata: True,
+        stop_environment=lambda environment_id, reason: stops.append(
+            (environment_id, reason)
+        ),
+    )
+
+    assert record is not None
+    assert record["alive"] is True
+    assert record["estimated_cost_usd"] > 0
+    assert stops == [("renv_test", "budget_exceeded")]
+
+    billing = json.loads((tmp_path / "billing.json").read_text())
+    assert billing["running_estimated_cost_usd"] > 0
+
+
+def test_billing_heartbeat_marks_unreachable_stopped(
+    monkeypatch,
+    tmp_path: Path,
+) -> None:
+    stops: list[tuple[str, str]] = []
+    monkeypatch.setattr(remote_billing, "BILLING_FILE", tmp_path / "billing.json")
+
+    metadata = {
+        "id": "renv_test",
+        "status": "ready",
+        "ip": "203.0.113.10",
+        "droplet_id": "12345",
+        "size": "s-1vcpu-1gb",
+        "created_at": "2000-01-01T00:00:00+00:00",
+    }
+    remote_billing.register_environment(metadata)
+
+    record = remote_billing.heartbeat_once(
+        environment_id="renv_test",
+        get_metadata=lambda: metadata,
+        is_alive=lambda metadata: False,
+        stop_environment=lambda environment_id, reason: stops.append(
+            (environment_id, reason)
+        ),
+    )
+
+    assert record is not None
+    assert record["alive"] is False
+    assert stops == []
+
+    billing = json.loads((tmp_path / "billing.json").read_text())
+    billing_record = billing["environments"]["renv_test"]
+    assert billing_record["status"] == "unreachable"
+    assert billing_record["stopped_reason"] == "heartbeat_unreachable"
 
 
 def test_run_remote_command_records_command_id_and_returns_payload(

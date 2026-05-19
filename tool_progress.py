@@ -13,11 +13,13 @@ from typing import Any
 
 try:
     from rich.console import Console
+    from rich.status import Status
 
     _console = Console(stderr=True, highlight=False)
     _HAS_RICH = True
 except ImportError:  # pragma: no cover - rich is in requirements.txt
     _console = None
+    Status = None  # type: ignore[misc, assignment]
     _HAS_RICH = False
 
 # Rough expected durations for user-facing feedback (seconds).
@@ -30,7 +32,7 @@ TOOL_ETA_SECONDS: dict[str, int] = {
 
 
 class LongRunningProgress:
-    """Print a single updating status line until closed."""
+    """Show one live status line (Rich) or sparse phase lines (plain fallback)."""
 
     def __init__(
         self,
@@ -47,14 +49,21 @@ class LongRunningProgress:
         self._started = time.monotonic()
         self._stop = threading.Event()
         self._thread: threading.Thread | None = None
-        self._last_line = ""
+        self._lock = threading.Lock()
+        self._status: Status | None = None
+        self._last_plain_line = ""
 
     def set_phase(self, phase: str) -> None:
         self.phase = phase
-        self._render(force_newline=False)
+        self._refresh()
 
     def __enter__(self) -> "LongRunningProgress":
-        self._render(force_newline=True)
+        if _HAS_RICH and _console is not None:
+            self._status = _console.status(self._message(), spinner="dots")
+            self._status.start()
+        else:
+            self._print_plain_line()
+
         self._thread = threading.Thread(target=self._tick_loop, daemon=True)
         self._thread.start()
         return self
@@ -63,8 +72,10 @@ class LongRunningProgress:
         self._stop.set()
         if self._thread is not None:
             self._thread.join(timeout=2.0)
+        if self._status is not None:
+            self._status.stop()
+            self._status = None
         elapsed = int(time.monotonic() - self._started)
-        self._clear_line()
         if exc_type is None:
             self._print_done(elapsed)
         else:
@@ -72,44 +83,34 @@ class LongRunningProgress:
 
     def _tick_loop(self) -> None:
         while not self._stop.wait(self.tick_interval):
-            self._render(force_newline=False)
+            if self._status is not None:
+                self._refresh()
 
     def _elapsed(self) -> int:
         return max(0, int(time.monotonic() - self._started))
 
-    def _render(self, *, force_newline: bool) -> None:
+    def _message(self) -> str:
         elapsed = self._elapsed()
         phase = f" — {self.phase}" if self.phase else ""
-        line = (
-            f"  ⏳ {self.label}{phase}  "
-            f"{elapsed}s elapsed · ~{self.eta_seconds}s typical"
+        return (
+            f"[dim]⏳ {self.label}{phase}  "
+            f"{elapsed}s elapsed · ~{self.eta_seconds}s typical[/dim]"
         )
-        if _HAS_RICH and _console is not None:
-            if force_newline:
-                _console.print(f"[dim]{line}[/dim]")
+
+    def _refresh(self) -> None:
+        with self._lock:
+            if self._status is not None:
+                self._status.update(self._message())
             else:
-                self._clear_line()
-                _console.print(f"[dim]{line}[/dim]", end="\r")
-            self._last_line = line
-            return
+                self._print_plain_line()
 
-        if force_newline:
-            sys.stderr.write(f"\n\033[2m{line}\033[0m\n")
-        else:
-            sys.stderr.write(f"\r\033[2m{line}\033[0m")
+    def _print_plain_line(self) -> None:
+        line = self._message().replace("[dim]", "").replace("[/dim]", "")
+        if line == self._last_plain_line:
+            return
+        self._last_plain_line = line
+        sys.stderr.write(f"\n\033[2m{line}\033[0m")
         sys.stderr.flush()
-        self._last_line = line
-
-    def _clear_line(self) -> None:
-        if not self._last_line:
-            return
-        if _HAS_RICH and _console is not None:
-            sys.stderr.write("\r\033[K")
-            sys.stderr.flush()
-        else:
-            sys.stderr.write("\r\033[K")
-            sys.stderr.flush()
-        self._last_line = ""
 
     def _print_done(self, elapsed: int) -> None:
         message = f"  ✓ {self.label} finished in {elapsed}s"

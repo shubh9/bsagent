@@ -6,7 +6,9 @@ import time
 import tool_progress
 
 
-def test_long_running_progress_updates_elapsed(monkeypatch) -> None:
+def test_long_running_progress_plain_mode_only_prints_on_phase_change(
+    monkeypatch,
+) -> None:
     stderr = io.StringIO()
     monkeypatch.setattr(tool_progress, "_HAS_RICH", False)
     monkeypatch.setattr(tool_progress.sys, "stderr", stderr)
@@ -16,12 +18,14 @@ def test_long_running_progress_updates_elapsed(monkeypatch) -> None:
         eta_seconds=120,
         phase="creating droplet",
         tick_interval=0.05,
-    ):
+    ) as progress:
         time.sleep(0.12)
+        progress.set_phase("waiting for SSH")
 
     output = stderr.getvalue()
-    assert "start_remote_environment" in output
-    assert "~120s typical" in output
+    assert output.count("⏳") == 2
+    assert "creating droplet" in output
+    assert "waiting for SSH" in output
     assert "finished in" in output
 
 

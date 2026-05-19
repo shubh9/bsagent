@@ -19,6 +19,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+import remote_billing
 from tool_progress import LongRunningProgress, TOOL_ETA_SECONDS
 
 REGISTRY_DIR = Path.home() / ".bsagent" / "remote_environments"
@@ -116,6 +117,13 @@ def start_environment(
 
     metadata["status"] = "ready"
     _write_registry(metadata)
+    remote_billing.register_environment(metadata)
+    remote_billing.start_heartbeat(
+        environment_id=env_id,
+        get_metadata=lambda: _read_registry(env_id),
+        is_alive=_environment_is_alive,
+        stop_environment=_stop_environment_from_heartbeat,
+    )
     return _json(
         {
             "environment_id": env_id,
@@ -191,7 +199,11 @@ def check_remote_command(*, environment_id: str, command_id: str) -> str:
     return _json(_parse_json_output(output))
 
 
-def stop_environment(*, environment_id: str) -> str:
+def stop_environment(
+    *,
+    environment_id: str,
+    stopped_reason: str | None = None,
+) -> str:
     metadata = _read_registry(environment_id)
     droplet_id = metadata.get("droplet_id")
     if not droplet_id:
@@ -209,6 +221,8 @@ def stop_environment(*, environment_id: str) -> str:
     metadata["status"] = "stopped"
     metadata["stopped_at"] = _now_iso()
     _write_registry(metadata)
+    remote_billing.finalize_environment(metadata, stopped_reason=stopped_reason)
+    remote_billing.stop_heartbeat(environment_id)
     return _json(
         {
             "environment_id": environment_id,
@@ -216,6 +230,35 @@ def stop_environment(*, environment_id: str) -> str:
             "droplet_id": droplet_id,
         }
     )
+
+
+def _stop_environment_from_heartbeat(environment_id: str, reason: str) -> None:
+    stop_environment(environment_id=environment_id, stopped_reason=reason)
+
+
+def _environment_is_alive(metadata: dict[str, Any]) -> bool:
+    if metadata.get("status") == "stopped":
+        return False
+    droplet_id = metadata.get("droplet_id")
+    if not droplet_id:
+        return False
+    try:
+        output = _run_local(
+            [
+                "doctl",
+                "compute",
+                "droplet",
+                "get",
+                str(droplet_id),
+                "--format",
+                "Status",
+                "--no-header",
+            ],
+            timeout=30,
+        )
+    except RemoteEnvironmentError:
+        return False
+    return output.strip().lower() == "active"
 
 
 def _setup_script() -> str:
