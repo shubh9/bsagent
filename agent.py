@@ -15,6 +15,7 @@ from pathlib import Path
 from openai import OpenAI
 
 from loop import continue_agent, run_agent
+from mcp_bridge import McpManager, default_mcp_server_specs
 from unified_exec import SessionInfo, process_manager
 
 
@@ -98,7 +99,11 @@ async def repl(client: OpenAI) -> None:
     print("type a request, '/ps', '/stop', or 'exit' to quit.\n")
 
     history: list = []
+    mcp_manager = McpManager(default_mcp_server_specs(WORKDIR))
     try:
+        for warning in await mcp_manager.start(WORKDIR):
+            print(f"warning: {warning}", file=sys.stderr)
+
         while True:
             try:
                 user_input = input(">>> ").strip()
@@ -121,12 +126,14 @@ async def repl(client: OpenAI) -> None:
                 model=MODEL,
                 workdir=WORKDIR,
                 verbose=True,
+                mcp_manager=mcp_manager,
             )
             # Print final message to stdout (tool output goes to stderr during the run)
             if final:
                 print(final)
             print()
     finally:
+        await mcp_manager.aclose()
         await process_manager.terminate_all()
 
 
@@ -137,17 +144,23 @@ async def one_shot(prompt: str, client: OpenAI) -> None:
     """Run a single prompt non-interactively and print the final message."""
     print(f"bsagent  model={MODEL}  workdir={WORKDIR}")
     print(f">>> {prompt}\n")
+    mcp_manager = McpManager(default_mcp_server_specs(WORKDIR))
     try:
+        for warning in await mcp_manager.start(WORKDIR):
+            print(f"warning: {warning}", file=sys.stderr)
+
         result = await run_agent(
             prompt,
             client=client,
             model=MODEL,
             workdir=WORKDIR,
             verbose=True,
+            mcp_manager=mcp_manager,
         )
         if result:
             print(result)
     finally:
+        await mcp_manager.aclose()
         await process_manager.terminate_all()
 
 

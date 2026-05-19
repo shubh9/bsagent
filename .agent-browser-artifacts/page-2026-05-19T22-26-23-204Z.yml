@@ -1,0 +1,1578 @@
+- generic [ref=e1]:
+  - iframe [ref=e3]:
+    - generic [ref=f11e5]:
+      - generic [ref=f11e6] [cursor=pointer]: Close
+      - heading "Discover. Explore. Connect with the wild world around you." [level=2] [ref=f11e7]
+      - paragraph [ref=f11e8]: Get a FREE Nature Notebook printable— just for signing up! Plus, stay in the know on special offers and more nature-inspired fun!
+      - generic [ref=f11e10]:
+        - group [ref=f11e11]:
+          - list [ref=f11e12]:
+            - listitem [ref=f11e13]:
+              - textbox "Your Email" [ref=f11e14]
+            - listitem [ref=f11e15]:
+              - button "SIGN UP TODAY" [ref=f11e16] [cursor=pointer]
+        - paragraph [ref=f11e17]:
+          - text: "By submitting this form, you are granting: Ranger Rick permission to email you. You can revoke permission to send email to your address at any time using the link, found at the bottom of every email. We take your privacy seriously (to see for yourself, please read our"
+          - link "Privacy Policy" [ref=f11e18] [cursor=pointer]:
+            - /url: https://rangerrick.org/privacy-policy/?modalControl=1
+          - text: ).
+  - generic:
+    - generic:
+      - generic:
+        - navigation
+  - banner [ref=e4]:
+    - generic [ref=e7]:
+      - banner [ref=e9]:
+        - link "Ranger Rick Header Logo Full" [ref=e10] [cursor=pointer]:
+          - /url: https://rangerrick.org/
+          - img "Ranger Rick Header Logo Full" [ref=e11]
+      - complementary [ref=e12]
+    - generic [ref=e13]:
+      - text: 
+      - navigation [ref=e14]:
+        - list [ref=e16]:
+          - listitem [ref=e17]:
+            - link "Animals" [ref=e18] [cursor=pointer]:
+              - /url: https://rangerrick.org/animals/
+          - listitem [ref=e19]:
+            - link "Games & Jokes" [ref=e20] [cursor=pointer]:
+              - /url: https://rangerrick.org/games-jokes/
+          - listitem [ref=e21]:
+            - link "Videos" [ref=e22] [cursor=pointer]:
+              - /url: https://rangerrick.org/videos/
+          - listitem [ref=e23]:
+            - link "Magazines" [ref=e24] [cursor=pointer]:
+              - /url: https://rangerrick.org/magazines/
+          - listitem [ref=e25]:
+            - link "Crafts & Activities" [ref=e26] [cursor=pointer]:
+              - /url: https://rangerrick.org/crafts-activities/
+          - listitem [ref=e27]:
+            - link "Photo Contest" [ref=e28] [cursor=pointer]:
+              - /url: https://rangerrick.org/photo-contest/
+          - listitem [ref=e29]:
+            - link "Shop" [ref=e30] [cursor=pointer]:
+              - /url: https://rangerrick.org/shop/
+          - search [ref=e31]:
+            - generic [ref=e32]:
+              - searchbox "Search" [ref=e33] [cursor=pointer]
+              - button [ref=e34] [cursor=pointer]:
+                - generic [ref=e35]: 
+  - generic [ref=e36]:
+    - main [ref=e37]:
+      - navigation [ref=e38]:
+        - link "Home" [ref=e40] [cursor=pointer]:
+          - /url: https://rangerrick.org
+        - generic [ref=e42]: 
+        - link "Games & Jokes" [ref=e44] [cursor=pointer]:
+          - /url: https://rangerrick.org/games-jokes/
+        - generic [ref=e46]: 
+        - text: Jokes
+      - article [ref=e47]:
+        - generic [ref=e49]:
+          - link "":
+            - /url: "#"
+            - generic [ref=e51] [cursor=pointer]: 
+          - link "":
+            - /url: "#"
+            - generic [ref=e53] [cursor=pointer]: 
+          - link "":
+            - /url: "#"
+            - generic [ref=e55] [cursor=pointer]: 
+          - link "":
+            - /url: "#"
+            - generic [ref=e57] [cursor=pointer]: 
+          - link "":
+            - /url: mailto:?subject=Jokes&body=
+            - generic [ref=e59] [cursor=pointer]: 
+        - paragraph
+        - generic [ref=e60]:
+          - paragraph [ref=e61]: Where do dogs hate to go shopping?
+          - button "Show Answer" [ref=e62] [cursor=pointer]
+        - figure [ref=e63]:
+          - img "Rick and Ricky" [ref=e64]
+        - link "Submit Your Joke ☞" [ref=e67] [cursor=pointer]:
+          - /url: https://rangerrick.org/jokes/submit-your-joke/
+          - strong [ref=e68]: Submit Your Joke ☞
+        - heading "Funny Jokes to Spark a Laugh" [level=2] [ref=e70]
+        - text: "1."
+        - strong [ref=e71]: "Joke:"
+        - text: What were prehistoric sleepovers called?
+        - strong [ref=e72]: "Answer:"
+        - text: Dino-SNORES.
+        - text: "2."
+        - strong [ref=e73]: "Joke:"
+        - text: What’s a bee’s favorite musical?
+        - strong [ref=e74]: "Answer:"
+        - text: Stinging in the Rain.
+        - text: "3."
+        - strong [ref=e75]: "Joke:"
+        - text: What kind of cow wears a crown?
+        - strong [ref=e76]: "Answer:"
+        - text: A dairy queen.
+        - text: "4."
+        - strong [ref=e77]: "Joke:"
+        - text: What do turkeys like to eat for dessert?
+        - strong [ref=e78]: "Answer:"
+        - text: Apple Gobbler.
+        - text: "5."
+        - strong [ref=e79]: "Joke:"
+        - text: Why do storks have so little money?
+        - strong [ref=e80]: "Answer:"
+        - text: They have such big bills.
+        - text: "6."
+        - strong [ref=e81]: "Joke:"
+        - text: Which reptile always knows what time it is?
+        - strong [ref=e82]: "Answer:"
+        - text: A grandfather croc.
+        - text: "7."
+        - strong [ref=e83]: "Joke:"
+        - text: Are the moon and Earth good friends?
+        - strong [ref=e84]: "Answer:"
+        - text: Yes, they’ve been going around together for years.
+        - text: "8."
+        - strong [ref=e85]: "Joke:"
+        - text: Can a horse join the army?
+        - strong [ref=e86]: "Answer:"
+        - text: No, the Neigh-vy.
+        - text: "9."
+        - strong [ref=e87]: "Joke:"
+        - text: Can bees fly in the rain?
+        - strong [ref=e88]: "Answer:"
+        - text: Not without their little yellow jackets.
+        - text: "10."
+        - strong [ref=e89]: "Joke:"
+        - text: Can you buy a ticket today for a trip to the moon?
+        - strong [ref=e90]: "Answer:"
+        - text: No, sorry. The moon is full right now.
+        - figure [ref=e92]
+        - text: "11."
+        - strong [ref=e93]: "Joke:"
+        - text: Did you hear the story about the skunk?
+        - strong [ref=e94]: "Answer:"
+        - text: Never mind–it stinks.
+        - text: "12."
+        - strong [ref=e95]: "Joke:"
+        - text: How are migrating birds different from flies?
+        - strong [ref=e96]: "Answer:"
+        - text: Birds fly, but flies don’t bird.
+        - text: "13."
+        - strong [ref=e97]: "Joke:"
+        - text: How can you make your money go far?
+        - strong [ref=e98]: "Answer:"
+        - text: Put your piggy bank in outer space.
+        - text: "14."
+        - strong [ref=e99]: "Joke:"
+        - text: How can you tell if a bee is talking on a cell phone?
+        - strong [ref=e100]: "Answer:"
+        - text: You get a buzzy signal.
+        - text: "15."
+        - strong [ref=e101]: "Joke:"
+        - text: How can you tell which end of a worm is the head?
+        - strong [ref=e102]: "Answer:"
+        - text: Tickle it in the middle, see which end laughs.
+        - text: "16."
+        - strong [ref=e103]: "Joke:"
+        - text: How can you tell worms from spaghetti?
+        - strong [ref=e104]: "Answer:"
+        - text: Worms can hang on to your fork.
+        - text: "17."
+        - strong [ref=e105]: "Joke:"
+        - text: How come frogs are such good liars?
+        - strong [ref=e106]: "Answer:"
+        - text: Because they’re amFIBians.
+        - text: "18."
+        - strong [ref=e107]: "Joke:"
+        - text: How did one calf finish his math problems faster than the other calves?
+        - strong [ref=e108]: "Answer:"
+        - text: It used a COW-culator.
+        - text: "19."
+        - strong [ref=e109]: "Joke:"
+        - text: How did the duck get rid of its headache?
+        - strong [ref=e110]: "Answer:"
+        - text: With quack-upuncture.
+        - text: "20."
+        - strong [ref=e111]: "Joke:"
+        - text: How did the farmer count his herd of cattle?
+        - strong [ref=e112]: "Answer:"
+        - text: He used a COWculator.
+        - text: "21."
+        - strong [ref=e113]: "Joke:"
+        - text: How did the frog cross the road?
+        - strong [ref=e114]: "Answer:"
+        - text: Its cousin toad it.
+        - text: "22."
+        - strong [ref=e115]: "Joke:"
+        - text: How did the hammerhead shark do on his math test?
+        - strong [ref=e116]: "Answer:"
+        - text: He nailed it.
+        - text: "23."
+        - strong [ref=e117]: "Joke:"
+        - text: How did the horse get a soda?
+        - strong [ref=e118]: "Answer:"
+        - text: He gave the vending machine a buck.
+        - text: "24."
+        - strong [ref=e119]: "Joke:"
+        - text: How did the snake escape from jail?
+        - strong [ref=e120]: "Answer:"
+        - text: It scaled the wall.
+        - text: "25."
+        - strong [ref=e121]: "Joke:"
+        - text: How do baby geese get out of their shells?
+        - strong [ref=e122]: "Answer:"
+        - text: They follow eggs-it signs.
+        - generic [ref=e124]:
+          - heading "About RANGER RICK" [level=2] [ref=e125]
+          - paragraph [ref=e126]: 50+ Years of Inspiring Children to Love Wildlife
+          - link "Ranger Rick Magazine Cover" [ref=e128] [cursor=pointer]:
+            - /url: https://rangerrick.org/magazines/
+            - img "Ranger Rick Magazine Cover" [ref=e129]
+          - paragraph [ref=e130]: RANGER RICK is packed with awesome animal facts, stories, and photos; comic adventures; wildlife puzzles, riddles, contests, and crafts; plus, outdoor discoveries to share with friends and family.
+          - link "SUBSCRIBE TO RANGER RICK TODAY!" [ref=e131] [cursor=pointer]:
+            - /url: https://rangerrick.org/magazines/
+        - text: "26."
+        - strong [ref=e132]: "Joke:"
+        - text: How do birds fly in the rain?
+        - strong [ref=e133]: "Answer:"
+        - text: They use wing shield wipers.
+        - text: "27."
+        - strong [ref=e134]: "Joke:"
+        - text: How do birds keep in shape?
+        - strong [ref=e135]: "Answer:"
+        - text: They do a lot of eggs-ercises.
+        - text: "28."
+        - strong [ref=e136]: "Joke:"
+        - text: How do bulls pay for their groceries?
+        - strong [ref=e137]: "Answer:"
+        - text: They charge them.
+        - text: "29."
+        - strong [ref=e138]: "Joke:"
+        - text: How do cats keep their breath fresh?
+        - strong [ref=e139]: "Answer:"
+        - text: They use mouse wash.
+        - text: "30."
+        - strong [ref=e140]: "Joke:"
+        - text: How do chickens keep in shape?
+        - strong [ref=e141]: "Answer:"
+        - text: They do lots of EGGSercises.
+        - text: "31."
+        - strong [ref=e142]: "Joke:"
+        - text: How do cows find their way home?
+        - strong [ref=e143]: "Answer:"
+        - text: They follow the Milky Way.
+        - text: "32."
+        - strong [ref=e144]: "Joke:"
+        - text: How do deer keep their coats looking good?
+        - strong [ref=e145]: "Answer:"
+        - text: They use pine combs.
+        - text: "33."
+        - strong [ref=e146]: "Joke:"
+        - text: How do dentists fix dragon teeth?
+        - strong [ref=e147]: "Answer:"
+        - text: With a fire drill.
+        - text: "34."
+        - strong [ref=e148]: "Joke:"
+        - text: How do dolphins make important decisions?
+        - strong [ref=e149]: "Answer:"
+        - text: They flipper a coin.
+        - text: "35."
+        - strong [ref=e150]: "Joke:"
+        - text: How do elephants communicate with each other?
+        - strong [ref=e151]: "Answer:"
+        - text: By elephone.
+        - text: "36."
+        - strong [ref=e152]: "Joke:"
+        - text: How do fish start their fairy tales?
+        - strong [ref=e153]: "Answer:"
+        - text: Once upon a SLIME.
+        - text: "37."
+        - strong [ref=e154]: "Joke:"
+        - text: How do fleas travel?
+        - strong [ref=e155]: "Answer:"
+        - text: They itch hike.
+        - text: "38."
+        - strong [ref=e156]: "Joke:"
+        - text: How do ghosts greet each other on New Year’s Day?
+        - strong [ref=e157]: "Answer:"
+        - text: “Happy Boo Year!”
+        - text: "39."
+        - strong [ref=e158]: "Joke:"
+        - text: How do groups of whales listen to music?
+        - strong [ref=e159]: "Answer:"
+        - text: They use their i-PODS.
+        - text: "40."
+        - strong [ref=e160]: "Joke:"
+        - text: How do jackrabbits keep cool in the dessert?
+        - strong [ref=e161]: "Answer:"
+        - text: The use ear-conditioning.
+        - figure [ref=e163]
+        - text: "41."
+        - strong [ref=e164]: "Joke:"
+        - text: How do monkeys go downstairs?
+        - strong [ref=e165]: "Answer:"
+        - text: They slide down the banana-ster.
+        - text: "42."
+        - strong [ref=e166]: "Joke:"
+        - text: How do ocean creatures cross the ocean?
+        - strong [ref=e167]: "Answer:"
+        - text: By taxi crab.
+        - text: "43."
+        - strong [ref=e168]: "Joke:"
+        - text: How do porcupines communicate?
+        - strong [ref=e169]: "Answer:"
+        - text: Through spine language.
+        - text: "44."
+        - strong [ref=e170]: "Joke:"
+        - text: How do porcupines hug and kiss?
+        - strong [ref=e171]: "Answer:"
+        - text: Very carefully.
+        - text: "45."
+        - strong [ref=e172]: "Joke:"
+        - text: How do porcupines play leapfrog?
+        - strong [ref=e173]: "Answer:"
+        - text: Very carefully.
+        - text: "46."
+        - strong [ref=e174]: "Joke:"
+        - text: How do rabbits keep in shape?
+        - strong [ref=e175]: "Answer:"
+        - text: They do HARErobics.
+        - text: "47."
+        - strong [ref=e176]: "Joke:"
+        - text: How do rabbits travel?
+        - strong [ref=e177]: "Answer:"
+        - text: In HARE-planes.
+        - text: "48."
+        - strong [ref=e178]: "Joke:"
+        - text: How do robins find their way to their nesting places?
+        - strong [ref=e179]: "Answer:"
+        - text: They follow the “egg-sit” signs.
+        - text: "49."
+        - strong [ref=e180]: "Joke:"
+        - text: How do robins start their exercise routine?
+        - strong [ref=e181]: "Answer:"
+        - text: With worm-ups.
+        - text: "50."
+        - strong [ref=e182]: "Joke:"
+        - text: How do skeletons send their mail?
+        - strong [ref=e183]: "Answer:"
+        - text: By bony express.
+        - generic [ref=e185]:
+          - heading "About RANGER RICK" [level=2] [ref=e186]
+          - paragraph [ref=e187]: 50+ Years of Inspiring Children to Love Wildlife
+          - link "Ranger Rick Magazine Cover" [ref=e189] [cursor=pointer]:
+            - /url: https://rangerrick.org/magazines/
+            - img "Ranger Rick Magazine Cover" [ref=e190]
+          - paragraph [ref=e191]: RANGER RICK is packed with awesome animal facts, stories, and photos; comic adventures; wildlife puzzles, riddles, contests, and crafts; plus, outdoor discoveries to share with friends and family.
+          - link "SUBSCRIBE TO RANGER RICK TODAY!" [ref=e192] [cursor=pointer]:
+            - /url: https://rangerrick.org/magazines/
+        - text: "51."
+        - strong [ref=e193]: "Joke:"
+        - text: How do slugs get up mountains?
+        - strong [ref=e194]: "Answer:"
+        - text: They slime to the top.
+        - text: "52."
+        - strong [ref=e195]: "Joke:"
+        - text: How do snails get their shells all shiny and clean?
+        - strong [ref=e196]: "Answer:"
+        - text: They use snail polish.
+        - text: "53."
+        - strong [ref=e197]: "Joke:"
+        - text: How do snails greet each other?
+        - strong [ref=e198]: "Answer:"
+        - text: “Long slime, no see.”
+        - text: "54."
+        - strong [ref=e199]: "Joke:"
+        - text: How do snails start their fairy tales?
+        - strong [ref=e200]: "Answer:"
+        - text: Once upon a slime.
+        - text: "55."
+        - strong [ref=e201]: "Joke:"
+        - text: How do snakes sign their letters?
+        - strong [ref=e202]: "Answer:"
+        - text: With hugs and hisses.
+        - text: "56."
+        - strong [ref=e203]: "Joke:"
+        - text: How do termites travel?
+        - strong [ref=e204]: "Answer:"
+        - text: By chew-chew train.
+        - text: "57."
+        - strong [ref=e205]: "Joke:"
+        - text: How do turkeys wake their friends on Thanksgiving morning?
+        - strong [ref=e206]: "Answer:"
+        - text: With alarm clucks.
+        - text: "58."
+        - strong [ref=e207]: "Joke:"
+        - text: How do tyrannosaurs like their eggs?
+        - strong [ref=e208]: "Answer:"
+        - text: Terri-fried!
+        - text: "59."
+        - strong [ref=e209]: "Joke:"
+        - text: How do wasps communicate?
+        - strong [ref=e210]: "Answer:"
+        - text: Through bee-mail.
+        - text: "60."
+        - strong [ref=e211]: "Joke:"
+        - text: How do weeping willows remove splinters?
+        - strong [ref=e212]: "Answer:"
+        - text: With tree-zers.
+        - text: "61."
+        - strong [ref=e213]: "Joke:"
+        - text: How do you divide an ocean in half?
+        - strong [ref=e214]: "Answer:"
+        - text: Use a sea saw.
+        - text: "62."
+        - strong [ref=e215]: "Joke:"
+        - text: How do you find a cheetah at night?
+        - strong [ref=e216]: "Answer:"
+        - text: Use a spotlight.
+        - text: "63."
+        - strong [ref=e217]: "Joke:"
+        - text: How do you find your mosquito bites?
+        - strong [ref=e218]: "Answer:"
+        - text: Start from scratch.
+        - text: "64."
+        - strong [ref=e219]: "Joke:"
+        - text: How do you fix a smashed jack-o’-lantern?
+        - strong [ref=e220]: "Answer:"
+        - text: With a pumpkin patch.
+        - text: "65."
+        - strong [ref=e221]: "Joke:"
+        - text: How do you get a baby astronaut to sleep?
+        - strong [ref=e222]: "Answer:"
+        - text: You rock-it.
+        - text: "66."
+        - strong [ref=e223]: "Joke:"
+        - text: How do you get a frog off your back car window?
+        - strong [ref=e224]: "Answer:"
+        - text: Use a rear-window defrogger.
+        - text: "67."
+        - strong [ref=e225]: "Joke:"
+        - text: How do you keep a buffalo from charging?
+        - strong [ref=e226]: "Answer:"
+        - text: Take away its credit card.
+        - text: "68."
+        - strong [ref=e227]: "Joke:"
+        - text: How do you keep a dragon from going through the eye of a needle?
+        - strong [ref=e228]: "Answer:"
+        - text: Tie a knot in its tail.
+        - text: "69."
+        - strong [ref=e229]: "Joke:"
+        - text: How do you keep a stinky salmon from smelling?
+        - strong [ref=e230]: "Answer:"
+        - text: Hold its nose.
+        - text: "70."
+        - strong [ref=e231]: "Joke:"
+        - text: How do you know when a bee is talking on the phone?
+        - strong [ref=e232]: "Answer:"
+        - text: You hear a buzzy signal.
+        - text: "71."
+        - strong [ref=e233]: "Joke:"
+        - text: How do you know when a fish is playing hooky?
+        - strong [ref=e234]: "Answer:"
+        - text: When it’s not in a school.
+        - text: "72."
+        - strong [ref=e235]: "Joke:"
+        - text: How do you know when a vampire bat is sick?
+        - strong [ref=e236]: "Answer:"
+        - text: It can’t stop coffin.
+        - text: "73."
+        - strong [ref=e237]: "Joke:"
+        - text: How do you know when a vampire is deathly sick?
+        - strong [ref=e238]: "Answer:"
+        - text: It can’t stop coffin.
+        - text: "74."
+        - strong [ref=e239]: "Joke:"
+        - text: How do you make a skeleton laugh?
+        - strong [ref=e240]: "Answer:"
+        - text: Tickle its funny bone.
+        - text: "75."
+        - strong [ref=e241]: "Joke:"
+        - text: How do you make a whale float?
+        - strong [ref=e242]: "Answer:"
+        - text: Two scoops of ice cream, root beer, and a whale.
+        - figure [ref=e244]
+        - text: "76."
+        - strong [ref=e245]: "Joke:"
+        - text: How do you make a witch itch?
+        - strong [ref=e246]: "Answer:"
+        - text: Take out the “W”.
+        - text: "77."
+        - strong [ref=e247]: "Joke:"
+        - text: How do you make friends with a squirrel?
+        - strong [ref=e248]: "Answer:"
+        - text: Climb a tree and act like a nut.
+        - text: "78."
+        - strong [ref=e249]: "Joke:"
+        - text: How do you milk an ant?
+        - strong [ref=e250]: "Answer:"
+        - text: First you get a really low stool.
+        - text: "79."
+        - strong [ref=e251]: "Joke:"
+        - text: How do you read a book about plants?
+        - strong [ref=e252]: "Answer:"
+        - text: You leaf through it.
+        - text: "80."
+        - strong [ref=e253]: "Joke:"
+        - text: How do you say goodbye to a sick alligator?
+        - strong [ref=e254]: "Answer:"
+        - text: “See you later, illigator.”
+        - text: "81."
+        - strong [ref=e255]: "Joke:"
+        - text: How do you spell mouse trap with 3 letters?
+        - strong [ref=e256]: "Answer:"
+        - text: C-A-T.
+        - text: "82."
+        - strong [ref=e257]: "Joke:"
+        - text: How do you stop a stinky fish from smelling?
+        - strong [ref=e258]: "Answer:"
+        - text: Hold its nose.
+        - text: "83."
+        - strong [ref=e259]: "Joke:"
+        - text: How do young deer call each other?
+        - strong [ref=e260]: "Answer:"
+        - text: They use a tell-a-fawn.
+        - text: "84."
+        - strong [ref=e261]: "Joke:"
+        - text: How does a cat succeed in life?
+        - strong [ref=e262]: "Answer:"
+        - text: Through purr-sistence.
+        - text: "85."
+        - strong [ref=e263]: "Joke:"
+        - text: How does a dolphin make bread?
+        - strong [ref=e264]: "Answer:"
+        - text: With All-Porpoise Flour.
+        - text: "86."
+        - strong [ref=e265]: "Joke:"
+        - text: How does a dolphin wash its flippers?
+        - strong [ref=e266]: "Answer:"
+        - text: With an all-porpoise cleaner.
+        - text: "87."
+        - strong [ref=e267]: "Joke:"
+        - text: How does a firefly start a race?
+        - strong [ref=e268]: "Answer:"
+        - text: Ready, set, glow!
+        - text: "88."
+        - strong [ref=e269]: "Joke:"
+        - text: How does a fish feel when it gets caught stealing bait?
+        - strong [ref=e270]: "Answer:"
+        - text: Gill-ty.
+        - text: "89."
+        - strong [ref=e271]: "Joke:"
+        - text: How does a flower ride a bike?
+        - strong [ref=e272]: "Answer:"
+        - text: With its petals.
+        - text: "90."
+        - strong [ref=e273]: "Joke:"
+        - text: How does a lion like its steak?
+        - strong [ref=e274]: "Answer:"
+        - text: Medium-roar.
+        - text: "91."
+        - strong [ref=e275]: "Joke:"
+        - text: How does a mother kangaroo tell time?
+        - strong [ref=e276]: "Answer:"
+        - text: With her pocket watch.
+        - text: "92."
+        - strong [ref=e277]: "Joke:"
+        - text: How does a mountain goat mom call her baby?
+        - strong [ref=e278]: "Answer:"
+        - text: “Here, kiddie, kiddie!”
+        - text: "93."
+        - strong [ref=e279]: "Joke:"
+        - text: How does a mouse disguise himself?
+        - strong [ref=e280]: "Answer:"
+        - text: He wears a mousetache.
+        - text: "94."
+        - strong [ref=e281]: "Joke:"
+        - text: How does a mouse feel after a bath?
+        - strong [ref=e282]: "Answer:"
+        - text: Squeaky clean.
+        - text: "95."
+        - strong [ref=e283]: "Joke:"
+        - text: How does a penguin feel after its friend moves away?
+        - strong [ref=e284]: "Answer:"
+        - text: Ice-olated.
+        - text: "96."
+        - strong [ref=e285]: "Joke:"
+        - text: How does a skunk put out a fire?
+        - strong [ref=e286]: "Answer:"
+        - text: It uses an ex-stink-guisher.
+        - text: "97."
+        - strong [ref=e287]: "Joke:"
+        - text: How does a slug go fishing?
+        - strong [ref=e288]: "Answer:"
+        - text: On a snail boat.
+        - text: "98."
+        - strong [ref=e289]: "Joke:"
+        - text: How does a sponge spend its free time?
+        - strong [ref=e290]: "Answer:"
+        - text: It soaks up some fun.
+        - text: "99."
+        - strong [ref=e291]: "Joke:"
+        - text: How does a tree get into the Internet?
+        - strong [ref=e292]: "Answer:"
+        - text: It logs on.
+        - text: "100."
+        - strong [ref=e293]: "Joke:"
+        - text: How does a turtle call its friends?
+        - strong [ref=e294]: "Answer:"
+        - text: With a shell phone.
+        - generic [ref=e296]:
+          - heading "About RANGER RICK" [level=2] [ref=e297]
+          - paragraph [ref=e298]: 50+ Years of Inspiring Children to Love Wildlife
+          - link "Ranger Rick Magazine Cover" [ref=e300] [cursor=pointer]:
+            - /url: https://rangerrick.org/magazines/
+            - img "Ranger Rick Magazine Cover" [ref=e301]
+          - paragraph [ref=e302]: RANGER RICK is packed with awesome animal facts, stories, and photos; comic adventures; wildlife puzzles, riddles, contests, and crafts; plus, outdoor discoveries to share with friends and family.
+          - link "SUBSCRIBE TO RANGER RICK TODAY!" [ref=e303] [cursor=pointer]:
+            - /url: https://rangerrick.org/magazines/
+        - text: "101."
+        - strong [ref=e304]: "Joke:"
+        - text: How does a turtle get to the top floor?
+        - strong [ref=e305]: "Answer:"
+        - text: In a shell-evator.
+        - text: "102."
+        - strong [ref=e306]: "Joke:"
+        - text: How does an octopus pay its bills?
+        - strong [ref=e307]: "Answer:"
+        - text: With sand dollars.
+        - text: "103."
+        - strong [ref=e308]: "Joke:"
+        - text: How does the ocean say hello?
+        - strong [ref=e309]: "Answer:"
+        - text: It waves.
+        - text: "104."
+        - strong [ref=e310]: "Joke:"
+        - text: How is a wall light switch like a penguin?
+        - strong [ref=e311]: "Answer:"
+        - text: They both have flippers.
+        - text: "105."
+        - strong [ref=e312]: "Joke:"
+        - text: How many birds can sing a duet?
+        - strong [ref=e313]: "Answer:"
+        - text: Toucan.
+        - text: "106."
+        - strong [ref=e314]: "Joke:"
+        - text: How many cockroaches does it take to screw in a light bulb?
+        - strong [ref=e315]: "Answer:"
+        - text: Can’t tell. They scatter as soon as the light turns on.
+        - text: "107."
+        - strong [ref=e316]: "Joke:"
+        - text: How many frogs would fit in your glass of water?
+        - strong [ref=e317]: "Answer:"
+        - text: Toadily too many.
+        - text: "108."
+        - strong [ref=e318]: "Joke:"
+        - text: How many mice can an owl eat?
+        - strong [ref=e319]: "Answer:"
+        - text: OWL of them!
+        - text: "109."
+        - strong [ref=e320]: "Joke:"
+        - text: How many skunks live in a neighborhood?
+        - strong [ref=e321]: "Answer:"
+        - text: Quite a phew.
+        - text: "110."
+        - strong [ref=e322]: "Joke:"
+        - text: How much does a pile of bones weigh?
+        - strong [ref=e323]: "Answer:"
+        - text: A skele-TON.
+        - text: "111."
+        - strong [ref=e324]: "Joke:"
+        - text: How much seafood does a crab eat?
+        - strong [ref=e325]: "Answer:"
+        - text: Just a pinch.
+        - text: "112."
+        - strong [ref=e326]: "Joke:"
+        - text: In an emergency whom do you call for a sick rabbit?
+        - strong [ref=e327]: "Answer:"
+        - text: A hare-a-medic.
+        - text: "113."
+        - strong [ref=e328]: "Joke:"
+        - text: Is chicken soup good for you?
+        - strong [ref=e329]: "Answer:"
+        - text: Not if you’re the chicken!
+        - text: "114."
+        - strong [ref=e330]: "Joke:"
+        - text: Is turkey soup good for you?
+        - strong [ref=e331]: "Answer:"
+        - text: Not if you’re the turkey!
+        - text: "115."
+        - strong [ref=e332]: "Joke:"
+        - text: What part of a salmon weighs the most?
+        - strong [ref=e333]: "Answer:"
+        - text: Its scales.
+        - text: "116."
+        - strong [ref=e334]: "Joke:"
+        - text: What’s brown and white and dangerous?
+        - strong [ref=e335]: "Answer:"
+        - text: A cow on a skateboard.
+        - text: "117."
+        - strong [ref=e336]: "Joke:"
+        - text: What do you call a sleeping male cow?
+        - strong [ref=e337]: "Answer:"
+        - text: A Bulldozer.
+        - text: "118."
+        - strong [ref=e338]: "Joke:"
+        - text: What ancient cat solved mysteries?
+        - strong [ref=e339]: "Answer:"
+        - text: The saber SLEUTH tiger.
+        - text: "119."
+        - strong [ref=e340]: "Joke:"
+        - text: What animal can you find in the military?
+        - strong [ref=e341]: "Answer:"
+        - text: An army-dillo.
+        - text: "120."
+        - strong [ref=e342]: "Joke:"
+        - text: What animal hibernates while standing on its head?
+        - strong [ref=e343]: "Answer:"
+        - text: Yoga bear.
+        - text: "121."
+        - strong [ref=e344]: "Joke:"
+        - text: What animal sewed the first American flag?
+        - strong [ref=e345]: "Answer:"
+        - text: Bat-sy Ross.
+        - text: "122."
+        - strong [ref=e346]: "Joke:"
+        - text: What’s an aardvark’s favorite pizza topping?
+        - strong [ref=e347]: "Answer:"
+        - text: Ant-chovies.
+        - text: "123."
+        - strong [ref=e348]: "Joke:"
+        - text: What’s smarter than a talking parrot?
+        - strong [ref=e349]: "Answer:"
+        - text: A spelling bee.
+        - text: "124."
+        - strong [ref=e350]: "Joke:"
+        - text: What does a lemur pirate say?
+        - strong [ref=e351]: "Answer:"
+        - text: “Aye-aye, matey!”
+        - text: "125."
+        - strong [ref=e352]: "Joke:"
+        - text: What makes a jellyfish laugh?
+        - strong [ref=e353]: "Answer:"
+        - text: Ten tickles.
+        - figure [ref=e355]
+        - text: "126."
+        - strong [ref=e356]: "Joke:"
+        - text: What do you get when you cross a chicken with a skunk?
+        - strong [ref=e357]: "Answer:"
+        - text: A fowl smell.
+        - text: "127."
+        - strong [ref=e358]: "Joke:"
+        - text: Are the moon and Earth good friends?
+        - strong [ref=e359]: "Answer:"
+        - text: Yes, they’ve been going around together for years.
+        - text: "128."
+        - strong [ref=e360]: "Joke:"
+        - text: Can a horse join the army?
+        - strong [ref=e361]: "Answer:"
+        - text: No, the Neigh-vy.
+        - text: "129."
+        - strong [ref=e362]: "Joke:"
+        - text: Can bees fly in the rain?
+        - strong [ref=e363]: "Answer:"
+        - text: Not without their little yellow jackets.
+        - text: "130."
+        - strong [ref=e364]: "Joke:"
+        - text: Can you buy a ticket today for a trip to the moon?
+        - strong [ref=e365]: "Answer:"
+        - text: No, sorry. The moon is full right now.
+        - text: "131."
+        - strong [ref=e366]: "Joke:"
+        - text: Did you hear the story about the skunk?
+        - strong [ref=e367]: "Answer:"
+        - text: Never mind–it stinks.
+        - text: "132."
+        - strong [ref=e368]: "Joke:"
+        - text: How are migrating birds different from flies?
+        - strong [ref=e369]: "Answer:"
+        - text: Birds fly, but flies don’t bird.
+        - text: "133."
+        - strong [ref=e370]: "Joke:"
+        - text: How can you make your money go far?
+        - strong [ref=e371]: "Answer:"
+        - text: Put your piggy bank in outer space.
+        - text: "134."
+        - strong [ref=e372]: "Joke:"
+        - text: How can you tell if a bee is talking on a cell phone?
+        - strong [ref=e373]: "Answer:"
+        - text: You get a buzzy signal.
+        - text: "135."
+        - strong [ref=e374]: "Joke:"
+        - text: How can you tell which end of a worm is the head?
+        - strong [ref=e375]: "Answer:"
+        - text: Tickle it in the middle, see which end laughs.
+        - text: "136."
+        - strong [ref=e376]: "Joke:"
+        - text: How can you tell worms from spaghetti?
+        - strong [ref=e377]: "Answer:"
+        - text: Worms can hang on to your fork.
+        - text: "137."
+        - strong [ref=e378]: "Joke:"
+        - text: How come frogs are such good liars?
+        - strong [ref=e379]: "Answer:"
+        - text: Because they’re amFIBians.
+        - text: "138."
+        - strong [ref=e380]: "Joke:"
+        - text: How did one calf finish his math problems faster than the other calves?
+        - strong [ref=e381]: "Answer:"
+        - text: It used a COW-culator.
+        - text: "139."
+        - strong [ref=e382]: "Joke:"
+        - text: How did the duck get rid of its headache?
+        - strong [ref=e383]: "Answer:"
+        - text: With quack-upuncture.
+        - text: "140."
+        - strong [ref=e384]: "Joke:"
+        - text: How did the farmer count his herd of cattle?
+        - strong [ref=e385]: "Answer:"
+        - text: He used a COWculator.
+        - text: "141."
+        - strong [ref=e386]: "Joke:"
+        - text: How did the frog cross the road?
+        - strong [ref=e387]: "Answer:"
+        - text: Its cousin toad it.
+        - text: "142."
+        - strong [ref=e388]: "Joke:"
+        - text: How did the hammerhead shark do on his math test?
+        - strong [ref=e389]: "Answer:"
+        - text: He nailed it.
+        - text: "143."
+        - strong [ref=e390]: "Joke:"
+        - text: How did the horse get a soda?
+        - strong [ref=e391]: "Answer:"
+        - text: He gave the vending machine a buck.
+        - text: "144."
+        - strong [ref=e392]: "Joke:"
+        - text: How did the snake escape from jail?
+        - strong [ref=e393]: "Answer:"
+        - text: It scaled the wall.
+        - text: "145."
+        - strong [ref=e394]: "Joke:"
+        - text: How do baby geese get out of their shells?
+        - strong [ref=e395]: "Answer:"
+        - text: They follow eggs-it signs.
+        - text: "146."
+        - strong [ref=e396]: "Joke:"
+        - text: How do bees get to school?
+        - strong [ref=e397]: "Answer:"
+        - text: They take the school buzz.
+        - text: "147."
+        - strong [ref=e398]: "Joke:"
+        - text: How do birds fly in the rain?
+        - strong [ref=e399]: "Answer:"
+        - text: They use wing shield wipers.
+        - text: "148."
+        - strong [ref=e400]: "Joke:"
+        - text: How do birds keep in shape?
+        - strong [ref=e401]: "Answer:"
+        - text: They do a lot of eggs-ercises.
+        - text: "149."
+        - strong [ref=e402]: "Joke:"
+        - text: How do bulls pay for their groceries?
+        - strong [ref=e403]: "Answer:"
+        - text: They charge them.
+        - text: "150."
+        - strong [ref=e404]: "Joke:"
+        - text: How do cats keep their breath fresh?
+        - strong [ref=e405]: "Answer:"
+        - text: They use mouse wash.
+        - generic [ref=e407]:
+          - heading "About RANGER RICK" [level=2] [ref=e408]
+          - paragraph [ref=e409]: 50+ Years of Inspiring Children to Love Wildlife
+          - link "Ranger Rick Magazine Cover" [ref=e411] [cursor=pointer]:
+            - /url: https://rangerrick.org/magazines/
+            - img "Ranger Rick Magazine Cover" [ref=e412]
+          - paragraph [ref=e413]: RANGER RICK is packed with awesome animal facts, stories, and photos; comic adventures; wildlife puzzles, riddles, contests, and crafts; plus, outdoor discoveries to share with friends and family.
+          - link "SUBSCRIBE TO RANGER RICK TODAY!" [ref=e414] [cursor=pointer]:
+            - /url: https://rangerrick.org/magazines/
+        - text: "151."
+        - strong [ref=e415]: "Joke:"
+        - text: How do cows find their way home?
+        - strong [ref=e416]: "Answer:"
+        - text: They follow the Milky Way.
+        - text: "152."
+        - strong [ref=e417]: "Joke:"
+        - text: How do deer keep their coats looking good?
+        - strong [ref=e418]: "Answer:"
+        - text: They use pine combs.
+        - text: "153."
+        - strong [ref=e419]: "Joke:"
+        - text: How do dentists fix dragon teeth?
+        - strong [ref=e420]: "Answer:"
+        - text: With a fire drill.
+        - text: "154."
+        - strong [ref=e421]: "Joke:"
+        - text: How do dolphins make important decisions?
+        - strong [ref=e422]: "Answer:"
+        - text: They flipper a coin.
+        - text: "155."
+        - strong [ref=e423]: "Joke:"
+        - text: How do elephants communicate with each other?
+        - strong [ref=e424]: "Answer:"
+        - text: By elephone.
+        - text: "156."
+        - strong [ref=e425]: "Joke:"
+        - text: How do fleas travel?
+        - strong [ref=e426]: "Answer:"
+        - text: They itch hike.
+        - text: "157."
+        - strong [ref=e427]: "Joke:"
+        - text: How do ghosts greet each other on New Year’s Day?
+        - strong [ref=e428]: "Answer:"
+        - text: “Happy Boo Year!”
+        - text: "158."
+        - strong [ref=e429]: "Joke:"
+        - text: How do groups of whales listen to music?
+        - strong [ref=e430]: "Answer:"
+        - text: They use their i-PODS.
+        - text: "159."
+        - strong [ref=e431]: "Joke:"
+        - text: How do jackrabbits keep cool in the desert?
+        - strong [ref=e432]: "Answer:"
+        - text: They use ear-conditioning.
+        - text: "160."
+        - strong [ref=e433]: "Joke:"
+        - text: How do monkeys go downstairs?
+        - strong [ref=e434]: "Answer:"
+        - text: They slide down the banana-ster.
+        - text: "161."
+        - strong [ref=e435]: "Joke:"
+        - text: How do ocean creatures cross the ocean?
+        - strong [ref=e436]: "Answer:"
+        - text: By taxi crab.
+        - text: "162."
+        - strong [ref=e437]: "Joke:"
+        - text: How do porcupines communicate?
+        - strong [ref=e438]: "Answer:"
+        - text: Through spine language.
+        - text: "163."
+        - strong [ref=e439]: "Joke:"
+        - text: How do porcupines play leapfrog?
+        - strong [ref=e440]: "Answer:"
+        - text: Very carefully.
+        - text: "164."
+        - strong [ref=e441]: "Joke:"
+        - text: How do rabbits keep in shape?
+        - strong [ref=e442]: "Answer:"
+        - text: They do HARErobics.
+        - text: "165."
+        - strong [ref=e443]: "Joke:"
+        - text: How do rabbits travel?
+        - strong [ref=e444]: "Answer:"
+        - text: In HARE-planes.
+        - text: "166."
+        - strong [ref=e445]: "Joke:"
+        - text: How do robins find their way to their nesting places?
+        - strong [ref=e446]: "Answer:"
+        - text: They follow the “egg-sit” signs.
+        - text: "167."
+        - strong [ref=e447]: "Joke:"
+        - text: How do robins start their exercise routine?
+        - strong [ref=e448]: "Answer:"
+        - text: With worm-ups.
+        - text: "168."
+        - strong [ref=e449]: "Joke:"
+        - text: How do skeletons send their mail?
+        - strong [ref=e450]: "Answer:"
+        - text: By bony express.
+        - text: "169."
+        - strong [ref=e451]: "Joke:"
+        - text: How do slugs get up mountains?
+        - strong [ref=e452]: "Answer:"
+        - text: They slime to the top.
+        - text: "170."
+        - strong [ref=e453]: "Joke:"
+        - text: How do snails get their shells all shiny and clean?
+        - strong [ref=e454]: "Answer:"
+        - text: They use snail polish.
+        - text: "171."
+        - strong [ref=e455]: "Joke:"
+        - text: How do snails greet each other?
+        - strong [ref=e456]: "Answer:"
+        - text: “Long slime, no see.”
+        - text: "172."
+        - strong [ref=e457]: "Joke:"
+        - text: How do snails start their fairy tales?
+        - strong [ref=e458]: "Answer:"
+        - text: Once upon a slime.
+        - text: "173."
+        - strong [ref=e459]: "Joke:"
+        - text: How do snakes sign their letters?
+        - strong [ref=e460]: "Answer:"
+        - text: With hugs and hisses.
+        - text: "174."
+        - strong [ref=e461]: "Joke:"
+        - text: How do termites travel?
+        - strong [ref=e462]: "Answer:"
+        - text: By chew-chew train.
+        - text: "175."
+        - strong [ref=e463]: "Joke:"
+        - text: How do turkeys wake their friends on Thanksgiving morning?
+        - strong [ref=e464]: "Answer:"
+        - text: With alarm clucks.
+        - figure [ref=e466]
+        - text: "176."
+        - strong [ref=e467]: "Joke:"
+        - text: How do tyrannosaurs like their eggs?
+        - strong [ref=e468]: "Answer:"
+        - text: Terri-fried!
+        - text: "177."
+        - strong [ref=e469]: "Joke:"
+        - text: How do wasps communicate?
+        - strong [ref=e470]: "Answer:"
+        - text: Through bee-mail.
+        - text: "178."
+        - strong [ref=e471]: "Joke:"
+        - text: How do weeping willows remove splinters?
+        - strong [ref=e472]: "Answer:"
+        - text: With tree-zers.
+        - text: "179."
+        - strong [ref=e473]: "Joke:"
+        - text: How do you divide an ocean in half?
+        - strong [ref=e474]: "Answer:"
+        - text: Use a sea saw.
+        - text: "180."
+        - strong [ref=e475]: "Joke:"
+        - text: How do you find a cheetah at night?
+        - strong [ref=e476]: "Answer:"
+        - text: Use a spotlight.
+        - text: "181."
+        - strong [ref=e477]: "Joke:"
+        - text: How do you find your mosquito bites?
+        - strong [ref=e478]: "Answer:"
+        - text: Start from scratch.
+        - text: "182."
+        - strong [ref=e479]: "Joke:"
+        - text: How do you fix a smashed jack-o’-lantern?
+        - strong [ref=e480]: "Answer:"
+        - text: With a pumpkin patch.
+        - text: "183."
+        - strong [ref=e481]: "Joke:"
+        - text: How do you get a baby astronaut to sleep?
+        - strong [ref=e482]: "Answer:"
+        - text: You rock-it.
+        - text: "184."
+        - strong [ref=e483]: "Joke:"
+        - text: How do you get a frog off your back car window?
+        - strong [ref=e484]: "Answer:"
+        - text: Use a rear-window defrogger.
+        - text: "185."
+        - strong [ref=e485]: "Joke:"
+        - text: How do you keep a buffalo from charging?
+        - strong [ref=e486]: "Answer:"
+        - text: Take away its credit card.
+        - text: "186."
+        - strong [ref=e487]: "Joke:"
+        - text: How do you keep a dragon from going through the eye of a needle?
+        - strong [ref=e488]: "Answer:"
+        - text: Tie a knot in its tail.
+        - text: "187."
+        - strong [ref=e489]: "Joke:"
+        - text: How do you keep a stinky salmon from smelling?
+        - strong [ref=e490]: "Answer:"
+        - text: Hold its nose.
+        - text: "188."
+        - strong [ref=e491]: "Joke:"
+        - text: How do you know when a fish is playing hooky?
+        - strong [ref=e492]: "Answer:"
+        - text: When it’s not in a school.
+        - text: "189."
+        - strong [ref=e493]: "Joke:"
+        - text: How do you know when a vampire bat is sick?
+        - strong [ref=e494]: "Answer:"
+        - text: It can’t stop coffin.
+        - text: "190."
+        - strong [ref=e495]: "Joke:"
+        - text: How do you make a skeleton laugh?
+        - strong [ref=e496]: "Answer:"
+        - text: Tickle its funny bone.
+        - text: "191."
+        - strong [ref=e497]: "Joke:"
+        - text: How do you make a whale float?
+        - strong [ref=e498]: "Answer:"
+        - text: Two scoops of ice cream, root beer, and a whale.
+        - text: "192."
+        - strong [ref=e499]: "Joke:"
+        - text: How do you make a witch itch?
+        - strong [ref=e500]: "Answer:"
+        - text: Take out the “W”.
+        - text: "193."
+        - strong [ref=e501]: "Joke:"
+        - text: How do you make friends with a squirrel?
+        - strong [ref=e502]: "Answer:"
+        - text: Climb a tree and act like a nut.
+        - text: "194."
+        - strong [ref=e503]: "Joke:"
+        - text: How do you milk an ant?
+        - strong [ref=e504]: "Answer:"
+        - text: First you get a really low stool.
+        - text: "195."
+        - strong [ref=e505]: "Joke:"
+        - text: How do you read a book about plants?
+        - strong [ref=e506]: "Answer:"
+        - text: You leaf through it.
+        - text: "196."
+        - strong [ref=e507]: "Joke:"
+        - text: How do you say good-bye to a sick alligator?
+        - strong [ref=e508]: "Answer:"
+        - text: “See you later, illigator.”
+        - text: "197."
+        - strong [ref=e509]: "Joke:"
+        - text: How do you spell mouse trap with 3 letters?
+        - strong [ref=e510]: "Answer:"
+        - text: C-A-T.
+        - text: "198."
+        - strong [ref=e511]: "Joke:"
+        - text: How do young deer call each other?
+        - strong [ref=e512]: "Answer:"
+        - text: They use a tell-a-fawn.
+        - text: "199."
+        - strong [ref=e513]: "Joke:"
+        - text: How does a cat succeed in life?
+        - strong [ref=e514]: "Answer:"
+        - text: Through purr-sistence.
+        - text: "200."
+        - strong [ref=e515]: "Joke:"
+        - text: How does a dolphin wash its flippers?
+        - strong [ref=e516]: "Answer:"
+        - text: With an all-porpoise cleaner.
+        - generic [ref=e518]:
+          - heading "About RANGER RICK" [level=2] [ref=e519]
+          - paragraph [ref=e520]: 50+ Years of Inspiring Children to Love Wildlife
+          - link "Ranger Rick Magazine Cover" [ref=e522] [cursor=pointer]:
+            - /url: https://rangerrick.org/magazines/
+            - img "Ranger Rick Magazine Cover" [ref=e523]
+          - paragraph [ref=e524]: RANGER RICK is packed with awesome animal facts, stories, and photos; comic adventures; wildlife puzzles, riddles, contests, and crafts; plus, outdoor discoveries to share with friends and family.
+          - link "SUBSCRIBE TO RANGER RICK TODAY!" [ref=e525] [cursor=pointer]:
+            - /url: https://rangerrick.org/magazines/
+        - text: "201."
+        - strong [ref=e526]: "Joke:"
+        - text: How does a firefly start a race?
+        - strong [ref=e527]: "Answer:"
+        - text: Ready, set, glow!
+        - text: "202."
+        - strong [ref=e528]: "Joke:"
+        - text: How does a fish feel when it gets caught stealing bait?
+        - strong [ref=e529]: "Answer:"
+        - text: Gill-ty.
+        - text: "203."
+        - strong [ref=e530]: "Joke:"
+        - text: How does a flower ride a bike?
+        - strong [ref=e531]: "Answer:"
+        - text: With its petals.
+        - text: "204."
+        - strong [ref=e532]: "Joke:"
+        - text: How does a lion like its steak?
+        - strong [ref=e533]: "Answer:"
+        - text: Medium-roar.
+        - text: "205."
+        - strong [ref=e534]: "Joke:"
+        - text: How does a mother kangaroo tell time?
+        - strong [ref=e535]: "Answer:"
+        - text: With her pocket watch.
+        - text: "206."
+        - strong [ref=e536]: "Joke:"
+        - text: How does a mountain goat mom call her baby?
+        - strong [ref=e537]: "Answer:"
+        - text: “Here, kiddie, kiddie!”
+        - text: "207."
+        - strong [ref=e538]: "Joke:"
+        - text: How does a mouse disguise himself?
+        - strong [ref=e539]: "Answer:"
+        - text: He wears a mousetache.
+        - text: "208."
+        - strong [ref=e540]: "Joke:"
+        - text: How does a mouse feel after a bath?
+        - strong [ref=e541]: "Answer:"
+        - text: Squeaky clean.
+        - text: "209."
+        - strong [ref=e542]: "Joke:"
+        - text: How does a penguin feel after its friend moves away?
+        - strong [ref=e543]: "Answer:"
+        - text: Ice-olated.
+        - text: "210."
+        - strong [ref=e544]: "Joke:"
+        - text: How does a skunk put out a fire?
+        - strong [ref=e545]: "Answer:"
+        - text: It uses an ex-stink-guisher.
+        - text: "211."
+        - strong [ref=e546]: "Joke:"
+        - text: How does a slug go fishing?
+        - strong [ref=e547]: "Answer:"
+        - text: On a snail boat.
+        - text: "212."
+        - strong [ref=e548]: "Joke:"
+        - text: How does a sponge spend its free time?
+        - strong [ref=e549]: "Answer:"
+        - text: It soaks up some fun.
+        - text: "213."
+        - strong [ref=e550]: "Joke:"
+        - text: How does a tree get into the Internet?
+        - strong [ref=e551]: "Answer:"
+        - text: It logs on.
+        - text: "214."
+        - strong [ref=e552]: "Joke:"
+        - text: How does a turtle call its friends?
+        - strong [ref=e553]: "Answer:"
+        - text: With a shell phone.
+        - text: "215."
+        - strong [ref=e554]: "Joke:"
+        - text: How does a turtle get to the top floor?
+        - strong [ref=e555]: "Answer:"
+        - text: In a shell-evator.
+        - text: "216."
+        - strong [ref=e556]: "Joke:"
+        - text: How does an octopus pay its bills?
+        - strong [ref=e557]: "Answer:"
+        - text: With sand dollars.
+        - text: "217."
+        - strong [ref=e558]: "Joke:"
+        - text: How does the ocean say hello?
+        - strong [ref=e559]: "Answer:"
+        - text: It waves.
+        - text: "218."
+        - strong [ref=e560]: "Joke:"
+        - text: How is a wall light switch like a penguin?
+        - strong [ref=e561]: "Answer:"
+        - text: They both have flippers.
+        - text: "219."
+        - strong [ref=e562]: "Joke:"
+        - text: How many birds can sing a duet?
+        - strong [ref=e563]: "Answer:"
+        - text: Toucan.
+        - text: "220."
+        - strong [ref=e564]: "Joke:"
+        - text: How many cockroaches does it take to screw in a light bulb?
+        - strong [ref=e565]: "Answer:"
+        - text: Can’t tell. They scatter as soon as the light turns on.
+        - text: "221."
+        - strong [ref=e566]: "Joke:"
+        - text: How many frogs would fit in your glass of water?
+        - strong [ref=e567]: "Answer:"
+        - text: Toadily too many.
+        - text: "222."
+        - strong [ref=e568]: "Joke:"
+        - text: How many mice can an owl eat?
+        - strong [ref=e569]: "Answer:"
+        - text: OWL of them!
+        - text: "223."
+        - strong [ref=e570]: "Joke:"
+        - text: How many parents does a dog have?
+        - strong [ref=e571]: "Answer:"
+        - text: "Five: one ma and four paws."
+        - text: "224."
+        - strong [ref=e572]: "Joke:"
+        - text: How much does a pile of bones weigh?
+        - strong [ref=e573]: "Answer:"
+        - text: A skele-TON.
+        - text: "225."
+        - strong [ref=e574]: "Joke:"
+        - text: How much seafood does a crab eat?
+        - strong [ref=e575]: "Answer:"
+        - text: Just a pinch.
+        - figure [ref=e577]
+        - text: "226."
+        - strong [ref=e578]: "Joke:"
+        - text: In an emergency, whom do you call for a sick rabbit?
+        - strong [ref=e579]: "Answer:"
+        - text: A hare-a-medic.
+        - text: "227."
+        - strong [ref=e580]: "Joke:"
+        - text: Is chicken soup good for you?
+        - strong [ref=e581]: "Answer:"
+        - text: Not if you’re the chicken!
+        - text: "228."
+        - strong [ref=e582]: "Joke:"
+        - text: Is turkey soup good for you?
+        - strong [ref=e583]: "Answer:"
+        - text: Not if you’re the turkey!
+        - text: "229."
+        - strong [ref=e584]: "Joke:"
+        - text: What part of a salmon weighs the most?
+        - strong [ref=e585]: "Answer:"
+        - text: Its scales.
+        - text: "230."
+        - strong [ref=e586]: "Joke:"
+        - text: What’s brown and white and dangerous?
+        - strong [ref=e587]: "Answer:"
+        - text: A cow on a skateboard.
+        - text: "231."
+        - strong [ref=e588]: "Joke:"
+        - text: What do you call a sleeping male cow?
+        - strong [ref=e589]: "Answer:"
+        - text: A Bulldozer.
+        - text: "232."
+        - strong [ref=e590]: "Joke:"
+        - text: What ancient cat solved mysteries?
+        - strong [ref=e591]: "Answer:"
+        - text: The saber SLEUTH tiger.
+        - text: "233."
+        - strong [ref=e592]: "Joke:"
+        - text: What animal can you find in the military?
+        - strong [ref=e593]: "Answer:"
+        - text: An army-dillo.
+        - text: "234."
+        - strong [ref=e594]: "Joke:"
+        - text: What animal hibernates while standing on its head?
+        - strong [ref=e595]: "Answer:"
+        - text: Yoga bear.
+        - text: "235."
+        - strong [ref=e596]: "Joke:"
+        - text: What animal sewed the first American flag?
+        - strong [ref=e597]: "Answer:"
+        - text: Bat-sy Ross.
+        - text: "236."
+        - strong [ref=e598]: "Joke:"
+        - text: What are a dog’s favorite pizza toppings?
+        - strong [ref=e599]: "Answer:"
+        - text: Pupperoni and muttzarella.
+        - text: "237."
+        - strong [ref=e600]: "Joke:"
+        - text: What are a toad’s favorite games in Ranger Rick?
+        - strong [ref=e601]: "Answer:"
+        - text: Cross-wart puzzles.
+        - text: "238."
+        - strong [ref=e602]: "Joke:"
+        - text: What are flies most afraid of?
+        - strong [ref=e603]: "Answer:"
+        - text: The SWAT team.
+        - text: "239."
+        - strong [ref=e604]: "Joke:"
+        - text: What are sad cranberries called?
+        - strong [ref=e605]: "Answer:"
+        - text: BLUEberries.
+        - text: "240."
+        - strong [ref=e606]: "Joke:"
+        - text: What are skunks so smart?
+        - strong [ref=e607]: "Answer:"
+        - text: They make a lot of scents.
+        - text: "241."
+        - strong [ref=e608]: "Joke:"
+        - text: What are spiders called after their wedding?
+        - strong [ref=e609]: "Answer:"
+        - text: Newly webs.
+        - text: "242."
+        - strong [ref=e610]: "Joke:"
+        - text: What barks, chases cats, and has black and red spots?
+        - strong [ref=e611]: "Answer:"
+        - text: A Dalmatian with measles.
+        - text: "243."
+        - strong [ref=e612]: "Joke:"
+        - text: What baseball team goes best with milk?
+        - strong [ref=e613]: "Answer:"
+        - text: The Baltimore Oreos.
+        - text: "244."
+        - strong [ref=e614]: "Joke:"
+        - text: What bear likes to go out in the rain?
+        - strong [ref=e615]: "Answer:"
+        - text: Drizzly bears.
+        - text: "245."
+        - strong [ref=e616]: "Joke:"
+        - text: What bird is the greatest artist?
+        - strong [ref=e617]: "Answer:"
+        - text: Leonardo da Finchy.
+        - text: "246."
+        - strong [ref=e618]: "Joke:"
+        - text: What bird shows up at every meal?
+        - strong [ref=e619]: "Answer:"
+        - text: A swallow.
+        - text: "247."
+        - strong [ref=e620]: "Joke:"
+        - text: What birds always get out of breath when migrating?
+        - strong [ref=e621]: "Answer:"
+        - text: Puffins.
+        - text: "248."
+        - strong [ref=e622]: "Joke:"
+        - text: What bug caused the computer to crash?
+        - strong [ref=e623]: "Answer:"
+        - text: The Inter-gnat.
+        - text: "249."
+        - strong [ref=e624]: "Joke:"
+        - text: What buzzes, is black and yellow, and goes along the sides of flowers?
+        - strong [ref=e625]: "Answer:"
+        - text: Bee-line.
+        - text: "250."
+        - strong [ref=e626]: "Joke:"
+        - text: What did one plate say to the other?
+        - strong [ref=e627]: "Answer:"
+        - text: Lunch is on me.
+        - generic [ref=e629]:
+          - heading "About RANGER RICK" [level=2] [ref=e630]
+          - paragraph [ref=e631]: 50+ Years of Inspiring Children to Love Wildlife
+          - link "Ranger Rick Magazine Cover" [ref=e633] [cursor=pointer]:
+            - /url: https://rangerrick.org/magazines/
+            - img "Ranger Rick Magazine Cover" [ref=e634]
+          - paragraph [ref=e635]: RANGER RICK is packed with awesome animal facts, stories, and photos; comic adventures; wildlife puzzles, riddles, contests, and crafts; plus, outdoor discoveries to share with friends and family.
+          - link "SUBSCRIBE TO RANGER RICK TODAY!" [ref=e636] [cursor=pointer]:
+            - /url: https://rangerrick.org/magazines/
+    - text: 
+  - contentinfo [ref=e637]:
+    - generic [ref=e638]:
+      - generic [ref=e639]:
+        - link "NWF 2023 Interim Logo" [ref=e641] [cursor=pointer]:
+          - /url: https://www.nwf.org
+          - img "NWF 2023 Interim Logo" [ref=e642]
+        - generic [ref=e644]:
+          - heading [level=4]
+          - generic [ref=e645]:
+            - paragraph [ref=e646]:
+              - emphasis [ref=e647]: Uniting all Americans to ensure wildlife and people thrive in a rapidly changing world
+            - paragraph [ref=e648]: PO Box 1583, Merrifield, VA 22116-1583
+        - list [ref=e650]:
+          - listitem [ref=e651]:
+            - link " View NationalWildlife’s profile on Facebook" [ref=e652] [cursor=pointer]:
+              - /url: https://www.facebook.com/NationalWildlife/
+              - text: 
+              - generic [ref=e653]: View NationalWildlife’s profile on Facebook
+          - listitem [ref=e654]:
+            - link " View nwf’s profile on Twitter" [ref=e655] [cursor=pointer]:
+              - /url: https://twitter.com/nwf/
+              - text: 
+              - generic [ref=e656]: View nwf’s profile on Twitter
+          - listitem [ref=e657]:
+            - link " View nationalwildlife’s profile on Instagram" [ref=e658] [cursor=pointer]:
+              - /url: https://www.instagram.com/nationalwildlife/
+              - text: 
+              - generic [ref=e659]: View nationalwildlife’s profile on Instagram
+          - listitem [ref=e660]:
+            - link " View nwfpins’s profile on Pinterest" [ref=e661] [cursor=pointer]:
+              - /url: https://www.pinterest.com/nwfpins/
+              - text: 
+              - generic [ref=e662]: View nwfpins’s profile on Pinterest
+          - listitem [ref=e663]:
+            - link " View NationalWildlife’s profile on YouTube" [ref=e664] [cursor=pointer]:
+              - /url: https://www.youtube.com/user/NationalWildlife/
+              - text: 
+              - generic [ref=e665]: View NationalWildlife’s profile on YouTube
+          - listitem [ref=e666]:
+            - link " View NationalWildlife’s profile on Google+" [ref=e667] [cursor=pointer]:
+              - /url: https://plus.google.com/u/0/+NationalWildlife/
+              - text: 
+              - generic [ref=e668]: View NationalWildlife’s profile on Google+
+        - generic [ref=e670]:
+          - link "”charity" [ref=e671] [cursor=pointer]:
+            - /url: https://www.nwf.org/About-Us/Annual-Reports
+            - img "”charity" [ref=e672]
+          - link "”charity" [ref=e673] [cursor=pointer]:
+            - /url: https://www.nwf.org/About-Us/Annual-Reports
+            - img "”charity" [ref=e674]
+          - link "”charity" [ref=e675] [cursor=pointer]:
+            - /url: https://www.nwf.org/About-Us/Annual-Reports
+            - img "”charity" [ref=e676]
+          - link "”charity" [ref=e677] [cursor=pointer]:
+            - /url: https://www.nwf.org/About-Us/Annual-Reports
+            - img "”charity" [ref=e678]
+          - link "”charity" [ref=e679] [cursor=pointer]:
+            - /url: https://www.nwf.org/About-Us/Annual-Reports
+            - img "”charity" [ref=e680]
+        - paragraph [ref=e683]: National Wildlife Federation is a 501(c)(3) non-profit organization
+      - generic [ref=e684]:
+        - img "Ranger Rick logo art" [ref=e686]
+        - list [ref=e689]:
+          - listitem [ref=e690]:
+            - generic [ref=e691]: "Magazine Subscriptions:"
+            - list [ref=e692]:
+              - listitem [ref=e693]:
+                - link "Customer Service" [ref=e694] [cursor=pointer]:
+                  - /url: https://nwf.cloud.buysub.com/
+              - listitem [ref=e695]:
+                - link "Chat With Us" [ref=e696] [cursor=pointer]:
+                  - /url: https://vue.comm100.com/chatwindow.aspx?siteId=75000117&planId=75132983-296a-4c3a-8a31-e1d412d0c431%20%20%20&CUSTOM!Source=**Ranger%20Rick**
+              - listitem [ref=e697]:
+                - link "Print Subscriptions FAQ" [ref=e698] [cursor=pointer]:
+                  - /url: https://rangerrick.org/shop/ranger-rick-subscriptions-faq/
+              - listitem [ref=e699]:
+                - link "Renew" [ref=e700] [cursor=pointer]:
+                  - /url: https://nwf.cloud.buysub.com/
+              - listitem [ref=e701]:
+                - link "Classroom Subscriptions" [ref=e702] [cursor=pointer]:
+                  - /url: https://rangerrick.org/classroom-subscriptions/
+              - listitem [ref=e703]:
+                - link "Payment Terms" [ref=e704] [cursor=pointer]:
+                  - /url: /payment-terms/
+          - listitem [ref=e705]:
+            - link "Family Fun:" [ref=e706] [cursor=pointer]:
+              - /url: https://rangerrick.org/crafts-activities/
+            - list [ref=e707]:
+              - listitem [ref=e708]:
+                - link "Garden for Wildlife" [ref=e709] [cursor=pointer]:
+                  - /url: https://www.nwf.org/Native-Plant-Habitats/Create-and-Certify/At-Play/Kids-and-Families-Garden-for-Wildlife
+              - listitem [ref=e710]:
+                - link "Green Hour" [ref=e711] [cursor=pointer]:
+                  - /url: https://thegreenhour.org/
+              - listitem [ref=e712]:
+                - link "Caregiver Corner" [ref=e713] [cursor=pointer]:
+                  - /url: https://rangerrick.org/caregiver-corner/
+          - listitem [ref=e714]:
+            - link "Educators:" [ref=e715] [cursor=pointer]:
+              - /url: https://rangerrick.org/magazines/ranger-rick/classroom-resources/
+            - list [ref=e716]:
+              - listitem [ref=e717]:
+                - link "Educator’s Guides" [ref=e718] [cursor=pointer]:
+                  - /url: https://rangerrick.org/magazines/ranger-rick/classroom-resources/educators-guide/
+              - listitem [ref=e719]:
+                - link "EcoSchools" [ref=e720] [cursor=pointer]:
+                  - /url: https://www.nwf.org/eco-schools-usa
+              - listitem [ref=e721]:
+                - link "Schoolyard Habitats" [ref=e722] [cursor=pointer]:
+                  - /url: https://www.nwf.org/Garden-for-Wildlife/Create/Schoolyards
+          - listitem [ref=e723]:
+            - link "About Us:" [ref=e724] [cursor=pointer]:
+              - /url: https://www.nwf.org/about-us
+            - list [ref=e725]:
+              - listitem [ref=e726]:
+                - link "Ranger Rick Shop" [ref=e727] [cursor=pointer]:
+                  - /url: https://rangerrick.org/shop/
+              - listitem [ref=e728]:
+                - link "Awards & Honors" [ref=e729] [cursor=pointer]:
+                  - /url: /awards-and-honors/
+              - listitem [ref=e730]:
+                - link "NWF.org" [ref=e731] [cursor=pointer]:
+                  - /url: https://www.nwf.org/
+              - listitem [ref=e732]:
+                - link "Donate" [ref=e733] [cursor=pointer]:
+                  - /url: https://online.nwf.org/site/Donation2?idb=%5B%5BS76:idb%5D%5D&df_id=42397&mfc_pref=T&42397.donation=form1
+              - listitem [ref=e734]:
+                - link "Privacy Policy" [ref=e735] [cursor=pointer]:
+                  - /url: https://www.rangerrick.org/Privacy-Policy
+              - listitem [ref=e736]:
+                - link "Communication Preferences" [ref=e737] [cursor=pointer]:
+                  - /url: https://rangerrick.org/manage-your-communication-preferences/
+              - listitem [ref=e738]:
+                - link "Terms of Use" [ref=e739] [cursor=pointer]:
+                  - /url: https://www.rangerrick.org/Terms-of-Use
+          - listitem [ref=e740]:
+            - link "e-Newsletter Sign up" [ref=e741] [cursor=pointer]:
+              - /url: https://webclub.rangerrick.org/opt-in?list=efsy4ajvxa
+          - text: 
+        - list [ref=e743]:
+          - listitem [ref=e744]:
+            - link " View RangerRickMags’s profile on Facebook" [ref=e745] [cursor=pointer]:
+              - /url: https://www.facebook.com/RangerRickMags/
+              - text: 
+              - generic [ref=e746]: View RangerRickMags’s profile on Facebook
+          - listitem [ref=e747]:
+            - link " View RangerRickMags’s profile on Instagram" [ref=e748] [cursor=pointer]:
+              - /url: https://www.instagram.com/RangerRickMags/
+              - text: 
+              - generic [ref=e749]: View RangerRickMags’s profile on Instagram
+          - listitem [ref=e750]:
+            - link " View rangerrickmags’s profile on Pinterest" [ref=e751] [cursor=pointer]:
+              - /url: https://www.pinterest.com/rangerrickmags/
+              - text: 
+              - generic [ref=e752]: View rangerrickmags’s profile on Pinterest
+          - listitem [ref=e753]:
+            - link " YouTube" [ref=e754] [cursor=pointer]:
+              - /url: https://www.youtube.com/@RangerRickMags
+              - text: 
+              - generic [ref=e755]: YouTube
+  - text: 
+  - generic:
+    - region "Cookie Banner Opt-In" [active] [ref=e757]:
+      - dialog "Privacy" [ref=e758]:
+        - generic [ref=e760]:
+          - generic [ref=e763]: This site uses cookies to store information on your device browser. Some cookies are essential in order for the site to operate properly. Other cookies help to analyze and improve our site. For the best user experience, we recommend that you choose to accept all cookies. Parental consent may be necessary. Please see our Privacy Policy below.
+          - generic [ref=e765]:
+            - button "Cookies Settings, Opens the preference center dialog" [ref=e766] [cursor=pointer]: Cookies Settings
+            - button "Accept All" [ref=e767] [cursor=pointer]
+        - button "Close" [ref=e769] [cursor=pointer]
+    - text: Cookies Settings

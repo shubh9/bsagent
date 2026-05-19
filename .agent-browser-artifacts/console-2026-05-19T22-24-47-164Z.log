@@ -1,0 +1,44 @@
+[     533ms] [WARNING] %cNEXT-LAZY: background-color:orange;color:black;padding:0.5rem; P0-15: Text content does not match server-rendered HTML. Possible hydration mismatch.  @ https://www.countryliving.com/_assets/fre/scopes/hdm/_next/static/chunks/pages/_app-f4496dcd3a292c30.js:21
+[     848ms] [WARNING] [GPT] PubAdsService.setTargeting is deprecated, use googletag.setConfig({targeting: ...}) instead.
+https://goo.gle/gpt-message#170 @ https://securepubads.g.doubleclick.net/pagead/managed/js/gpt/m202605140101/pubads_impl.js:18
+[     879ms] [WARNING] [GPT] Slot.getTargeting is deprecated, use Slot.getConfig('targeting') instead.
+https://goo.gle/gpt-message#201 @ https://securepubads.g.doubleclick.net/pagead/managed/js/gpt/m202605140101/pubads_impl.js:18
+[    1006ms] [WARNING] [GSI_LOGGER]: Your client application uses one of the Google One Tap prompt UI status methods that may stop functioning when FedCM becomes mandatory. Refer to the migration guide to update your code accordingly and opt-in to FedCM to test your changes. Learn more: https://developers.google.com/identity/gsi/web/guides/fedcm-migration?s=dc#display_moment and https://developers.google.com/identity/gsi/web/guides/fedcm-migration?s=dc#skipped_moment @ https://accounts.google.com/gsi/client:84
+[    1474ms] [ERROR] Provider's accounts list is empty. @ https://www.countryliving.com/life/entertainment/a30756797/jokes-for-kids/:0
+[    2630ms] [ERROR] [GSI_LOGGER]: FedCM get() rejects with AbortError: signal is aborted without reason @ https://accounts.google.com/gsi/client:85
+[    2728ms] [WARNING] This ad's html cannot be accessed using the getHtml method on googletag.Slot. Returning the empty string instead. @ https://securepubads.g.doubleclick.net/pagead/managed/js/gpt/m202605140101/pubads_impl.js:18
+[    3065ms] [INFO] Powered by AMP ⚡ HTML – Version 2603032146000 https://www.countryliving.com/life/entertainment/a30756797/jokes-for-kids/ @ https://cdn.ampproject.org/rtv/022603032146000/amp4ads-v0.mjs:1
+[    3294ms] [ERROR] Failed to load resource: net::ERR_NAME_NOT_RESOLVED @ https://cs.lkqd.net/cs?partnerId=59&redirect=https%3A%2F%2Fcm.g.doubleclick.net%2Fpixel%3Fgoogle_nid%3Dlkqd_dbm%26google_hm%3D%24%24rawlkqduserid%7Cbase64%24%24:0
+[    3461ms] [ERROR] Attestation check for Shared Storage on https://www.googleadservices.com failed. @ https://www.googleadservices.com/pagead/managed/js/activeview/current/reach_worklet.html:0
+[    3464ms] [ERROR] Attestation check for Shared Storage on https://www.googleadservices.com failed. @ https://www.googleadservices.com/pagead/managed/js/activeview/current/reach_worklet.html:0
+[    3465ms] [ERROR] Attestation check for Shared Storage on https://www.googleadservices.com failed. @ https://www.googleadservices.com/pagead/managed/js/activeview/current/reach_worklet.html:0
+[    3461ms] [ERROR] Attestation check for Shared Storage on https://www.googleadservices.com failed. @ https://www.googleadservices.com/pagead/managed/js/activeview/current/reach_worklet.html:0
+[    3464ms] [ERROR] Attestation check for Shared Storage on https://www.googleadservices.com failed. @ https://www.googleadservices.com/pagead/managed/js/activeview/current/reach_worklet.html:0
+[    3465ms] [ERROR] Attestation check for Shared Storage on https://www.googleadservices.com failed. @ https://www.googleadservices.com/pagead/managed/js/activeview/current/reach_worklet.html:0
+[    3473ms] [ERROR] Attestation check for Shared Storage on https://www.googleadservices.com failed. @ https://www.googleadservices.com/pagead/managed/js/activeview/current/reach_worklet.html:0
+[    3616ms] [TIMEEND] a: 0 ms @ https://static.adsafeprotected.com/sca.17.6.4.js:31
+[    3627ms] [TIMEEND] a: 0 ms @ https://static.adsafeprotected.com/sca.17.6.4.js:31
+[    3709ms] [LOG] campaignType=T2AO | ftSegment=undefined | phase=FlashtalkingInterest | market=FlashtalkingAWRSanFrancisco | site_kw=ftsiteTTD | tactic_kw=x3ru9fu |  @ https://cdn.flashtalking.com/185237/Audi_Unified_Framework_2025_300x600_RL/js/script.js:32
+[    4465ms] [LOG] URIError: URI malformed
+    at decodeURIComponent (<anonymous>)
+    at truste.ca.initParameterMap (https://choices.truste.com/ca?pid=comcast01&aid=comcast01&cid=%ebuy_6522286_434478890_244271413&js=st_0:19:106)
+    at truste.ca2.initialize (https://choices.truste.com/ca?pid=comcast01&aid=comcast01&cid=%ebuy_6522286_434478890_244271413&js=st_0:29:11)
+    at https://choices.truste.com/ca?pid=comcast01&aid=comcast01&cid=%ebuy_6522286_434478890_244271413&js=st_0:36:182 @ https://choices.truste.com/ca?pid=comcast01&aid=comcast01&cid=%ebuy_6522286_434478890_244271413&js=st_0:19
+[    4514ms] [LOG] swapFlag @ https://cdn.flashtalking.com/185237/Audi_Unified_Framework_2025_300x600_RL/js/script.js:121
+[    4515ms] [LOG] swapFlag @ https://cdn.flashtalking.com/185237/Audi_Unified_Framework_2025_300x600_RL/js/script.js:121
+[    4521ms] [LOG] swapFlag @ https://cdn.flashtalking.com/185237/Audi_Unified_Framework_2025_300x600_RL/js/script.js:121
+[    4521ms] [LOG] swapFlag @ https://cdn.flashtalking.com/185237/Audi_Unified_Framework_2025_300x600_RL/js/script.js:121
+[    4532ms] [LOG] swapFlag @ https://cdn.flashtalking.com/185237/Audi_Unified_Framework_2025_300x600_RL/js/script.js:122
+[    4532ms] [LOG] swapFlag @ https://cdn.flashtalking.com/185237/Audi_Unified_Framework_2025_300x600_RL/js/script.js:122
+[    4536ms] [LOG] swapFlag @ https://cdn.flashtalking.com/185237/Audi_Unified_Framework_2025_300x600_RL/js/script.js:121
+[    4536ms] [LOG] swapFlag @ https://cdn.flashtalking.com/185237/Audi_Unified_Framework_2025_300x600_RL/js/script.js:121
+[    4540ms] [LOG] {title: upperFunnel_headlines_300x600, A3: Object, A4: Object, A5-Sportback: Object, A6: Object} @ https://cdn.flashtalking.com/185237/Audi_Unified_Framework_2025_300x600_RL/js/script.js:238
+[    4540ms] [LOG] {title: upperFunnel_images_300x600, A3: Object, A4: Object, A5-Sportback: Object, A6: Object} @ https://cdn.flashtalking.com/185237/Audi_Unified_Framework_2025_300x600_RL/js/script.js:239
+[    4540ms] [LOG] 2026_BusinessDriving_EVFamily @ https://cdn.flashtalking.com/185237/Audi_Unified_Framework_2025_300x600_RL/js/script.js:245
+[    4540ms] [LOG] {versionName_txt: , URL_type_txt: , carMake_txt: , carMakeTxt_size_hex_face_lineheight_spacing_xy: , carModel_txt: } @ https://cdn.flashtalking.com/185237/Audi_Unified_Framework_2025_300x600_RL/js/script.js:261
+[    4540ms] [LOG] {F1Image: https://cdn.flashtalking.com/feeds/audi/display_images/Audi_BD_Upper_EVFam_F1_300x600.jpg, F2Image: https://cdn.flashtalking.com/feeds/audi/display_images/Audi_BD_Upper_EVFam_F2_300x600.jpg, carIMG: https://cdn.flashtalking.com/feeds/audi/display_images/Audi_BD_Upper_EVFam_F3_300x600.jpg, F4Image: , F5Image: } @ https://cdn.flashtalking.com/185237/Audi_Unified_Framework_2025_300x600_RL/js/script.js:261
+[    4541ms] [LOG] GETTING RL @ https://cdn.flashtalking.com/185237/Audi_Unified_Framework_2025_300x600_RL/js/script.js:270
+[    5998ms] [LOG] WORKING setting interactions @ https://cdn.flashtalking.com/185237/Audi_BusinessDriving_300x600_RL/audi_fb_t1_mid_multi_cta2_find_cpo_300x600_02_30.js:2944
+[    5998ms] [LOG] WORKING setting interactions @ https://cdn.flashtalking.com/185237/Audi_BusinessDriving_300x600_RL/audi_fb_t1_mid_multi_cta2_find_cpo_300x600_02_30.js:2944
+[    5998ms] [LOG] WORKING setting interactions @ https://cdn.flashtalking.com/185237/Audi_BusinessDriving_300x600_RL/audi_fb_t1_mid_multi_cta2_find_cpo_300x600_02_30.js:2944
+[   14622ms] [ERROR] Not signed in with the identity provider. @ https://www.countryliving.com/life/entertainment/a30756797/jokes-for-kids/:0

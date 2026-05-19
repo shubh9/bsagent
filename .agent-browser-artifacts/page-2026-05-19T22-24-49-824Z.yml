@@ -1,0 +1,766 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - link "Skip to Content" [ref=e3] [cursor=pointer]:
+      - /url: "#main-content"
+    - navigation [ref=e4]:
+      - generic [ref=e6]:
+        - 'button "Current location: US. Click to change location." [ref=e7] [cursor=pointer]':
+          - img "Location Choice" [ref=e8]
+          - text: US
+        - link "Newsletter Sign Up Newsletter" [ref=e9] [cursor=pointer]:
+          - /url: /email/countryliving-newsletter
+          - img "Newsletter Sign Up" [ref=e10]
+          - text: Newsletter
+      - generic [ref=e12]:
+        - search [ref=e13]:
+          - generic [ref=e14]:
+            - generic [ref=e15] [cursor=pointer]: Search
+            - generic [ref=e16]:
+              - textbox "Search" [ref=e17]:
+                - /placeholder: Search...
+              - button "Submit search" [ref=e18] [cursor=pointer]:
+                - img [ref=e19]
+        - link "Country Living" [ref=e20] [cursor=pointer]:
+          - /url: /
+          - img "Logo" [ref=e22]
+        - generic [ref=e23]:
+          - link "sign in" [ref=e26] [cursor=pointer]:
+            - /url: /auth/csrf?action=login&return_url=https%3A%2F%2Fwww.countryliving.com%2Flife%2Fentertainment%2Fa30756797%2Fjokes-for-kids%2F
+            - generic [ref=e27]: sign in
+          - link "Subscribe" [ref=e29] [cursor=pointer]:
+            - /url: https://shop.countryliving.com/country-living-all-access-membership-2999.html?cds_tracking_code=clg_topnav
+      - list [ref=e31]:
+        - listitem [ref=e32]:
+          - link "Homes" [ref=e34] [cursor=pointer]:
+            - /url: https://www.countryliving.com/home-design/
+        - listitem [ref=e35]:
+          - link "Gardening and Outdoors" [ref=e37] [cursor=pointer]:
+            - /url: https://www.countryliving.com/gardening/
+        - listitem [ref=e38]:
+          - link "Antiques and Collectibles" [ref=e40] [cursor=pointer]:
+            - /url: https://www.countryliving.com/shopping/antiques/
+        - listitem [ref=e41]:
+          - link "Recipes" [ref=e43] [cursor=pointer]:
+            - /url: https://www.countryliving.com/food-drinks/
+        - listitem [ref=e44]:
+          - link "Entertainment News" [ref=e46] [cursor=pointer]:
+            - /url: https://www.countryliving.com/life/entertainment/
+        - listitem [ref=e47]:
+          - link "Shopping" [ref=e49] [cursor=pointer]:
+            - /url: https://www.countryliving.com/shopping/
+        - listitem [ref=e50]:
+          - link "About Us" [ref=e52] [cursor=pointer]:
+            - /url: https://www.countryliving.com/about/a3561/about-us/
+        - listitem [ref=e53]:
+          - link "More" [ref=e55] [cursor=pointer]:
+            - /url: "#"
+    - list [ref=e58]:
+      - generic "More content navigation" [ref=e59]: More
+      - listitem [ref=e61]:
+        - link "Highlights from Kelly Clarkson's Vegas Residency" [ref=e62] [cursor=pointer]:
+          - /url: /life/entertainment/a65438283/kelly-clarkson-las-vegas-residency-review/
+          - generic [ref=e63]: Highlights from Kelly Clarkson's Vegas Residency
+      - listitem [ref=e64]:
+        - link "Jelly Roll Inducted Into the Grand Ole Opry" [ref=e65] [cursor=pointer]:
+          - /url: /life/entertainment/a70714104/jelly-roll-lainey-wilson-opry-induction/
+          - generic [ref=e66]: Jelly Roll Inducted Into the Grand Ole Opry
+      - listitem [ref=e67]:
+        - link "9 Must-Visit Celebrity Bars in Nashville" [ref=e68] [cursor=pointer]:
+          - /url: /life/travel/a66127769/must-visit-celebrity-bars-nashville/
+          - generic [ref=e69]: 9 Must-Visit Celebrity Bars in Nashville
+      - listitem [ref=e70]:
+        - link "TikToker Reveals Reality of AMAs \"Live\" Show" [ref=e71] [cursor=pointer]:
+          - /url: /life/entertainment/a64893260/blake-shelton-gwen-stefani-live-performances-amas/
+          - generic [ref=e72]: TikToker Reveals Reality of AMAs "Live" Show
+      - listitem [ref=e73]:
+        - link "110 Breakup Songs to Help Heal Your Heartbreak" [ref=e74] [cursor=pointer]:
+          - /url: /life/entertainment/g65131572/best-heartbreak-songs-break-ups/
+          - generic [ref=e75]: 110 Breakup Songs to Help Heal Your Heartbreak
+      - listitem [ref=e76]:
+        - link "Hoda Kotb Talks QVC, 'Today,'Joy 101, and More" [ref=e77] [cursor=pointer]:
+          - /url: /life/entertainment/a65888080/hoda-kotb-aging-gracefully-finding-joy/
+          - generic [ref=e78]: Hoda Kotb Talks QVC, 'Today,'Joy 101, and More
+      - listitem [ref=e79]:
+        - link "Patricia Altschul Shares Her Top Holiday Hosting Tips" [ref=e80] [cursor=pointer]:
+          - /url: /life/entertainment/a69414630/patricia-altschul-hosting-design-tips-southern-charm/
+          - generic [ref=e81]: Patricia Altschul Shares Her Top Holiday Hosting Tips
+      - listitem [ref=e82]:
+        - link "This Iconic TV Show Has Had a Lasting Impact" [ref=e83] [cursor=pointer]:
+          - /url: /life/entertainment/a65024999/wild-kingdom-inspires-stem-careers/
+          - generic [ref=e84]: This Iconic TV Show Has Had a Lasting Impact
+      - listitem [ref=e85]:
+        - link "Ashley Poston Has the Perfect Summer Escape" [ref=e86] [cursor=pointer]:
+          - /url: /life/entertainment/a64959190/ashley-poston-sonic-interview/
+          - generic [ref=e87]: Ashley Poston Has the Perfect Summer Escape
+      - listitem [ref=e88]:
+        - link "Thanksgiving Country Songs to Enjoy at the Table" [ref=e89] [cursor=pointer]:
+          - /url: /life/entertainment/g69383961/country-songs-for-thanksgiving/
+          - generic [ref=e90]: Thanksgiving Country Songs to Enjoy at the Table
+    - main [ref=e91]:
+      - generic [ref=e96]:
+        - navigation "breadcrumbs" [ref=e97]:
+          - list [ref=e98]:
+            - listitem [ref=e99]:
+              - link "Country Life" [ref=e100] [cursor=pointer]:
+                - /url: /life/
+            - listitem [ref=e101]:
+              - text: ">"
+              - link "Entertainment" [ref=e102] [cursor=pointer]:
+                - /url: /life/entertainment/
+            - text: ">"
+        - heading "200 Best Jokes for Kids That Will Make Them Laugh Out Loud" [level=1] [ref=e103]
+        - paragraph [ref=e105]: These family-friendly gags will put a smile on everyone's face.
+        - generic [ref=e107]:
+          - generic [ref=e108]:
+            - text: By
+            - link "Kelly O'Sullivan" [ref=e109] [cursor=pointer]:
+              - /url: /author/17064/kelly-osullivan/
+          - time [ref=e110]: "Updated: Jul 21, 2025"
+        - toolbar "Quick actions" [ref=e113]:
+          - button "Save Article" [ref=e115] [cursor=pointer]:
+            - img "bookmarks" [ref=e116]
+            - generic [ref=e117]: Save Article
+            - generic [ref=e118]: Save Article
+          - generic "Share article" [ref=e121]:
+            - button "Share Article Open share options" [ref=e122] [cursor=pointer]:
+              - generic [ref=e123]: Share Article
+              - img "Open share options" [ref=e124]
+            - button "Share Article Open share options" [ref=e125] [cursor=pointer]:
+              - generic [ref=e126]: Share Article
+              - img "Open share options" [ref=e127]
+          - button "Jump to 12 comments" [ref=e130] [cursor=pointer]:
+            - img "bookmarks" [ref=e131]
+            - generic [ref=e132]: "12"
+      - generic [ref=e134]:
+        - generic [ref=e140]:
+          - button "Play video" [ref=e141]:
+            - img "Play video" [ref=e142]
+          - img "Video poster" [ref=e143]
+        - generic [ref=e145]:
+          - generic [ref=e146]:
+            - img "Estimated read time" [ref=e147]
+            - generic [ref=e148]: 11 min read
+          - generic [ref=e150]:
+            - heading "Jump to:" [level=2] [ref=e151]
+            - list [ref=e152]:
+              - listitem [ref=e153]:
+                - link "Jokes for Kids about the Weather" [ref=e154] [cursor=pointer]:
+                  - /url: "#jokes-for-kids-about-the-weather"
+              - listitem [ref=e155]:
+                - link "Corny Jokes for Kids" [ref=e156] [cursor=pointer]:
+                  - /url: "#corny-jokes-for-kids"
+              - listitem [ref=e157]:
+                - link "Funny Knock-Knock Jokes for Kids" [ref=e158] [cursor=pointer]:
+                  - /url: "#funny-knock-knock-jokes-for-kids"
+              - listitem [ref=e159]:
+                - link "Funny Riddles for Kids" [ref=e160] [cursor=pointer]:
+                  - /url: "#funny-riddles-for-kids"
+              - listitem [ref=e161]:
+                - link "Funny Why Did the Chicken Cross the Road Jokes for Kids" [ref=e162] [cursor=pointer]:
+                  - /url: "#funny-why-did-the-chicken-cross-the-road-jokes-for-kids"
+              - listitem [ref=e163]:
+                - link "Funny One-Liners for Kids" [ref=e164] [cursor=pointer]:
+                  - /url: "#funny-one-liners-for-kids"
+              - listitem [ref=e165]:
+                - link "Funny Jokes About Animals" [ref=e166] [cursor=pointer]:
+                  - /url: "#funny-jokes-about-animals"
+              - listitem [ref=e167]:
+                - link "Funny Jokes About School" [ref=e168] [cursor=pointer]:
+                  - /url: "#funny-jokes-about-school"
+              - listitem [ref=e169]:
+                - link "Funny Jokes About Food" [ref=e170] [cursor=pointer]:
+                  - /url: "#funny-jokes-about-food"
+          - paragraph [ref=e171]:
+            - text: If there's one thing kids love to do, it's laugh. And whether you're all cracking up at a
+            - link "funny movie" [ref=e172] [cursor=pointer]:
+              - /url: https://www.countryliving.com/life/entertainment/g24994799/funny-kids-movies/
+            - text: or chuckling over a hilarious round of
+            - link "Charades" [ref=e173] [cursor=pointer]:
+              - /url: https://www.countryliving.com/life/entertainment/a31998110/charades-ideas-topics/
+            - text: ", nothing brings a family closer than enjoying a good giggle together. Laughter really is the best medicine, which is why we've rounded up 200 of the best"
+            - strong [ref=e174]: funny jokes for kids.
+            - text: From classic
+            - link "knock-knock funnies" [ref=e175] [cursor=pointer]:
+              - /url: https://www.countryliving.com/life/kids-pets/a36176164/knock-knock-jokes/
+            - text: to goofy goodies worthy of
+            - link "Dad" [ref=e176] [cursor=pointer]:
+              - /url: https://www.countryliving.com/life/a27452412/best-dad-jokes/
+            - text: ", these winners are sure to put a smile on the face of every family member."
+          - complementary [ref=e178]:
+            - heading "Related Stories" [level=2] [ref=e179]
+            - list [ref=e180]:
+              - listitem [ref=e181]:
+                - link "Father and daughter wearing robot costumes at home Dad Jokes to Keep the Whole Family Laughing" [ref=e182] [cursor=pointer]:
+                  - /url: /life/a27452412/best-dad-jokes/
+                  - img "Father and daughter wearing robot costumes at home" [ref=e183]
+                  - generic [ref=e184]: Dad Jokes to Keep the Whole Family Laughing
+              - listitem [ref=e185]:
+                - link "Young Boys Racing Wearing Watermelon Helmets Get Ready to LOL With These 150 Hilarious Jokes" [ref=e186] [cursor=pointer]:
+                  - /url: /life/entertainment/a36178514/hilariously-funny-jokes/
+                  - img "Young Boys Racing Wearing Watermelon Helmets"
+                  - generic [ref=e187]: Get Ready to LOL With These 150 Hilarious Jokes
+              - listitem [ref=e188]:
+                - link "Girl friends hanging out together 100 Jokes for Teens Bound to Make Them Chuckle" [ref=e189] [cursor=pointer]:
+                  - /url: /life/kids-pets/a45381490/jokes-for-teens/
+                  - img "Girl friends hanging out together"
+                  - generic [ref=e190]: 100 Jokes for Teens Bound to Make Them Chuckle
+          - paragraph [ref=e191]:
+            - text: And yep, that includes even
+            - link "teens" [ref=e192] [cursor=pointer]:
+              - /url: https://www.countryliving.com/life/kids-pets/a45381490/jokes-for-teens/?
+            - text: ", no matter how surly they might seem! Because come on, how can you not smile at a one-liner like, \"I went to buy some camo pants, but I couldn’t find any\"? While you won't find"
+            - link "dark humor" [ref=e193] [cursor=pointer]:
+              - /url: https://www.countryliving.com/life/entertainment/a62000506/ultimate-dark-humor-jokes/
+            - text: ahead, we can promise we serve up enough kid-friendly,
+            - link "clean" [ref=e194] [cursor=pointer]:
+              - /url: https://www.countryliving.com/life/entertainment/a62806396/clean-appropriate-jokes/
+            - text: gags about subjects like the weather, animals, and food to keep everyone in stitches on the longest car ride. Plus, we even have cute wisecracks with a school theme for the teachers in the audience!
+          - generic [ref=e197]: Advertisement - Continue Reading Below
+          - paragraph [ref=e199]:
+            - text: So read on, jot down your favorites, and get set to share 'em with the kiddos. Then, when you've told every last
+            - link "chicken" [ref=e200] [cursor=pointer]:
+              - /url: https://www.countryliving.com/life/entertainment/a61839844/chicken-jokes-puns/
+            - text: and
+            - link "cow" [ref=e201] [cursor=pointer]:
+              - /url: https://www.countryliving.com/life/entertainment/a61868765/hilarious-cow-jokes/
+            - text: chuckler, head over to our
+            - link "mom jokes" [ref=e202] [cursor=pointer]:
+              - /url: https://www.countryliving.com/life/a32404390/mom-jokes/
+            - text: rundown for more comedic gold. After all, why should Dad get all the humor glory?
+          - heading "Jokes for Kids about the Weather" [level=2] [ref=e204]
+          - list [ref=e205]:
+            - listitem [ref=e206]: What does a cloud wear under his raincoat? Thunderwear.
+            - listitem [ref=e207]: What do you call a snowman that works out? The abdominal snowman.
+            - listitem [ref=e208]: What type of lightning likes to play sports? Ball lightning.
+            - listitem [ref=e209]: What goes up when the rain comes down? Umbrellas.
+            - listitem [ref=e210]: What happens when it rains cats and dogs? You have to be careful not to step in a poodle.
+            - listitem [ref=e211]: Why did the sun go to summer school? To get a little brighter.
+            - listitem [ref=e212]: Why does the hurricane have bad vision? It only has one eye.
+            - listitem [ref=e213]: What kind of bow can't be tied? A rainbow.
+            - listitem [ref=e214]: What kind of bear gets caught in a rainstorm? A drizzly bear.
+            - listitem [ref=e215]: What happens when a lightning bolt hears a joke? It cracks up.
+            - listitem [ref=e216]: Why is it cold on Christmas? Because it’s in Decembrrrrr!
+            - listitem [ref=e217]: Why do chickens play in the rain? They love fowl weather.
+            - listitem [ref=e218]: How do mountains stay warm in the winter? They wear snow caps.
+            - listitem [ref=e219]: If an orchestra plays in a thunderstorm, who is most likely to get hit by lightning? The conductor.
+            - listitem [ref=e220]: Why didn't the sun go to college? It has a million degrees.
+            - listitem [ref=e221]: What do you call a snowman on a hot day? A puddle.
+            - listitem [ref=e222]: What happens when winter arrives? Autumn leaves.
+            - listitem [ref=e223]: Why did the tree take up a hobby? It wanted to branch out.
+            - listitem [ref=e224]: Why do trees get emotional in spring? They always feel a little sappy.
+            - listitem [ref=e225]: What do you get if you cross a shark with ice? Frostbite.
+            - listitem [ref=e226]: Why does Dad always wear gloves in the winter? Because the weather is snow joke.
+            - listitem [ref=e227]: Why is the flower always tardy? It's a late bloomer.
+            - listitem [ref=e228]: What happened to the snowman during the heat wave? He made a pool of himself.
+            - listitem [ref=e229]: What is the math student's favorite season? Sum-mer.
+            - listitem [ref=e230]: What did the raindrop say to his friends? Two's company, but three's a cloud.
+            - listitem [ref=e231]: How does a thunderstorm catch fish? With a lightning rod.
+            - listitem [ref=e232]: What's hotter than a summer Saturday? A Sun-day.
+            - listitem [ref=e233]: What drops but never hits the ground? The temperature.
+            - listitem [ref=e234]: Where does a snowman keep its money? In a snowbank.
+            - listitem [ref=e235]: Why do birds fly south every winter? It's too far to walk.
+            - listitem [ref=e236]: What did the snowman name his baby? Jack Frost.
+          - generic [ref=e239]: Advertisement - Continue Reading Below
+          - heading "Corny Jokes for Kids" [level=2] [ref=e242]
+          - generic [ref=e245]:
+            - generic [ref=e246]:
+              - img "two kids laughing at table in classroom" [ref=e247]
+              - link "pinterest" [ref=e248] [cursor=pointer]:
+                - /url: //pinterest.com/pin/create/button/?url=https://www.countryliving.com/life/entertainment/a30756797/jokes-for-kids/&description=countryliving&media=https://hips.hearstapps.com/hmg-prod/images/two-kids-laughing-66842508c884c.jpg?resize=1600:*
+                - img "pinterest"
+            - generic [ref=e250]: FatCamera//Getty Images
+          - list [ref=e251]:
+            - listitem [ref=e252]: How can a frog jump higher than the Eiffel Tower? The Eiffel Tower can’t jump!
+            - listitem [ref=e253]: What do you give a scientist with bad breath? Experi-mints.
+            - listitem [ref=e254]: How did the mobile phone propose to his girlfriend? He gave her a ring.
+            - listitem [ref=e255]: What musical instrument would you find in a bathroom? A tuba toothpaste.
+            - listitem [ref=e256]: What did the triangle say to the circle? You’re pointless.
+            - listitem [ref=e257]: What is a robot’s favorite snack? Computer chips.
+            - listitem [ref=e258]: Why did the cell phone get glasses? Because she lost all her contacts!
+            - listitem [ref=e259]: What did the hat say to the head? I’ve got you covered.
+            - listitem [ref=e260]: Where do werewolves purchase gifts? Beast Buy.
+            - listitem [ref=e261]: Why did the thief shower before robbing the bank? So he could make a clean getaway.
+            - listitem [ref=e262]: Why did the strawberry cry? His parents were in a jam!
+            - listitem [ref=e263]: What kind of shoes do ninjas wear? Sneakers.
+            - listitem [ref=e264]: Why was Cinderella so bad at soccer? She kept running away from the ball!
+            - listitem [ref=e265]: What has 4 wheels and flies? A garbage truck.
+            - listitem [ref=e266]: Why can’t you hear a pterodactyl going to the bathroom? Because the “P” is silent!
+          - heading "Funny Knock-Knock Jokes for Kids" [level=2] [ref=e268]
+          - generic [ref=e271]:
+            - generic [ref=e272]:
+              - img "group of kids at school laughing at a teacher" [ref=e273]
+              - link "pinterest" [ref=e274] [cursor=pointer]:
+                - /url: //pinterest.com/pin/create/button/?url=https://www.countryliving.com/life/entertainment/a30756797/jokes-for-kids/&description=countryliving&media=https://hips.hearstapps.com/hmg-prod/images/children-laughing-out-loud-6684268e69d44.jpg?resize=1600:*
+                - img "pinterest"
+            - generic [ref=e276]: FatCamera//Getty Images
+          - list [ref=e277]:
+            - listitem [ref=e278]: Knock knock. Who's there? Interrupting sloth. Interrupting sloth who? [20 seconds of silence] Sloooooooooooooth.
+            - listitem [ref=e279]: Knock knock. Who's there? Figs. Figs who? Figs the doorbell. I've been knocking forever!
+            - listitem [ref=e280]: Knock, knock. Who's there? Banana. Banana who? Knock, knock. Who's there? Banana. Banana who? Knock, knock. Who's there? Orange. Orange who? Orange you glad I didn't say banana again?
+            - generic [ref=e283]: Advertisement - Continue Reading Below
+            - listitem [ref=e285]:
+              - text: Knock knock. Who's there? To. To who? No, it's to
+              - emphasis [ref=e286]: whom!
+            - listitem [ref=e287]: Knock knock. Who's there? Spell. Spell who? W.H.O.
+            - listitem [ref=e288]: Knock, knock. Who's there? Ken. Ken who? Ken I come in? It's cold out here!
+            - listitem [ref=e289]:
+              - text: Knock knock. Who's there? Cow says. Cow says who? No, a cow says
+              - emphasis [ref=e290]: moo.
+            - listitem [ref=e291]: Knock knock. Who's there? Etch. Etch who? Bless you!
+            - listitem [ref=e292]: Knock knock Who's there? Mikey! Mikey who? Mikey doesn't fit in the keyhole!
+            - listitem [ref=e293]: Knock knock. Who's there? Tank. Tank Who? You're welcome!
+            - listitem [ref=e294]: Knock knock. Who's there? Boo. Boo who? Don't cry, I'm only joking!
+            - listitem [ref=e295]: Knock knock Who's there? Beets! Beets who? Beets me!
+            - listitem [ref=e296]: Knock knock. Who's there? Norma Lee. Norma Lee who? Normally I ring the doorbell.
+            - listitem [ref=e297]: Knock knock. Who's there? Annie. Annie who? Is Annie body home?
+            - listitem [ref=e298]: Knock, knock. Who’s there? Radio. Radio who? Radio not, here I come!
+            - listitem [ref=e299]: Knock, knock. Who’s there? Wa. Wa who? What are you so excited about?!
+            - listitem [ref=e300]: Knock knock. Who's there? Lettuce. Lettuce who? Lettuce in.
+            - listitem [ref=e301]: Knock, knock. Who’s there? Needle. Needle who? Needle little help opening the door!
+            - listitem [ref=e302]: Knock, knock. Who’s there? Leon. Leon who? Leon me when you’re not strong!
+            - listitem [ref=e303]: Knock knock. Who's there? Adore. Adore who? Adore is between us, so please open up!
+            - listitem [ref=e304]: Knock, knock. Who’s there? Dozen. Dozen who? Dozen anyone want to let me in?
+            - listitem [ref=e305]: Knock knock. Who's there? A little old lady. A little old lady who? Wow, I didn’t know you could yodel!
+            - listitem [ref=e306]: Knock, knock. Who’s there? Lena. Lena who? Lena a little closer, and I’ll tell you another joke!
+            - listitem [ref=e307]: Knock, knock. Who’s there? Alex. Alex who? Alex-plain later, just open up!
+            - listitem [ref=e308]: Knock knock. Who's there? Candice. Candice who? Candice joke get any worse?
+            - listitem [ref=e309]: Knock, knock. Who’s there? Goliath. Goliath who? Goliath down, you look-eth tired!
+            - listitem [ref=e310]: Knock knock. Who's there? Adorable. Adorable who? A-door-a-bell don't work, that's why I knocked!
+            - listitem [ref=e311]: Knock, knock. Who’s there? Broccoli? Broccoli who? Broccoli doesn’t have a last name, silly.
+            - listitem [ref=e312]: Knock, knock. Who’s there? Wooden shoe. Wooden shoe who? Wooden shoe like to hear another joke?
+            - generic [ref=e315]: Advertisement - Continue Reading Below
+            - listitem [ref=e317]: Knock knock. Who's there? Kenya. Kenya who? Kenya open the door?
+            - listitem [ref=e318]: Knock knock. Who’s there? Jimmy. Jimmy who? Jimmy crack corn and I don’t care!
+            - listitem [ref=e319]: Knock, knock. Who’s there? Says. Says who? Says me!
+            - listitem [ref=e320]: Knock, knock. Who’s there? Annie. Annie who? Annie body home?
+            - listitem [ref=e321]: Knock, knock. Who’s there? Harry. Harry who? Harry up and answer the door!
+            - listitem [ref=e322]: Knock, knock. Who’s there? Cash. Cash who? No thanks, but I’ll take a peanut if you have one!
+            - listitem [ref=e323]: Knock, knock. Who’s there? Nana. Nana who? Nana your business!
+            - listitem [ref=e324]: Knock knock. Who’s there? Honeydew. Honeydew who? Honeydew you wanna dance?
+            - listitem [ref=e325]: Knock knock. Who’s there? Juno. Juno who? Juno how funny this is?
+            - listitem [ref=e326]: Knock, knock. Who’s there? Owls go. Owls go who? That’s right!
+            - listitem [ref=e327]: Knock knock. Who’s there? Weekend. Weekend who? Weekend do anything we want.
+            - listitem [ref=e328]: Knock knock. Who’s there? Watts. Watts who? Watts for dinner? I’m hungry.
+          - heading "Funny Riddles for Kids" [level=2] [ref=e330]
+          - generic [ref=e333]:
+            - generic [ref=e334]:
+              - img "kid making silly faces with his doctor" [ref=e335]
+              - link "pinterest" [ref=e336] [cursor=pointer]:
+                - /url: //pinterest.com/pin/create/button/?url=https://www.countryliving.com/life/entertainment/a30756797/jokes-for-kids/&description=countryliving&media=https://hips.hearstapps.com/hmg-prod/images/kid-and-doctor-laughing-6684297e15995.jpg?resize=1600:*
+                - img "pinterest"
+            - generic [ref=e338]: FatCamera//Getty Images
+          - list [ref=e339]:
+            - listitem [ref=e340]:
+              - text: I have a head and a tail, but not a body. Who am I?
+              - text: A coin!
+            - listitem [ref=e341]:
+              - text: What question can you never answer yes to?
+              - text: Are you asleep yet?
+            - listitem [ref=e342]:
+              - text: If you throw a stone in the ocean, what will it turn out to be?
+              - text: Wet!
+            - listitem [ref=e343]:
+              - text: A group of bunnies were having a birthday party. What kind of music were they listening to?
+              - text: Hip hop.
+            - listitem [ref=e344]:
+              - text: What has hands but doesn’t clap?
+              - text: A clock!
+            - listitem [ref=e345]:
+              - text: How many months of the year have 28 days?
+              - text: All of them.
+            - generic [ref=e348]: Advertisement - Continue Reading Below
+            - listitem [ref=e350]:
+              - text: What kind of keys do kids prefer?
+              - text: Cookies!
+            - listitem [ref=e351]:
+              - text: It belongs to you, but your friends use it more. What is it?
+              - text: Your name.
+            - listitem [ref=e352]:
+              - text: What word is spelled wrong in the dictionary?
+              - text: Wrong!
+            - listitem [ref=e353]:
+              - text: What kind of band never plays music?
+              - text: A rubber band.
+            - listitem [ref=e354]:
+              - text: What country is really cold but also really hot?
+              - text: Chile!
+            - listitem [ref=e355]:
+              - text: An elephant in Africa is called Lala. An elephant in Asia is called Lulu. What do you call an elephant in Antarctica?
+              - text: Lost.
+            - listitem [ref=e356]:
+              - text: What has four Is but can’t see?
+              - text: Mississippi!
+            - listitem [ref=e357]:
+              - text: I’m full of holes, but I can hold water. What am I?
+              - text: A sponge.
+            - listitem [ref=e358]:
+              - text: What goes up but never comes back down?
+              - text: Your age!
+            - listitem [ref=e359]:
+              - text: What has a neck but no head, and wears a cap?
+              - text: A bottle.
+          - heading "Funny Why Did the Chicken Cross the Road Jokes for Kids" [level=2] [ref=e361]
+          - generic [ref=e364]:
+            - generic [ref=e365]:
+              - img "chicken crossing the road funny joke" [ref=e366]
+              - link "pinterest" [ref=e367] [cursor=pointer]:
+                - /url: //pinterest.com/pin/create/button/?url=https://www.countryliving.com/life/entertainment/a30756797/jokes-for-kids/&description=countryliving&media=https://hips.hearstapps.com/hmg-prod/images/chicken-crossing-road-668430898c7d9.jpg?resize=1600:*
+                - img "pinterest"
+            - generic [ref=e369]: tjhunt//Getty Images
+          - list [ref=e370]:
+            - listitem [ref=e371]: Why did the rubber chicken cross the road? She wanted to stretch her legs!
+            - listitem [ref=e372]: Why did the chicken cross the road? Because the road was too long to walk around it.
+            - listitem [ref=e373]: Why did the chicken cross the playground? To get to the other slide!
+            - listitem [ref=e374]: Why did the chicken cross the road? It thought it was an egg-cellent idea.
+            - listitem [ref=e375]:
+              - text: Why did the chicken cross the road? To
+              - emphasis [ref=e376]: bock
+              - text: traffic.
+            - generic [ref=e379]: Advertisement - Continue Reading Below
+            - listitem [ref=e381]: Why did the chicken cross the football field? It was a fowl.
+            - listitem [ref=e382]:
+              - text: Why did the chicken cross the road?
+              - emphasis [ref=e383]: I don’t know, why?
+              - text: I don’t know—I asked you!
+            - listitem [ref=e384]: Why did the chicken cross the road? To avoid this joke.
+            - listitem [ref=e385]: What do you call a chicken crossing the road? Poultry in motion.
+            - listitem [ref=e386]: Why did the chicken cross the road, roll in the mud and then cross the road again? Because he was a dirty double-crosser!
+            - listitem [ref=e387]: Why didn’t the chicken cross the road? Because there was a KFC on the other side.
+            - listitem [ref=e388]: Why did the chicken only cross halfway over the road? She wanted to lay it on the line!
+            - listitem [ref=e389]: Why did the chicken stop crossing the road? It got tired of everyone making so many jokes!
+            - listitem [ref=e390]: Why did the chicken cross the road? Because the light was green.
+            - listitem [ref=e391]: Why did the chicken cross the road? Because it was free range.
+          - heading "Funny One-Liners for Kids" [level=2] [ref=e393]: Funny One-Liners for Kids
+          - generic [ref=e396]:
+            - generic [ref=e397]:
+              - img "smiling kid giving two thumbs up" [ref=e398]
+              - link "pinterest" [ref=e399] [cursor=pointer]:
+                - /url: //pinterest.com/pin/create/button/?url=https://www.countryliving.com/life/entertainment/a30756797/jokes-for-kids/&description=countryliving&media=https://hips.hearstapps.com/hmg-prod/images/kid-giving-thumbs-up-66842d9411aa3.jpg?resize=1600:*
+                - img "pinterest"
+            - generic [ref=e401]: HughStoneIan//Getty Images
+          - list [ref=e402]:
+            - listitem [ref=e403]: Don’t you hate it when someone answers their own question? I do.
+            - listitem [ref=e404]: A sandwich tried to get a reservation at a restaurant, but the waiter said they don’t serve food there.
+            - listitem [ref=e405]: If you arrest a mime, do you have to tell him he has the right to remain silent?
+            - listitem [ref=e406]: I’m throwing a space-themed party for my birthday, but I don’t want to planet.
+            - listitem [ref=e407]: I had a dream I was eating a giant marshmallow and when I woke up my pillow was gone.
+            - listitem [ref=e408]: Did you hear the one about the claustrophobic astronaut who just wanted a little more space?
+            - listitem [ref=e409]: A man walked into a bar. Ouch.
+            - listitem [ref=e410]: I woke up this morning and forgot which side the sun rises from. Then it dawned on me.
+            - generic [ref=e413]: Advertisement - Continue Reading Below
+            - listitem [ref=e415]: If you take $2 out of an ATM that has a $2.50 fee, do you owe the machine money?
+            - listitem [ref=e416]: One bird can’t make a pun. But toucan.
+            - listitem [ref=e417]: If a child refuses to sleep during nap time, are they guilty of resisting a rest?
+            - listitem [ref=e418]: Parallel lines have so much in common it’s a shame they’ll never meet.
+            - listitem [ref=e419]: If you need help building an ark, I Noah guy.
+            - listitem [ref=e420]: What did one wall say to the other wall? I’ll meet you at the corner!
+            - listitem [ref=e421]: Whoever invented knock-knock jokes deserves a no-bell prize.
+            - listitem [ref=e422]: Don’t spell part backward. It’s a trap.
+            - listitem [ref=e423]: I went to buy some camo pants, but I couldn’t find any.
+            - listitem [ref=e424]: Two burglars stole a calendar last night, and they each got six months.
+            - listitem [ref=e425]: Would a cardboard belt be a waist of paper?
+            - listitem [ref=e426]: I always wanted to be a doctor, but I didn't have the patients.
+            - listitem [ref=e427]: "I'm on a seafood diet: When I see food, I eat it."
+            - listitem [ref=e428]: If at first you don't succeed, then skydiving isn't for you.
+            - listitem [ref=e429]: I was going to tell a pizza joke, but it was too cheesy.
+            - listitem [ref=e430]: I just flew into town and my arms are so tired.
+            - listitem [ref=e431]: I tried to do my homework but my pencil broke, so it was pointless.
+            - listitem [ref=e432]: I used to be addicted to the Hokey Pokey, but I turned myself around.
+            - listitem [ref=e433]: The more this towel dries, the wetter it gets.
+            - listitem [ref=e434]: I ate a clock yesterday, it was very time-consuming.
+            - listitem [ref=e435]: I've just written a song about tortillas; actually, it’s more of a w-rap.
+          - heading "Funny Jokes About Animals" [level=2] [ref=e437]
+          - generic [ref=e440]:
+            - generic [ref=e441]:
+              - img "yellow and green budgerigar playing on girls face" [ref=e442]
+              - link "pinterest" [ref=e443] [cursor=pointer]:
+                - /url: //pinterest.com/pin/create/button/?url=https://www.countryliving.com/life/entertainment/a30756797/jokes-for-kids/&description=countryliving&media=https://hips.hearstapps.com/hmg-prod/images/bird-on-childs-face-668431e7661bd.jpg?resize=1600:*
+                - img "pinterest"
+            - generic [ref=e445]: HMVart//Getty Images
+          - list [ref=e446]:
+            - listitem [ref=e447]: What is black and white and red all over? A zebra with a sunburn.
+            - listitem [ref=e448]: Which animal makes the best pet? A cat, because it’s purr-fect.
+            - listitem [ref=e449]: What do you get from a pampered cow? Spoiled milk!
+            - listitem [ref=e450]: What was the first animal in space? The cow who jumped over the moon.
+            - generic [ref=e453]: Advertisement - Continue Reading Below
+            - listitem [ref=e455]: Why do cows go to New York? To see the moo-sicals!
+            - listitem [ref=e456]: Why did the pig have ink all over his face? Because he just came out of the pen.
+            - listitem [ref=e457]: What do you get when you cross a fish with an elephant? Swimming trunks!
+            - listitem [ref=e458]: What sound do porcupines make when they kiss? "Ouch!"
+            - listitem [ref=e459]: What do you call a lazy baby kangaroo? A pouch potato.
+            - listitem [ref=e460]: What do rabbits eat for breakfast? IHOP.
+            - listitem [ref=e461]: Where do cows go on Friday nights? To the moo-vies.
+            - listitem [ref=e462]: If a seagull flies over the sea, what flies over the bay? A bagel.
+            - listitem [ref=e463]: Why couldn't the pony talk? Because she was just a little hoarse.
+            - listitem [ref=e464]: What is a bat's favorite sport? Baseball.
+            - listitem [ref=e465]: How do you make an octopus laugh? With ten-tickles.
+            - listitem [ref=e466]: How do you keep a bull from charging? Cancel its credit card.
+            - listitem [ref=e467]: Why didn't the teddy bear want dessert? He was already stuffed.
+            - listitem [ref=e468]: What do you call a dinosaur who wears glasses? A Do-you-think-he-sarus.
+            - listitem [ref=e469]: What did the buffalo say when his kid went to college? Bison.
+            - listitem [ref=e470]: Why couldn't the duck pay for dinner? His bill was too big.
+            - listitem [ref=e471]: What is a snake's favorite subject? Hiss-tory.
+            - listitem [ref=e472]: Why are penguins so awkward at parties? Because they can't break the ice.
+            - listitem [ref=e473]: What do you call a sleeping bull? A bull-dozer.
+            - listitem [ref=e474]: What did the farmer call the cow that had no milk? An udder failure.
+            - listitem [ref=e475]: Why do fish live in salt water? Because pepper makes them sneeze!
+          - complementary [ref=e477]:
+            - heading "Related Stories" [level=2] [ref=e478]
+            - list [ref=e479]:
+              - listitem [ref=e480]:
+                - link "Chicken and a Happy Child together on a Leather Sofa in a Sunny Domestic Room 35 Chicken Jokes That Will Crack You Up" [ref=e481] [cursor=pointer]:
+                  - /url: /life/entertainment/a61839844/chicken-jokes-puns/
+                  - img "Chicken and a Happy Child together on a Leather Sofa in a Sunny Domestic Room"
+                  - generic [ref=e482]: 35 Chicken Jokes That Will Crack You Up
+              - listitem [ref=e483]:
+                - link "Pretty cow, black and white gentle surprised look, pink nose, in front of a blue cloudy sky Milk the Laughs with These Hilarious Cow Jokes" [ref=e484] [cursor=pointer]:
+                  - /url: /life/entertainment/a61868765/hilarious-cow-jokes/
+                  - img "Pretty cow, black and white gentle surprised look, pink nose, in front of a blue cloudy sky"
+                  - generic [ref=e485]: Milk the Laughs with These Hilarious Cow Jokes
+          - heading "Funny Jokes About School" [level=2] [ref=e487]
+          - generic [ref=e490]:
+            - generic [ref=e491]:
+              - img "two laughing kids enjoying a book at school" [ref=e492]
+              - link "pinterest" [ref=e493] [cursor=pointer]:
+                - /url: //pinterest.com/pin/create/button/?url=https://www.countryliving.com/life/entertainment/a30756797/jokes-for-kids/&description=countryliving&media=https://hips.hearstapps.com/hmg-prod/images/kids-laughing-reading-book-64b98eb7114ff.jpg?resize=1600:*
+                - img "pinterest"
+            - generic [ref=e495]: MarsBars
+          - list [ref=e496]:
+            - listitem [ref=e497]: Where did the music teacher leave her keys? In the piano!
+            - listitem [ref=e498]: Why was the math book sad? It had a lot of problems.
+            - listitem [ref=e499]: What did the paper say to the pencil? Write on.
+            - generic [ref=e502]: Advertisement - Continue Reading Below
+            - listitem [ref=e504]: Why did the student eat his homework? Because his teacher said it was a piece of cake.
+            - listitem [ref=e505]: Where do pencils come from? Pennsylvania.
+            - listitem [ref=e506]: What do kids do during recess on rainy days? Play bored games.
+            - listitem [ref=e507]: Why don't science teachers trust atoms? Because they make up everything.
+            - listitem [ref=e508]: How did the student feel when he learned about electricity? Totally shocked.
+            - listitem [ref=e509]: Why did the bikes get detention at school? They spoke too much.
+            - listitem [ref=e510]: Why didn't anyone want to eat next to the basketball team? Because they dribble too much.
+            - listitem [ref=e511]: What did the student say to the teacher after he missed the first day of school? No, ma'am. I didn't miss it at all.
+            - listitem [ref=e512]: What school supply is king of the classroom? The ruler.
+            - listitem [ref=e513]: What do elves learn in school? The elf-abet.
+          - heading "Funny Jokes About Food" [level=2] [ref=e515]
+          - generic [ref=e518]:
+            - generic [ref=e519]:
+              - img "little girl playing with fruit" [ref=e520]
+              - link "pinterest" [ref=e521] [cursor=pointer]:
+                - /url: //pinterest.com/pin/create/button/?url=https://www.countryliving.com/life/entertainment/a30756797/jokes-for-kids/&description=countryliving&media=https://hips.hearstapps.com/hmg-prod/images/kid-playing-with-food-66843259cecb6.jpg?resize=1600:*
+                - img "pinterest"
+            - generic [ref=e523]: Adie Bush//Getty Images
+          - list [ref=e524]:
+            - listitem [ref=e525]: Why couldn't the sesame seed leave the casino? Because he was on a roll.
+            - listitem [ref=e526]: What does a nosy pepper do? Gets jalapeno business.
+            - listitem [ref=e527]: Why did the cookie go to the nurse? Because he felt crumby.
+            - listitem [ref=e528]: What kind of room doesn't have doors? A mushroom.
+            - listitem [ref=e529]: Why did the girl throw a stick of butter out the window? She wanted to see a butterfly.
+            - listitem [ref=e530]: How do you open a banana? With a mon-key.
+            - listitem [ref=e531]: What do you call a fake noodle? An impasta.
+            - listitem [ref=e532]: What do you call stolen cheddar? Nacho cheese!
+            - listitem [ref=e533]: What did Baby Corn say to Mama Corn? Where's Pop Corn?
+            - listitem [ref=e534]: How does a cucumber become a pickle? It goes through a jarring experience.
+            - listitem [ref=e535]: Why oranges wear sunscreen? So they don't peel.
+            - listitem [ref=e536]: Why was there peanut butter on the road? To go with the traffic jam.
+            - listitem [ref=e537]: What does the Invisible Man drink at snack time? Evaporated milk.
+            - listitem [ref=e538]: What did the cake say to the fork? "You want a piece of me?"
+            - listitem [ref=e539]: What does a pickle say when he wants to play cards? "Dill me in!"
+          - generic [ref=e541]:
+            - img "Headshot of Kelly O'Sullivan" [ref=e543]
+            - generic [ref=e544]:
+              - link "Kelly O'Sullivan" [ref=e546] [cursor=pointer]:
+                - /url: /author/17064/kelly-osullivan/
+              - generic [ref=e547]: Senior Editor
+            - generic [ref=e549]: Kelly O’Sullivan is the senior editor for The Pioneer Woman and manages the website’s social channels, in addition to overseeing content strategy and news.
+          - document [ref=e552]:
+            - main [ref=e554]:
+              - article [ref=e555]:
+                - heading "What’s the latest porch chatter?" [level=3] [ref=e556]
+                - paragraph [ref=e557]: Stay in the know about country life, your favorite celebrities and TV shows, and more.
+                - generic [ref=e558]:
+                  - group [ref=e559]:
+                    - generic [ref=e560]: Email address
+                    - textbox "Enter your email address." [ref=e561]
+                  - button "Sign me up!" [ref=e562] [cursor=pointer]
+                - paragraph [ref=e563]:
+                  - text: By signing up, I agree to the
+                  - link "Terms of Use" [ref=e564] [cursor=pointer]:
+                    - /url: https://www.hearst.com/-/us-magazines-terms-of-use
+                  - text: (including the
+                  - link "dispute resolution procedures" [ref=e565] [cursor=pointer]:
+                    - /url: https://www.hearst.com/-/us-magazines-terms-of-use#_DISPUTE_RESOLUTION
+                  - text: ) and have reviewed
+                  - generic [ref=e566]:
+                    - text: the
+                    - link "Privacy Notice" [ref=e567] [cursor=pointer]:
+                      - /url: https://www.hearst.com/-/us-magazines-privacy-notice
+                    - text: .
+                  - text: This site is protected by reCAPTCHA and the Google
+                  - link "Privacy Policy" [ref=e568] [cursor=pointer]:
+                    - /url: https://policies.google.com/privacy
+                  - text: and
+                  - link "Terms of Service" [ref=e569] [cursor=pointer]:
+                    - /url: https://policies.google.com/terms
+                  - text: apply.
+      - generic [ref=e624]: Advertisement - Continue Reading Below
+      - generic [ref=e626]:
+        - generic [ref=e627]:
+          - heading "100+ Quotes for Every Occasion" [level=2] [ref=e629]:
+            - link "100+ Quotes for Every Occasion" [ref=e631] [cursor=pointer]:
+              - /url: /best-quotes/
+          - generic [ref=e632]:
+            - link "young woman using smartphone in bed with floral patterned bedding 125 Sweet Quotes to Wish Your Loved Ones Goodnight" [ref=e633] [cursor=pointer]:
+              - /url: /life/entertainment/a62598763/goodnight-quotes-messages/
+              - generic [ref=e635]:
+                - img "young woman using smartphone in bed with floral patterned bedding"
+              - paragraph [ref=e637]:
+                - generic [ref=e638]: 125 Sweet Quotes to Wish Your Loved Ones Goodnight
+            - link "grandmother embracing toddler grandson and laughing The Best Grandma Quotes for Mother's Day" [ref=e639] [cursor=pointer]:
+              - /url: /life/entertainment/g19528539/grandma-quotes/
+              - generic [ref=e641]:
+                - img "grandmother embracing toddler grandson and laughing"
+              - paragraph [ref=e643]:
+                - generic [ref=e644]: The Best Grandma Quotes for Mother's Day
+            - link "a man and woman standing on a beach at dusk snuggling and smiling Romantic Love Quotes That Will Melt Their Heart" [ref=e645] [cursor=pointer]:
+              - /url: /life/a46107452/best-love-quotes/
+              - generic [ref=e647]:
+                - img "a man and woman standing on a beach at dusk snuggling and smiling"
+              - paragraph [ref=e649]:
+                - generic [ref=e650]: Romantic Love Quotes That Will Melt Their Heart
+            - link "multi ethnic couple kissing while sitting against lake during summer 115 Best Instagram Captions and Quotes for Couples" [ref=e651] [cursor=pointer]:
+              - /url: /life/a28368308/instagram-captions-for-couples/
+              - generic [ref=e653]:
+                - img "multi ethnic couple kissing while sitting against lake during summer"
+              - paragraph [ref=e655]:
+                - generic [ref=e656]: 115 Best Instagram Captions and Quotes for Couples
+        - generic [ref=e660]:
+          - link "funny portrait of a birthday cat wearing party hat 140 Clever Birthday Instagram Captions" [ref=e661] [cursor=pointer]:
+            - /url: /life/entertainment/a30930055/birthday-instagram-captions/
+            - generic [ref=e663]:
+              - img "funny portrait of a birthday cat wearing party hat"
+            - paragraph [ref=e665]:
+              - generic [ref=e666]: 140 Clever Birthday Instagram Captions
+          - link "two laughing little girls running in the park with a bunch of colorful balloons sisters 150 Thoughtful Ways to Say “Happy Birthday, Sis!”" [ref=e667] [cursor=pointer]:
+            - /url: /life/entertainment/a43401838/birthday-wishes-for-sister/
+            - generic [ref=e669]:
+              - img "two laughing little girls running in the park with a bunch of colorful balloons sisters"
+            - paragraph [ref=e671]:
+              - generic [ref=e672]: 150 Thoughtful Ways to Say “Happy Birthday, Sis!”
+          - link "a wreath of green leaves Christmas Quotes to Share with Family and Friends" [ref=e673] [cursor=pointer]:
+            - /url: /life/g2819/christmas-quotes/
+            - generic [ref=e675]:
+              - img "a wreath of green leaves"
+            - paragraph [ref=e677]:
+              - generic [ref=e678]: Christmas Quotes to Share with Family and Friends
+          - link "a green and white shirt Winter Captions for Your Brrreathtaking Pics ❄️" [ref=e679] [cursor=pointer]:
+            - /url: /life/entertainment/a30174282/winter-instagram-captions/
+            - generic [ref=e681]:
+              - img "a green and white shirt"
+            - paragraph [ref=e683]:
+              - generic [ref=e684]: Winter Captions for Your Brrreathtaking Pics ❄️
+        - generic [ref=e686]:
+          - link "stack of multicolored fall pumpkins, squash and gourds colorful vegetables texture shot from directly above for thanksgiving and halloween holidays background 45 Thanksgiving Greetings to Write in a Card" [ref=e687] [cursor=pointer]:
+            - /url: /life/entertainment/g37286631/thanksgiving-greetings/
+            - generic [ref=e689]:
+              - img "stack of multicolored fall pumpkins, squash and gourds colorful vegetables texture shot from directly above for thanksgiving and halloween holidays background"
+            - paragraph [ref=e691]:
+              - generic [ref=e692]: 45 Thanksgiving Greetings to Write in a Card
+          - link "family prays at thanksgiving table holding hands Thanksgiving Bible Verses for a Grateful Gathering" [ref=e693] [cursor=pointer]:
+            - /url: /life/a28471370/thanksgiving-bible-verses/
+            - generic [ref=e695]:
+              - img "family prays at thanksgiving table holding hands"
+            - paragraph [ref=e697]:
+              - generic [ref=e698]: Thanksgiving Bible Verses for a Grateful Gathering
+          - link "a classic thanksgiving table shot from overhead with a variety of dishes 99 Thanksgiving Quotes for Greetings and Toasts" [ref=e699] [cursor=pointer]:
+            - /url: /food-drinks/g2059/thanksgiving-quotes/
+            - generic [ref=e701]:
+              - img "a classic thanksgiving table shot from overhead with a variety of dishes"
+            - paragraph [ref=e703]:
+              - generic [ref=e704]: 99 Thanksgiving Quotes for Greetings and Toasts
+          - link "fall foliage over hills 40 November Quotes to Welcome Fall" [ref=e705] [cursor=pointer]:
+            - /url: /life/g29415363/november-quotes/
+            - generic [ref=e707]:
+              - img "fall foliage over hills"
+            - paragraph [ref=e709]:
+              - generic [ref=e710]: 40 November Quotes to Welcome Fall
+        - generic [ref=e712]: Advertisement - Continue Reading Below
+    - contentinfo [ref=e714]:
+      - generic [ref=e715]:
+        - generic [ref=e716]:
+          - link "Country Living" [ref=e717] [cursor=pointer]:
+            - /url: /
+            - img "Logo"
+          - generic [ref=e718]:
+            - link "x" [ref=e720] [cursor=pointer]:
+              - /url: https://x.com/countryliving
+              - img "x" [ref=e721]
+            - link "youtube" [ref=e723] [cursor=pointer]:
+              - /url: https://www.youtube.com/c/CountryLiving?sub_confirmation=1
+              - img "youtube" [ref=e724]
+            - link "facebook" [ref=e726] [cursor=pointer]:
+              - /url: https://www.facebook.com/CountryLiving
+              - img "facebook" [ref=e727]
+            - link "instagram" [ref=e729] [cursor=pointer]:
+              - /url: https://instagram.com/countrylivingmag/
+              - img "instagram" [ref=e730]
+            - link "pinterest" [ref=e732] [cursor=pointer]:
+              - /url: http://www.pinterest.com/countryliving/?auto_follow=1
+              - img "pinterest" [ref=e733]
+        - navigation "Footer" [ref=e734]:
+          - link "Newsletter" [ref=e735] [cursor=pointer]:
+            - /url: https://countryliving.com/email/countryliving-newsletter
+          - link "About Us" [ref=e736] [cursor=pointer]:
+            - /url: https://www.countryliving.com/about/a3561/about-us/
+          - link "Media Kit" [ref=e737] [cursor=pointer]:
+            - /url: http://www.clmediakit.com/r5/home.asp
+          - link "Press Room" [ref=e738] [cursor=pointer]:
+            - /url: https://www.hearst.com/newsroom
+          - link "Contact Us" [ref=e739] [cursor=pointer]:
+            - /url: /about/a707/contact-us/
+          - link "Community Guidelines" [ref=e740] [cursor=pointer]:
+            - /url: /about/a29188/community-guidelines/
+          - link "Advertise Online" [ref=e741] [cursor=pointer]:
+            - /url: /about/a29190/advertise-online/
+          - link "Customer Service" [ref=e742] [cursor=pointer]:
+            - /url: /service
+          - link "Subscribe" [ref=e743] [cursor=pointer]:
+            - /url: https://shop.countryliving.com/country-living-all-access-membership-2999.html?cds_tracking_code=clg_footer
+          - link "Turn Off Web Notifications" [ref=e744] [cursor=pointer]:
+            - /url: /about/a62668982/how-to-turn-off-web-notifications/
+          - link "Events and Promotions" [ref=e745] [cursor=pointer]:
+            - /url: /promotions/
+        - img "Hearst Lifestyle and Design Group - A Part of Hearst Digital Media" [ref=e746]
+        - paragraph [ref=e747]: A Part of Hearst Digital Media
+        - paragraph [ref=e748]: We may earn commission from links on this page, but we only recommend products we back.
+        - paragraph [ref=e749]: ©2026 Hearst Magazine Media, Inc. All Rights Reserved.
+        - generic [ref=e750]:
+          - link "Privacy Notice" [ref=e751] [cursor=pointer]:
+            - /url: https://www.hearst.com/-/us-magazines-privacy-notice
+          - link "CA Notice at Collection" [ref=e752] [cursor=pointer]:
+            - /url: https://www.hearst.com/-/us-magazines-privacy-notice#_ADDITIONAL_INFO
+          - link "Your CA Privacy Rights/Shine the Light" [ref=e753] [cursor=pointer]:
+            - /url: https://www.hearst.com/-/us-magazines-privacy-notice#_ADDITIONAL_INFO
+          - link "DAA Industry Opt Out" [ref=e754] [cursor=pointer]:
+            - /url: https://www.hearst.com/-/us-magazines-privacy-notice#_OPT_OUTS
+          - link "Terms of Use" [ref=e755] [cursor=pointer]:
+            - /url: https://www.hearst.com/-/us-magazines-terms-of-use
+          - link "Site Map" [ref=e756] [cursor=pointer]:
+            - /url: /sitemap/
+        - link "do-not-sell-link" [ref=e758] [cursor=pointer]:
+          - /url: javascript:Optanon.ToggleInfoDisplay();
+          - img "Opt-Out Icon" [ref=e759]
+          - text: "Your Privacy Choices: Opt Out of Sale/Targeted Ads"
+  - alert [ref=e760]
+  - 'dialog "Privacy Disclosure: Your privacy matters to us" [ref=e761]':
+    - button "Close Privacy Disclosure" [ref=e762] [cursor=pointer]:
+      - img [ref=e763]
+    - generic [ref=e765]:
+      - text: We use technologies that provide information about your interactions with this site to others for functionality, analytics, targeted advertising, and other purposes.
+      - link "Learn more in our Privacy Notice" [ref=e766] [cursor=pointer]:
+        - /url: https://www.hearst.com/-/us-magazines-privacy-notice
+      - text: . You agree that your use of this website and the Hearst Services is governed by the
+      - link "Terms of Use" [ref=e767] [cursor=pointer]:
+        - /url: https://www.hearst.com/-/us-magazines-terms-of-use
+      - text: (including
+      - link "the dispute resolution procedures" [ref=e768] [cursor=pointer]:
+        - /url: https://www.hearst.com/-/us-magazines-terms-of-use#_DISPUTE_RESOLUTION
+      - text: ).

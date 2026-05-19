@@ -16,9 +16,12 @@ import time
 from collections import deque
 from contextlib import asynccontextmanager
 from pathlib import Path
-from typing import Any, AsyncIterator, Literal
+from typing import TYPE_CHECKING, Any, AsyncIterator, Literal
 
 from unified_exec import OutputSnapshot, process_manager
+
+if TYPE_CHECKING:
+    from mcp_bridge import McpManager
 
 
 # ─── Error types ──────────────────────────────────────────────────────────────
@@ -547,6 +550,7 @@ def _apply_patch(patch: str, workdir: Path) -> str:
 async def dispatch_tools(
     tool_calls: list[dict[str, Any]],
     workdir: Path,
+    mcp_manager: "McpManager | None" = None,
 ) -> list[dict[str, Any]]:
     """
     Execute tool calls under a fair read/write lock.
@@ -565,20 +569,25 @@ async def dispatch_tools(
     lock_contexts = [
         await (
             _tool_lock.reserve_read()
-            if _supports_parallel_tool_calls(tc)
+            if _supports_parallel_tool_calls(tc, mcp_manager)
             else _tool_lock.reserve_write()
         )
         for tc in tool_calls
     ]
     tasks = [
-        asyncio.create_task(_run_with_lock(tc, workdir, lock_context))
+        asyncio.create_task(_run_with_lock(tc, workdir, lock_context, mcp_manager))
         for tc, lock_context in zip(tool_calls, lock_contexts)
     ]
     return await asyncio.gather(*tasks)
 
 
-def _tool_parallelism(tc: dict[str, Any]) -> ToolParallelism:
+def _tool_parallelism(
+    tc: dict[str, Any],
+    mcp_manager: "McpManager | None" = None,
+) -> ToolParallelism:
     tool_name = tc.get("name", "")
+    if mcp_manager is not None and mcp_manager.is_mcp_tool(tool_name):
+        return "parallel" if mcp_manager.tool_supports_parallel(tool_name) else "exclusive"
     return TOOL_PARALLELISM.get(tool_name, _configured_tool_parallelism(tool_name))
 
 
@@ -586,23 +595,31 @@ def tool_supports_parallel(tool_name: str) -> bool:
     return _tool_parallelism({"name": tool_name}) == "parallel"
 
 
-def _supports_parallel_tool_calls(tc: dict[str, Any]) -> bool:
-    return _tool_parallelism(tc) == "parallel"
+def _supports_parallel_tool_calls(
+    tc: dict[str, Any],
+    mcp_manager: "McpManager | None" = None,
+) -> bool:
+    return _tool_parallelism(tc, mcp_manager) == "parallel"
 
 
 async def _run_with_lock(
     tc: dict[str, Any],
     workdir: Path,
     lock_context: _RWLease,
+    mcp_manager: "McpManager | None",
 ) -> dict[str, Any]:
     async with lock_context:
-        return await _run_one_safely(tc, workdir)
+        return await _run_one_safely(tc, workdir, mcp_manager)
 
 
-async def _run_one_safely(tc: dict[str, Any], workdir: Path) -> dict[str, Any]:
+async def _run_one_safely(
+    tc: dict[str, Any],
+    workdir: Path,
+    mcp_manager: "McpManager | None",
+) -> dict[str, Any]:
     call_id: str = tc.get("call_id", tc.get("id", ""))
     try:
-        return await _run_one(tc, workdir)
+        return await _run_one(tc, workdir, mcp_manager)
     except ToolCallError as exc:
         if exc.fatal:
             raise
@@ -613,7 +630,11 @@ async def _run_one_safely(tc: dict[str, Any], workdir: Path) -> dict[str, Any]:
         }
 
 
-async def _run_one(tc: dict[str, Any], workdir: Path) -> dict[str, Any]:
+async def _run_one(
+    tc: dict[str, Any],
+    workdir: Path,
+    mcp_manager: "McpManager | None",
+) -> dict[str, Any]:
     name: str = tc["name"]
 
     raw_arguments = tc.get("arguments", "{}")
@@ -676,6 +697,18 @@ async def _run_one(tc: dict[str, Any], workdir: Path) -> dict[str, Any]:
                 "apply_patch requires a non-empty 'patch' argument"
             )
         output = _apply_patch(patch, workdir)
+
+    elif mcp_manager is not None and mcp_manager.is_mcp_tool(name):
+        if not isinstance(args, dict):
+            raise ToolCallError.respond_to_model(
+                f"MCP tool {name!r} requires JSON object arguments"
+            )
+        try:
+            output = await mcp_manager.call_tool(name, args)
+        except Exception as exc:
+            raise ToolCallError.respond_to_model(
+                f"MCP tool {name!r} failed: {exc}"
+            ) from exc
 
     else:
         raise ToolCallError.respond_to_model(f"unknown tool: {name!r}")

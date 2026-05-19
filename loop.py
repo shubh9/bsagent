@@ -13,12 +13,15 @@ from __future__ import annotations
 import json
 import sys
 from pathlib import Path
-from typing import Any
+from typing import TYPE_CHECKING, Any
 
 from openai import OpenAI
 
 from compact import maybe_compact
 from tools import ALL_TOOLS, ToolCallError, dispatch_tools
+
+if TYPE_CHECKING:
+    from mcp_bridge import McpManager
 
 # ─── System prompt ────────────────────────────────────────────────────────────
 
@@ -31,6 +34,11 @@ or pollable commands. Use write_stdin with empty chars to poll an \
 exec_command session, or with text ending in \\n to answer prompts. Use \
 apply_patch for structured file edits — it is safer than shell redirection \
 and produces clean diffs.
+
+When browser MCP tools are available, use exec_command to start local dev \
+servers, read the localhost URL from their output, then use the browser tools \
+to navigate, inspect the page, interact with elements, take screenshots, and \
+record browser videos/traces when useful.
 
 Guidelines:
 - Explore the codebase before making changes (ls, cat, grep).
@@ -52,6 +60,7 @@ async def _stream_turn(
     model: str,
     *,
     verbose: bool,
+    mcp_manager: "McpManager | None" = None,
 ) -> tuple[list[dict[str, Any]], str, list[Any]]:
     """
     Make one streaming model call.
@@ -66,11 +75,13 @@ async def _stream_turn(
     output_items: list[Any] = []
 
 
+    available_tools = ALL_TOOLS + (mcp_manager.openai_tools() if mcp_manager else [])
+
     with client.responses.stream(
         model=model,
         instructions=SYSTEM_PROMPT,
         input=history,
-        tools=ALL_TOOLS,
+        tools=available_tools,
         parallel_tool_calls=True,
     ) as stream:
         for event in stream:
@@ -171,6 +182,8 @@ def _print_tool_call(tc: dict[str, Any]) -> None:
             "apply_patch",
         )
         sys.stderr.write(f"\n\033[36mtool=apply_patch\033[0m {preview.replace('*** ', '')}\n")
+    elif name.startswith("mcp__"):
+        sys.stderr.write(f"\n\033[34mtool={name}\033[0m\n")
     else:
         sys.stderr.write(f"\n\033[33mtool\033[0m {name}\n")
 
@@ -185,6 +198,7 @@ async def run_agent(
     model: str,
     workdir: Path,
     verbose: bool = True,
+    mcp_manager: "McpManager | None" = None,
 ) -> str:
     """
     Run the agent loop for a single user prompt.
@@ -201,7 +215,7 @@ async def run_agent(
 
         # ② Stream one model turn
         tool_calls, final_text, output_items = await _stream_turn(
-            history, client, model, verbose=verbose
+            history, client, model, verbose=verbose, mcp_manager=mcp_manager
         )
 
         # Extend history with assistant output items flat (Responses API format:
@@ -213,7 +227,7 @@ async def run_agent(
             return final_text
 
         # ④ Execute tools (sequentially under asyncio.Lock)
-        results = await dispatch_tools(tool_calls, workdir)
+        results = await dispatch_tools(tool_calls, workdir, mcp_manager=mcp_manager)
 
         for r in results:
             preview = r["output"].splitlines()[0][:100] if r["output"] else ""
@@ -232,6 +246,7 @@ async def continue_agent(
     model: str,
     workdir: Path,
     verbose: bool = True,
+    mcp_manager: "McpManager | None" = None,
 ) -> tuple[str, list[Any]]:
     """
     Continue an existing conversation with a new user message.
@@ -245,7 +260,7 @@ async def continue_agent(
         history = maybe_compact(history, client, model, verbose=verbose)
 
         tool_calls, final_text, output_items = await _stream_turn(
-            history, client, model, verbose=verbose
+            history, client, model, verbose=verbose, mcp_manager=mcp_manager
         )
 
         history.extend(output_items)
@@ -253,7 +268,7 @@ async def continue_agent(
         if not tool_calls:
             return final_text, history
 
-        results = await dispatch_tools(tool_calls, workdir)
+        results = await dispatch_tools(tool_calls, workdir, mcp_manager=mcp_manager)
 
         for r in results:
             preview = r["output"].splitlines()[0][:100] if r["output"] else ""

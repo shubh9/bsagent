@@ -1,0 +1,51 @@
+[     439ms] [INFO] Autofocus processing was blocked because a document already has a focused element. @ https://www.google.com/:0
+[    5624ms] [ERROR] Failed to load resource: the server responded with a status of 429 () @ https://www.google.com/sorry/index?continue=https://www.google.com/search%3Fq%3Djokes%2Bfor%2Bkids%26sca_esv%3Dc4a9854c715d4f5d%26source%3Dhp%26ei%3DYuMMatifKYrFkPIP-8_6sAY%26iflsig%3DAFdpzrgAAAAAagzxct6Ss_t0evyf6AkJ7aXWJQCf9qJy%26ved%3D0ahUKEwjY2IHFssaUAxWKIkQIHfunHmYQ4dUDCB0%26uact%3D5%26oq%3Djokes%2Bfor%2Bkids%26gs_lp%3DEgdnd3Mtd2l6Ig5qb2tlcyBmb3Iga2lkc0gIUABYAHAAeACQAQCYAQCgAQCqAQC4AQPIAQD4AQGYAgCgAgCYAwCSBwCgBwCyBwC4BwDCBwDIBwCACAE%26sclient%3Dgws-wiz%26sei%3DZ-MMauH9HMmg0PEPssPVGQ&q=EhAmABcABGCkECTVEeY_RK2eGOfGs9AGIjAaFh8Lp4am73FYRMH979AQwugVB5t7boW0P1l6EhfeumibIlDLnei5szcS8VVdl1kyAVJaAUM:0
+[    6086ms] [WARNING] An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing. @ https://www.google.com/recaptcha/enterprise/anchor?ar=1&k=6LdLLIMbAAAAAIl-KLj9p1ePhM-4LCCDbjtJLqRO&co=aHR0cHM6Ly93d3cuZ29vZ2xlLmNvbTo0NDM.&hl=en&v=Br0hYqpfWeFzYCAXLD4UuCIV&size=normal&s=mldepsATjWTdboHgcg45CikSAfBeqh8EyCBqAE8mlOayHNQwRRvH74WGNFn5n5fIS8Vaalt3wDw0Pa026dmmGdR2c5duEtAQmB0K4pHgIwwOQwwTcC93q1GvLAZjCSAIVtxpzBwSzGt044bBMVAtiQL2NawG_0QHc2iMAG3-VLUWVay_MvuC5uq5CDydGqLzShfPlSFr0hdtvIVoOQQX93k87pb952lzkPE6E95HrosV-1qoOiLkPo8Xja_Dh1sJyU0wYnifd_LiBmn3-BaM7BXaGjkzjYA&anchor-ms=20000&execute-ms=30000&cb=44q5pt37j9sh:0
+[    6323ms] ReferenceError: solveSimpleChallenge is not defined
+    at onload (https://www.google.com/sorry/index?continue=https://www.google.com/search%3Fq%3Djokes%2Bfor%2Bkids%26sca_esv%3Dc4a9854c715d4f5d%26source%3Dhp%26ei%3DYuMMatifKYrFkPIP-8_6sAY%26iflsig%3DAFdpzrgAAAAAagzxct6Ss_t0evyf6AkJ7aXWJQCf9qJy%26ved%3D0ahUKEwjY2IHFssaUAxWKIkQIHfunHmYQ4dUDCB0%26uact%3D5%26oq%3Djokes%2Bfor%2Bkids%26gs_lp%3DEgdnd3Mtd2l6Ig5qb2tlcyBmb3Iga2lkc0gIUABYAHAAeACQAQCYAQCgAQCqAQC4AQPIAQD4AQGYAgCgAgCYAwCSBwCgBwCyBwC4BwDCBwDIBwCACAE%26sclient%3Dgws-wiz%26sei%3DZ-MMauH9HMmg0PEPssPVGQ&q=EhAmABcABGCkECTVEeY_RK2eGOfGs9AGIjAaFh8Lp4am73FYRMH979AQwugVB5t7boW0P1l6EhfeumibIlDLnei5szcS8VVdl1kyAVJaAUM:4:316)
+[    6444ms] [WARNING] An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing. @ https://www.google.com/recaptcha/enterprise/bframe?hl=en&v=Br0hYqpfWeFzYCAXLD4UuCIV&k=6LdLLIMbAAAAAIl-KLj9p1ePhM-4LCCDbjtJLqRO&bft=0dAFcWeA5sTiVQAPELw8cOjBosurOFhLFu-zfhLlIF-BTcwJhDCqhiRRnIagd0nbSasHYFofYm8WeJdffF63k8dvr3k8ZaO7X8IQ:0
+[   24159ms] [WARNING] Failed to execute 'postMessage' on 'DOMWindow': The target origin provided ('https://www.youtube.com') does not match the recipient window's origin ('https://www.google.com'). @ https://www.youtube.com/s/player/e1bd44b2/www-widgetapi.vflset/www-widgetapi.js:209
+[   37321ms] [LOG] JQMIGRATE: Migrate is installed, version 3.4.1 @ https://c0.wp.com/c/6.9.4/wp-includes/js/jquery/jquery-migrate.min.js:1
+[   37330ms] TypeError: Cannot read properties of undefined (reading 'removeAttribute')
+    at https://rangerrick.org/games-jokes/jokes/?srsltid=AfmBOopRyScMZMR-vZdEyMH86jINR_CYYPk29rCKv3eFpoXVAVHqJk6-:233:18
+[   38215ms] Uncaught (in promise) TypeError: Cannot read properties of null (reading 'appendChild')
+    at a.append (https://cdn.cookielaw.org/scripttemplates/202511.1.0/otBannerSdk.js:6:24054)
+    at <anonymous> (https://cdn.cookielaw.org/scripttemplates/202511.1.0/otBannerSdk.js:6:502123)
+    at <anonymous> (https://cdn.cookielaw.org/scripttemplates/202511.1.0/otBannerSdk.js:6:1976)
+    at <anonymous> (https://cdn.cookielaw.org/scripttemplates/202511.1.0/otBannerSdk.js:6:946)
+    at F (https://cdn.cookielaw.org/scripttemplates/202511.1.0/otBannerSdk.js:6:697)
+    at Ks.windowLoadBanner (https://cdn.cookielaw.org/scripttemplates/202511.1.0/otBannerSdk.js:6:501745)
+    at r (https://cdn.cookielaw.org/scripttemplates/202511.1.0/otBannerSdk.js:6:22795)
+    at a.trigger (https://cdn.cookielaw.org/scripttemplates/202511.1.0/otBannerSdk.js:6:22942)
+    at To.loadBanner (https://cdn.cookielaw.org/scripttemplates/202511.1.0/otBannerSdk.js:6:155285)
+    at br.LoadBanner (https://cdn.cookielaw.org/scripttemplates/202511.1.0/otBannerSdk.js:6:366505)
+    at <anonymous> (https://cdn.cookielaw.org/scripttemplates/202511.1.0/otBannerSdk.js:6:525139)
+    at <anonymous> (https://cdn.cookielaw.org/scripttemplates/202511.1.0/otBannerSdk.js:6:1976)
+    at n (https://cdn.cookielaw.org/scripttemplates/202511.1.0/otBannerSdk.js:6:751)
+[   42491ms] [LOG] JQMIGRATE: Migrate is installed, version 3.4.1 @ https://c0.wp.com/c/6.9.4/wp-includes/js/jquery/jquery-migrate.min.js:1
+[   42502ms] TypeError: Cannot read properties of undefined (reading 'removeAttribute')
+    at https://rangerrick.org/games-jokes/jokes/?srsltid=AfmBOopRyScMZMR-vZdEyMH86jINR_CYYPk29rCKv3eFpoXVAVHqJk6-&pip=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.MTEwMzU3MDA.KOEOeW2SIiVoJrFWbVTpBke0kCU_UaJ3CHMnksN0AAA:233:18
+[   42559ms] Uncaught (in promise) TypeError: Cannot read properties of null (reading 'appendChild')
+    at a.append (https://cdn.cookielaw.org/scripttemplates/202511.1.0/otBannerSdk.js:6:24054)
+    at <anonymous> (https://cdn.cookielaw.org/scripttemplates/202511.1.0/otBannerSdk.js:6:502123)
+    at <anonymous> (https://cdn.cookielaw.org/scripttemplates/202511.1.0/otBannerSdk.js:6:1976)
+    at <anonymous> (https://cdn.cookielaw.org/scripttemplates/202511.1.0/otBannerSdk.js:6:946)
+    at F (https://cdn.cookielaw.org/scripttemplates/202511.1.0/otBannerSdk.js:6:697)
+    at Ks.windowLoadBanner (https://cdn.cookielaw.org/scripttemplates/202511.1.0/otBannerSdk.js:6:501745)
+    at r (https://cdn.cookielaw.org/scripttemplates/202511.1.0/otBannerSdk.js:6:22795)
+    at a.trigger (https://cdn.cookielaw.org/scripttemplates/202511.1.0/otBannerSdk.js:6:22942)
+    at To.loadBanner (https://cdn.cookielaw.org/scripttemplates/202511.1.0/otBannerSdk.js:6:155285)
+    at br.LoadBanner (https://cdn.cookielaw.org/scripttemplates/202511.1.0/otBannerSdk.js:6:366505)
+    at <anonymous> (https://cdn.cookielaw.org/scripttemplates/202511.1.0/otBannerSdk.js:6:525139)
+    at <anonymous> (https://cdn.cookielaw.org/scripttemplates/202511.1.0/otBannerSdk.js:6:1976)
+    at n (https://cdn.cookielaw.org/scripttemplates/202511.1.0/otBannerSdk.js:6:751)
+[   42597ms] [LOG] JQMIGRATE: Migrate is installed, version 3.4.1 @ https://c0.wp.com/c/6.9.4/wp-includes/js/jquery/jquery-migrate.min.js:1
+[   42599ms] TypeError: Cannot read properties of undefined (reading 'removeAttribute')
+    at https://rangerrick.org/games-jokes/jokes/?srsltid=AfmBOopRyScMZMR-vZdEyMH86jINR_CYYPk29rCKv3eFpoXVAVHqJk6-:233:18
+[   42677ms] [LOG] {state: not_needed, previousState: unknown, userAction: false} @ https://rangerrick.org/wp-content/plugins/advanced-ads/public/assets/js/advanced.min.js?ver=2.0.13:0
+[   42685ms] [WARNING] Allow attribute will take precedence over 'allowpaymentrequest'. @ https://c0.wp.com/c/6.9.4/wp-includes/js/jquery/jquery.min.js:1
+[   42688ms] [LOG] TEST OUTPUT @ https://rangerrick.org/wp-content/themes/mh-magazine-child/js/child-scripts.js?ver=6.9.4:9
+[   42688ms] [LOG] No game on this page @ https://rangerrick.org/wp-content/themes/mh-magazine-child/js/child-scripts.js?ver=6.9.4:18
+[   42690ms] [LOG] init popups ✔ @ https://rangerrick.org/wp-content/uploads/pum/pum-site-scripts.js?defer&generated=1749568037&ver=1.21.5:6
+[   43682ms] [WARNING] [Meta Pixel] - Invalid PixelID: null. @ https://connect.facebook.net/en_US/fbevents.js:181
+[   43685ms] [WARNING] [Meta Pixel] - Invalid PixelID: null. @ https://connect.facebook.net/en_US/fbevents.js:181

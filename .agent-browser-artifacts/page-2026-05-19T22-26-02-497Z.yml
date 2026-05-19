@@ -1,0 +1,678 @@
+- generic [active] [ref=e1]:
+  - generic:
+    - generic:
+      - link "Skip to main content" [ref=e2] [cursor=pointer]
+      - link "Accessibility help" [ref=e3] [cursor=pointer]:
+        - /url: https://support.google.com/websearch/answer/181196?hl=en
+      - link "Accessibility feedback" [ref=e4] [cursor=pointer]
+  - generic [ref=e9]:
+    - search [ref=e10]:
+      - generic [ref=e12]:
+        - link "Go to Google Home" [ref=e14] [cursor=pointer]:
+          - /url: https://www.google.com/webhp?hl=en&sa=X&ved=0ahUKEwjV_OzPssaUAxXqFzQIHd3TKsAQPAgK
+          - img [ref=e15]
+        - generic [ref=e17]:
+          - generic [ref=e18]:
+            - combobox "Search" [ref=e21]: jokes for kids jokes for kids
+            - generic [ref=e22]:
+              - button "Clear" [ref=e24] [cursor=pointer]:
+                - img [ref=e26]
+              - generic [ref=e29]:
+                - button "Search by voice" [ref=e30] [cursor=pointer]:
+                  - img [ref=e31]
+                - button "Search by image" [ref=e33] [cursor=pointer]:
+                  - img [ref=e34]
+          - button "Search" [ref=e36] [cursor=pointer]:
+            - img [ref=e39]
+    - generic [ref=e41]:
+      - button "Settings" [ref=e43] [cursor=pointer]:
+        - img [ref=e46]
+      - generic [ref=e49]:
+        - button "Google apps" [ref=e51] [cursor=pointer]:
+          - img [ref=e52]
+        - link "Sign in" [ref=e56] [cursor=pointer]:
+          - /url: https://accounts.google.com/ServiceLogin?hl=en&passive=true&continue=https://www.google.com/search%3Fq%3Djokes%2Bfor%2Bkids%26sca_esv%3Dc4a9854c715d4f5d%26source%3Dhp%26ei%3DYuMMatifKYrFkPIP-8_6sAY%26iflsig%3DAFdpzrgAAAAAagzxct6Ss_t0evyf6AkJ7aXWJQCf9qJy%26ved%3D0ahUKEwjY2IHFssaUAxWKIkQIHfunHmYQ4dUDCB0%26uact%3D5%26oq%3Djokes%2Bfor%2Bkids%26gs_lp%3DEgdnd3Mtd2l6Ig5qb2tlcyBmb3Iga2lkc0gIUABYAHAAeACQAQCYAQCgAQCqAQC4AQPIAQD4AQGYAgCgAgCYAwCSBwCgBwCyBwC4BwDCBwDIBwCACAE%26sclient%3Dgws-wiz%26sei%3DZ-MMauH9HMmg0PEPssPVGQ&ec=futura_srp_og_si_72236_p
+  - generic [ref=e58]:
+    - navigation [ref=e64]:
+      - generic [ref=e70]:
+        - list [ref=e71]:
+          - listitem [ref=e72]:
+            - link "AI Mode" [ref=e75] [cursor=pointer]:
+              - /url: /search?q=jokes+for+kids&sca_esv=c4a9854c715d4f5d&udm=50&source=hp&fbs=ADc_l-aN0CWEZBOHjofHoaMMDiKpaEWjvZ2Py1XXV8d8KvlI3vxYI1tojT_24H7Q4iMwclSJUz4FcZOM5Pq33gz9PnkyoDbNxwPAI30sUsI7Rk4CapeiwnFF_6duj9ijUgCKDyJAQ2sMDe0JiUo1oEzwFkelTedxM_voZIe9u9M-MjfauyXBN1F8mwiVZQFSItJoRMmJ_ECQOiYRqEHpEwrDoRyT4ebvAg&aep=1&ntc=1&sa=X&ved=2ahUKEwjV_OzPssaUAxXqFzQIHd3TKsAQ2J8OegQIGBAD
+              - generic [ref=e78]: AI Mode
+          - listitem [ref=e79]:
+            - link "All" [disabled] [ref=e80]:
+              - generic [ref=e82]: All
+          - listitem [ref=e83]:
+            - link "Images" [ref=e84] [cursor=pointer]:
+              - /url: /search?sca_esv=c4a9854c715d4f5d&udm=2&fbs=ADc_l-aN0CWEZBOHjofHoaMMDiKpaEWjvZ2Py1XXV8d8KvlI3vxYI1tojT_24H7Q4iMwclSJUz4FcZOM5Pq33gz9PnkyoDbNxwPAI30sUsI7Rk4CapeiwnFF_6duj9ijUgCKDyJAQ2sMDe0JiUo1oEzwFkelTedxM_voZIe9u9M-MjfauyXBN1F8mwiVZQFSItJoRMmJ_ECQOiYRqEHpEwrDoRyT4ebvAg&q=jokes+for+kids&sa=X&ved=2ahUKEwjV_OzPssaUAxXqFzQIHd3TKsAQtKgLegQIHhAB
+              - generic [ref=e86]: Images
+          - listitem [ref=e87]:
+            - link "Short videos" [ref=e88] [cursor=pointer]:
+              - /url: /search?sca_esv=c4a9854c715d4f5d&udm=39&fbs=ADc_l-aN0CWEZBOHjofHoaMMDiKpaEWjvZ2Py1XXV8d8KvlI3vxYI1tojT_24H7Q4iMwclSJUz4FcZOM5Pq33gz9PnkyoDbNxwPAI30sUsI7Rk4CapeiwnFF_6duj9ijUgCKDyJAQ2sMDe0JiUo1oEzwFkelTedxM_voZIe9u9M-MjfauyXBN1F8mwiVZQFSItJoRMmJ_ECQOiYRqEHpEwrDoRyT4ebvAg&q=jokes+for+kids&sa=X&ved=2ahUKEwjV_OzPssaUAxXqFzQIHd3TKsAQs6gLegQIHRAB
+              - generic [ref=e90]: Short videos
+          - listitem [ref=e91]:
+            - link "Videos" [ref=e92] [cursor=pointer]:
+              - /url: /search?sca_esv=c4a9854c715d4f5d&udm=7&fbs=ADc_l-aN0CWEZBOHjofHoaMMDiKpaEWjvZ2Py1XXV8d8KvlI3vxYI1tojT_24H7Q4iMwclSJUz4FcZOM5Pq33gz9PnkyoDbNxwPAI30sUsI7Rk4CapeiwnFF_6duj9ijUgCKDyJAQ2sMDe0JiUo1oEzwFkelTedxM_voZIe9u9M-MjfauyXBN1F8mwiVZQFSItJoRMmJ_ECQOiYRqEHpEwrDoRyT4ebvAg&q=jokes+for+kids&sa=X&ved=2ahUKEwjV_OzPssaUAxXqFzQIHd3TKsAQtKgLegQIHBAB
+              - generic [ref=e94]: Videos
+          - listitem [ref=e95]:
+            - link "Shopping" [ref=e96] [cursor=pointer]:
+              - /url: /search?sca_esv=c4a9854c715d4f5d&udm=28&fbs=ADc_l-aN0CWEZBOHjofHoaMMDiKpaEWjvZ2Py1XXV8d8KvlI3vxYI1tojT_24H7Q4iMwclSJUz4FcZOM5Pq33gz9PnkyoDbNxwPAI30sUsI7Rk4CapeiwnFF_6duj9ijUgCKDyJAQ2sMDe0JiUo1oEzwFkelTedxM_voZIe9u9M-MjfauyXBN1F8mwiVZQFSItJoRMmJ_ECQOiYRqEHpEwrDoRyT4ebvAg&q=jokes+for+kids&ved=1t:220175&ictx=111
+              - generic [ref=e98]: Shopping
+          - listitem [ref=e99]:
+            - link "Forums" [ref=e100] [cursor=pointer]:
+              - /url: /search?sca_esv=c4a9854c715d4f5d&udm=18&fbs=ADc_l-aN0CWEZBOHjofHoaMMDiKpaEWjvZ2Py1XXV8d8KvlI3vxYI1tojT_24H7Q4iMwclSJUz4FcZOM5Pq33gz9PnkyoDbNxwPAI30sUsI7Rk4CapeiwnFF_6duj9ijUgCKDyJAQ2sMDe0JiUo1oEzwFkelTedxM_voZIe9u9M-MjfauyXBN1F8mwiVZQFSItJoRMmJ_ECQOiYRqEHpEwrDoRyT4ebvAg&q=jokes+for+kids&sa=X&ved=2ahUKEwjV_OzPssaUAxXqFzQIHd3TKsAQs6gLegQIGhAB
+              - generic [ref=e102]: Forums
+          - listitem [ref=e103]:
+            - button "More filters" [ref=e104] [cursor=pointer]:
+              - generic "More filters" [ref=e105]:
+                - generic [ref=e106]:
+                  - generic [ref=e107]: More
+                  - img [ref=e109]
+        - button "Tools" [ref=e112] [cursor=pointer]:
+          - generic [ref=e114]:
+            - generic [ref=e115]: Tools
+            - img [ref=e117]
+    - heading "Search Results" [level=1] [ref=e120]
+    - generic [ref=e128]:
+      - generic [ref=e132]:
+        - generic [ref=e142]:
+          - generic [ref=e144]:
+            - generic [ref=e146]:
+              - generic [ref=e147]:
+                - img [ref=e148]
+                - heading "AI Overview" [level=2] [ref=e150]
+              - button "About this result" [ref=e154]:
+                - img [ref=e156]
+            - generic [ref=e173]:
+              - generic [ref=e175]:
+                - generic [ref=e176]: "Here are some silly, family-friendly jokes for kids that are guaranteed to get a giggle:"
+                - strong [ref=e178]: Animal Antics
+                - list [ref=e180]:
+                  - listitem [ref=e181]:
+                    - generic [ref=e182]:
+                      - strong [ref=e183]: "Q:"
+                      - text: What do you call a bear with no teeth?
+                      - strong [ref=e184]: "A:"
+                      - text: A gummy bear!
+                  - listitem [ref=e185]:
+                    - generic [ref=e186]:
+                      - strong [ref=e187]: "Q:"
+                      - text: Why can't the pony sing?
+                      - strong [ref=e188]: "A:"
+                      - text: Because she's a little hoarse
+                - strong [ref=e191]: Schoolyard Zingers
+                - list [ref=e193]:
+                  - listitem [ref=e194]:
+                    - generic [ref=e195]:
+                      - strong [ref=e196]: "Q:"
+                      - text: Why was the math book sad?
+                      - strong [ref=e197]: "A:"
+                      - text: Because it had too many problems
+                  - listitem [ref=e198]:
+                    - generic [ref=e199]:
+                      - strong [ref=e200]: "Q:"
+                      - generic [ref=e201]:
+                        - text: What did the zero say to the eight?
+                        - strong [ref=e202]: "A:"
+                        - text: Nice belt!
+                - generic [ref=e203]:
+                  - strong [ref=e206]: Food Funnies
+                  - list [ref=e208]:
+                    - listitem [ref=e209]:
+                      - generic [ref=e210]:
+                        - strong [ref=e211]: "Q:"
+                        - text: Why did the banana go to the doctor?
+                        - strong [ref=e212]: "A:"
+                        - text: Because it wasn't peeling well!
+                    - listitem [ref=e213]:
+                      - generic [ref=e214]:
+                        - strong [ref=e215]: "Q:"
+                        - text: What do you call cheese that isn't yours?
+                        - strong [ref=e216]: "A:"
+                        - text: Nacho cheese!
+                  - strong [ref=e219]: Knock, Knock!
+                  - list [ref=e221]:
+                    - listitem [ref=e222]:
+                      - generic [ref=e223]:
+                        - strong [ref=e224]: Knock, knock!
+                        - text: "| Who’s there?"
+                    - listitem [ref=e225]:
+                      - generic [ref=e226]:
+                        - strong [ref=e227]: Lettuce.
+                        - text: "| Lettuce who?"
+                    - listitem [ref=e228]:
+                      - strong [ref=e230]: Lettuce in, it's cold out here!
+                  - generic [ref=e233]:
+                    - generic [ref=e234]: "For a full collection of silly jokes and fun riddles that will keep the whole family laughing:"
+                    - generic [ref=e236]:
+                      - button [ref=e240] [cursor=pointer]:
+                        - generic [ref=e241]:
+                          - img [ref=e242]
+                          - img [ref=e243]:
+                            - img [ref=e244]
+                          - generic [ref=e248]:
+                            - generic:
+                              - generic: 4:41
+                          - img [ref=e251]
+                      - link [ref=e256] [cursor=pointer]:
+                        - /url: https://www.youtube.com/watch?v=NMIjkqZFN9o
+                        - generic [ref=e257]:
+                          - generic [ref=e258]: 100 Kids Tell a Joke
+                          - generic [ref=e265]:
+                            - generic [ref=e266]: HiHo Kids
+                            - generic [ref=e267]: YouTube• Dec 9, 2019
+              - list [ref=e278]:
+                - listitem [ref=e279]:
+                  - generic [ref=e280]:
+                    - link "Jokes for Kids - Colorado Springs Moms Collective. Opens in new tab." [ref=e281] [cursor=pointer]:
+                      - /url: https://cospringsmom.com/tips-tricks/jokes-for-kids/
+                    - generic [ref=e282]:
+                      - generic [ref=e284]:
+                        - generic [ref=e285]: Jokes for Kids - Colorado Springs Moms Collective
+                        - generic [ref=e286]: (They might even tickle your funny bone!) 1. What do pirates pay for corn? A buck an ear! 2. What's worse than finding a worm in y...
+                      - generic [ref=e288]:
+                        - generic [ref=e293]: Co Springs Mom Collective
+                        - button "About this result" [ref=e295] [cursor=pointer]:
+                          - img [ref=e296]
+                - listitem [ref=e299]:
+                  - generic [ref=e300]:
+                    - link "250+ Jokes for Kids to Spark a Laugh - Ranger Rick. Opens in new tab." [ref=e301] [cursor=pointer]:
+                      - /url: https://rangerrick.org/games-jokes/jokes/
+                    - generic [ref=e302]:
+                      - generic [ref=e304]:
+                        - generic [ref=e305]: 250+ Jokes for Kids to Spark a Laugh - Ranger Rick
+                        - generic [ref=e306]: "Funny Jokes to Spark a Laugh. 1. Joke: What were prehistoric sleepovers called? Answer: Dino-SNORES. 2. Joke: What's a bee's favor..."
+                      - generic [ref=e308]:
+                        - generic [ref=e313]: Ranger Rick
+                        - button [ref=e315] [cursor=pointer]:
+                          - img [ref=e316]
+                - listitem [ref=e319]:
+                  - generic [ref=e320]:
+                    - link [ref=e321] [cursor=pointer]:
+                      - /url: https://fortmyersbeach.macaronikid.com/articles/688f66eca810fe5b151c9310/clean-jokes-for-kids-thatll-make-the-whole-family-laugh
+                    - generic [ref=e322]:
+                      - generic [ref=e324]:
+                        - generic [ref=e325]: Clean Jokes for Kids That’ll Make the Whole Family Laugh
+                        - generic [ref=e326]: "Animal Antics. Silly creatures and wild puns? Yes, please. Q: What do you call a dog magician? A: A labracadabrador! Q: Why don't ..."
+                      - generic [ref=e328]:
+                        - generic [ref=e333]: Macaroni KID Fort Myers
+                        - button [ref=e335] [cursor=pointer]:
+                          - img [ref=e336]
+          - button "Show more AI Overview" [ref=e341]:
+            - generic [ref=e343] [cursor=pointer]:
+              - generic [ref=e344]: Show more
+              - img [ref=e346]
+        - generic [ref=e359]:
+          - heading "Sponsored products" [level=3] [ref=e361]:
+            - generic [ref=e362]: Sponsored products
+          - button "Why this ad?" [ref=e368] [cursor=pointer]:
+            - img [ref=e370]
+          - generic [ref=e379]:
+            - generic [ref=e380]:
+              - link "for from Etsy":
+                - link "for from Etsy" [ref=e381] [cursor=pointer]:
+                  - /url: https://www.etsy.com/listing/4342064136/funny-lunchbox-jokes-for-kids-set-of-36?gpla=1&gao=1&
+              - generic [ref=e386]:
+                - 'heading "Funny Lunchbox Jokes for Kids: Set Of 36 Printable School Notes (Digital Download)" [level=3] [ref=e387]':
+                  - generic [ref=e388]: "Funny Lunchbox Jokes for Kids: Set Of 36 Printable School Notes (Digital Download)"
+                - generic [ref=e390]: $2.77
+                - generic "From Etsy" [ref=e392]: Etsy
+                - generic [ref=e396]:
+                  - img [ref=e398]
+                  - generic [ref=e400]: Free
+            - generic [ref=e401]:
+              - link "for from Etsy":
+                - link "for from Etsy" [ref=e402] [cursor=pointer]:
+                  - /url: https://www.etsy.com/listing/1237700737/printable-kids-lunchbox-jokes-40-funny?gpla=1&gao=1&
+              - generic [ref=e407]:
+                - heading "Printable Kids Lunchbox Jokes - 40 Funny Notes - Digital Download" [level=3] [ref=e408]:
+                  - generic [ref=e409]: Printable Kids Lunchbox Jokes - 40 Funny Notes - Digital Download
+                - generic [ref=e411]: $3.71
+                - generic "From Etsy" [ref=e413]: Etsy
+                - img "Rated 4.9 out of 5, (11) user reviews" [ref=e418]:
+                  - img [ref=e419]
+                  - text: (11)
+            - generic [ref=e422]:
+              - link "for from Etsy":
+                - link "for from Etsy" [ref=e423] [cursor=pointer]:
+                  - /url: https://www.etsy.com/listing/1857696418/printable-cute-lunchbox-jokes-for-kids?gpla=1&gao=1&
+              - generic [ref=e428]:
+                - heading "Kid-Friendly Joke Cards | 16 Count | Printable PDF" [level=3] [ref=e429]:
+                  - generic [ref=e430]: Kid-Friendly Joke Cards | 16 Count | Printable PDF
+                - generic [ref=e432]: $4.79
+                - generic "From Etsy" [ref=e434]: Etsy
+                - img "Rated 5.0 out of 5, (3) user reviews" [ref=e439]:
+                  - img [ref=e440]
+                  - text: (3)
+            - link "View all" [ref=e445] [cursor=pointer]:
+              - /url: /search?q=jokes+for+kids&sca_esv=c4a9854c715d4f5d&source=univ&udm=28&ved=1t:6869&ictx=111
+              - generic [ref=e447]:
+                - img [ref=e450]
+                - generic [ref=e452]: View all
+      - main [ref=e453]:
+        - generic [ref=e458]:
+          - generic [ref=e461]:
+            - heading "Web results" [level=2] [ref=e462]
+            - generic [ref=e463]:
+              - generic [ref=e466]:
+                - link "250+ Jokes for Kids to Spark a Laugh Ranger Rick https://rangerrick.org › Games & Jokes" [ref=e468] [cursor=pointer]:
+                  - /url: https://rangerrick.org/games-jokes/jokes/?srsltid=AfmBOopRyScMZMR-vZdEyMH86jINR_CYYPk29rCKv3eFpoXVAVHqJk6-
+                  - heading "250+ Jokes for Kids to Spark a Laugh" [level=3] [ref=e469]
+                  - generic [ref=e474]:
+                    - generic [ref=e476]: Ranger Rick
+                    - generic [ref=e478]: https://rangerrick.org › Games & Jokes
+                - button "About this result" [ref=e479] [cursor=pointer]:
+                  - img [ref=e482]
+              - generic [ref=e485]:
+                - generic [ref=e486]:
+                  - text: "1. Joke:"
+                  - emphasis [ref=e487]: "What were prehistoric sleepovers called? Answer: Dino-SNORES"
+                  - text: ". 2. Joke: What's a bee's favorite musical? Answer: Stinging in the Rain."
+                - link "Read more" [ref=e488] [cursor=pointer]:
+                  - /url: https://rangerrick.org/games-jokes/jokes/?srsltid=AfmBOopRyScMZMR-vZdEyMH86jINR_CYYPk29rCKv3eFpoXVAVHqJk6-#:~:text=1.%20Joke%3A%20What%20were%20prehistoric,Answer%3A%20Stinging%20in%20the%20Rain.
+          - generic [ref=e492]:
+            - generic [ref=e495]:
+              - link "Best Jokes for Primary Aged Children The SEN Resources Blog https://senresourcesblog.com › 2021/02/24 › best-jokes..." [ref=e497] [cursor=pointer]:
+                - /url: https://senresourcesblog.com/2021/02/24/best-jokes-for-primary-aged-children/
+                - heading "Best Jokes for Primary Aged Children" [level=3] [ref=e498]
+                - generic [ref=e503]:
+                  - generic [ref=e505]: The SEN Resources Blog
+                  - generic [ref=e507]: https://senresourcesblog.com › 2021/02/24 › best-jokes...
+              - button "About this result" [ref=e508] [cursor=pointer]:
+                - img [ref=e511]
+            - generic [ref=e514]:
+              - generic [ref=e515]: Feb 24, 2021 —
+              - generic [ref=e516]:
+                - emphasis [ref=e517]: What do you call a donkey with 3 legs
+                - text: "? · What do you call 2 robbers? · I'd tell you the joke about the jam but you would spread it · What do lions ..."
+              - link "Read more" [ref=e518] [cursor=pointer]:
+                - /url: https://senresourcesblog.com/2021/02/24/best-jokes-for-primary-aged-children/#:~:text=What%20do%20you%20call%20a,donkey%20with%203%20legs%3F&text=What%20do%20you%20call%202,robbers%3F&text=I'd%20tell%20you%20the%20joke,but%20you%20would%20spread%20it&text=What%20do%20lions%20eat%3F%20Roarrr
+          - generic [ref=e522]:
+            - generic [ref=e525]:
+              - 'link "Can I have your best kid-friendly jokes? : r/dadjokes Reddit · r/dadjokes 270+ comments · 3 years ago" [ref=e527] [cursor=pointer]':
+                - /url: https://www.reddit.com/r/dadjokes/comments/12ev5gc/can_i_have_your_best_kidfriendly_jokes/
+                - 'heading "Can I have your best kid-friendly jokes? : r/dadjokes" [level=3] [ref=e528]'
+                - generic [ref=e533]:
+                  - generic [ref=e535]: Reddit · r/dadjokes
+                  - generic [ref=e537]: 270+ comments · 3 years ago
+              - button "About this result" [ref=e538] [cursor=pointer]:
+                - img [ref=e541]
+            - generic [ref=e544]: I work at an elementary school that has a big whiteboard in the cafeteria and I've seen so many jokes here in this subreddit that the kids would LOVE. ...
+            - generic [ref=e549]:
+              - link "278 answers" [ref=e550] [cursor=pointer]:
+                - /url: https://www.reddit.com/r/dadjokes/comments/12ev5gc/can_i_have_your_best_kidfriendly_jokes/jfcoo8h/
+              - generic [ref=e551]: ·
+              - generic [ref=e552]: "Top answer:"
+              - generic [ref=e553]: Why can't a nose be 12 inches long? Because then it would be a foot.
+            - generic [ref=e556]:
+              - generic [ref=e557]:
+                - 'link "What''s your best kid friendly joke? : r/AskReddit" [ref=e560] [cursor=pointer]':
+                  - /url: https://www.reddit.com/r/AskReddit/comments/g782p/whats_your_best_kid_friendly_joke/
+                  - generic [ref=e561]:
+                    - text: What's your best
+                    - emphasis [ref=e562]: kid
+                    - text: "friendly joke? : r/AskReddit"
+                - generic [ref=e564]: 778 answers
+                - generic [ref=e566]: Mar 19, 2011
+              - generic [ref=e567]:
+                - 'link "What are your best kid friendly jokes? : r/AskUK ..." [ref=e570] [cursor=pointer]':
+                  - /url: https://www.reddit.com/r/AskUK/comments/1b864qr/what_are_your_best_kid_friendly_jokes/
+                  - generic [ref=e571]:
+                    - text: What are your best
+                    - emphasis [ref=e572]: kid
+                    - text: friendly
+                    - emphasis [ref=e573]: jokes
+                    - text: "? : r/AskUK ..."
+                - generic [ref=e575]: 222 answers
+                - generic [ref=e577]: Mar 6, 2024
+              - link "More results from www.reddit.com" [ref=e581] [cursor=pointer]:
+                - /url: /search?q=jokes+for+kids+site:www.reddit.com&sca_esv=c4a9854c715d4f5d&sa=X&ved=2ahUKEwjV_OzPssaUAxXqFzQIHd3TKsAQrQIoAnoECDcQAw
+          - generic [ref=e585]:
+            - generic [ref=e588]:
+              - link "Hilarious jokes kids can't wait to tell Care.com https://www.care.com › 101-funny-jokes-for-kids" [ref=e590] [cursor=pointer]:
+                - /url: https://www.care.com/c/101-funny-jokes-for-kids/
+                - heading "Hilarious jokes kids can't wait to tell" [level=3] [ref=e591]
+                - generic [ref=e596]:
+                  - generic [ref=e598]: Care.com
+                  - generic [ref=e600]: https://www.care.com › 101-funny-jokes-for-kids
+              - button "About this result" [ref=e601] [cursor=pointer]:
+                - img [ref=e604]
+            - generic [ref=e607]:
+              - generic [ref=e608]: Aug 27, 2025 —
+              - generic [ref=e609]:
+                - emphasis [ref=e610]: Kid jokes about nature
+                - text: ". Q: How does the ocean say hello? A: It waves. Q: What did the tree say to the wind? A: Leaf me alone! Q: What's the ..."
+              - link "Read more" [ref=e611] [cursor=pointer]:
+                - /url: https://www.care.com/c/101-funny-jokes-for-kids/#:~:text=Kid%20jokes%20about%20nature,throwing%20a%20party%20in%20space%3F
+          - generic [ref=e615]:
+            - generic [ref=e618]:
+              - link "Jokes for Kids | Popsicle Play Zone Popsicle https://www.popsicle.com › Home › Popsicle® Play Zone" [ref=e620] [cursor=pointer]:
+                - /url: https://www.popsicle.com/us/en/playzone/jokes.html
+                - heading "Jokes for Kids | Popsicle Play Zone" [level=3] [ref=e621]
+                - generic [ref=e626]:
+                  - generic [ref=e628]: Popsicle
+                  - generic [ref=e630]: https://www.popsicle.com › Home › Popsicle® Play Zone
+              - button "About this result" [ref=e631] [cursor=pointer]:
+                - img [ref=e634]
+            - generic [ref=e638]:
+              - text: Explore these
+              - emphasis [ref=e639]: hilarious kid friendly jokes
+              - text: that are guaranteed to keep the entire family laughing. Why were the doctors so calm? Find out!
+          - generic [ref=e643]:
+            - generic [ref=e646]:
+              - link "179+ Funny Jokes for Kids...Got One to Add? Upparent https://www.upparent.com › Polls & Tips › Kids" [ref=e648] [cursor=pointer]:
+                - /url: https://www.upparent.com/questions/funny-jokes-for-kids
+                - heading "179+ Funny Jokes for Kids...Got One to Add?" [level=3] [ref=e649]
+                - generic [ref=e654]:
+                  - generic [ref=e656]: Upparent
+                  - generic [ref=e658]: https://www.upparent.com › Polls & Tips › Kids
+              - button "About this result" [ref=e659] [cursor=pointer]:
+                - img [ref=e662]
+            - generic [ref=e665]: "***Welcome, parents!*** Our community forum gathers questions and conversations around all things family life. Everyone is invited to share their experience ..."
+            - generic [ref=e670]:
+              - link "180 answers" [ref=e671] [cursor=pointer]:
+                - /url: https://www.upparent.com/questions/funny-jokes-for-kids#answer-2325
+              - generic [ref=e672]: ·
+              - generic [ref=e673]: "1,485 votes:"
+              - generic [ref=e674]: What did the shark say when it ate the clown fish? Tastes funny.
+          - generic [ref=e678]:
+            - heading "Images" [level=2] [ref=e682]
+            - generic [ref=e686]:
+              - generic [ref=e690] [cursor=pointer]:
+                - link "175+ Food Jokes for Kids with Free Printable Cards | SkipToMyLou.org":
+                  - /url: https://www.skiptomylou.org/food-jokes/
+                - button "175+ Food Jokes for Kids with Free Printable Cards |" [ref=e692]:
+                  - img "175+ Food Jokes for Kids with Free Printable Cards |" [ref=e694]
+                - generic [ref=e696]:
+                  - generic [ref=e698]: 175+ Food Jokes for Kids with Free Printable Cards |
+                  - generic [ref=e699]:
+                    - generic [ref=e706]: SkipToMyLou.org
+                    - button "About this result" [ref=e709]:
+                      - img [ref=e712]
+              - generic [ref=e717] [cursor=pointer]:
+                - link "Jokes for Kids | Popsicle Play Zone Popsicle":
+                  - /url: https://www.popsicle.com/us/en/playzone/jokes.html
+                - button "Jokes for Kids | Popsicle Play Zone" [ref=e719]:
+                  - img "Jokes for Kids | Popsicle Play Zone" [ref=e721]
+                - generic [ref=e723]:
+                  - generic [ref=e725]: Jokes for Kids | Popsicle Play Zone
+                  - generic [ref=e726]:
+                    - generic [ref=e733]: Popsicle
+                    - button "About this result" [ref=e736]:
+                      - img [ref=e739]
+              - generic [ref=e744] [cursor=pointer]:
+                - link "250+ Jokes for Kids to Spark a Laugh Ranger Rick":
+                  - /url: https://rangerrick.org/games-jokes/jokes/?srsltid=AfmBOoqlaFYedjwfdqeLJ1_dj8sNNe9KSukWlOs-zrisoKPY_q1rWDxD
+                - button "250+ Jokes for Kids to Spark a Laugh" [ref=e746]:
+                  - img "250+ Jokes for Kids to Spark a Laugh" [ref=e748]
+                - generic [ref=e750]:
+                  - generic [ref=e752]: 250+ Jokes for Kids to Spark a Laugh
+                  - generic [ref=e753]:
+                    - generic [ref=e760]: Ranger Rick
+                    - button "About this result" [ref=e763]:
+                      - img [ref=e766]
+            - button "Show more images" [ref=e769] [cursor=pointer]:
+              - separator [ref=e770]
+              - generic [ref=e771]:
+                - generic [ref=e772]: Show more images
+                - img [ref=e774]
+          - generic [ref=e778]:
+            - heading "Web results" [level=2] [ref=e779]
+            - generic [ref=e780]:
+              - generic [ref=e783]:
+                - link "Jokes for Kids Co Springs Mom Collective https://cospringsmom.com › tips-tricks › jokes-for-kids" [ref=e785] [cursor=pointer]:
+                  - /url: https://cospringsmom.com/tips-tricks/jokes-for-kids/
+                  - heading "Jokes for Kids" [level=3] [ref=e786]
+                  - generic [ref=e791]:
+                    - generic [ref=e793]: Co Springs Mom Collective
+                    - generic [ref=e795]: https://cospringsmom.com › tips-tricks › jokes-for-kids
+                - button "About this result" [ref=e796] [cursor=pointer]:
+                  - img [ref=e799]
+              - generic [ref=e802]:
+                - generic [ref=e803]: Sep 6, 2021 —
+                - generic [ref=e804]:
+                  - text: "1."
+                  - emphasis [ref=e805]: What do pirates pay for corn? A buck an ear
+                  - text: "! 2. What's worse than finding a worm in your apple? Finding half a worm ..."
+                - link "Read more" [ref=e806] [cursor=pointer]:
+                  - /url: https://cospringsmom.com/tips-tricks/jokes-for-kids/#:~:text=1.%20What%20do%20pirates%20pay,a%20worm%20in%20your%20apple!
+          - generic [ref=e810]:
+            - generic [ref=e812]:
+              - heading "Videos" [level=2] [ref=e813]
+              - button "About this result" [ref=e814] [cursor=pointer]:
+                - img [ref=e817]
+            - generic [ref=e820]:
+              - generic [ref=e826]:
+                - generic [ref=e827]:
+                  - generic [ref=e828]:
+                    - link "What Do You Think Is Funny? | Caitie's Questions | Jokes For ... YouTube Super Simple Play with Caitie! Feb 18, 2025" [ref=e830] [cursor=pointer]:
+                      - /url: https://www.youtube.com/watch?v=iUcFCVx4TKM
+                      - heading "What Do You Think Is Funny? | Caitie's Questions | Jokes For ... YouTube Super Simple Play with Caitie! Feb 18, 2025" [level=3] [ref=e831]:
+                        - generic [ref=e834]: What Do You Think Is Funny? | Caitie's Questions | Jokes For ...
+                        - generic [ref=e836]:
+                          - generic [ref=e837]:
+                            - text: YouTube
+                            - generic [ref=e838]: · Super Simple Play with Caitie!
+                          - generic [ref=e839]: Feb 18, 2025
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic:
+                              - text: YouTube
+                              - generic: · Super Simple Play with Caitie!
+                        - button "About this result" [ref=e840] [cursor=pointer]:
+                          - img [ref=e843]
+                  - button "What Do You Think Is Funny? | Caitie's Questions | Jokes For ... by Super Simple Play with Caitie! on YouTube. Play on Google. 4:47" [ref=e845] [cursor=pointer]:
+                    - generic [ref=e846]:
+                      - img [ref=e852]
+                      - generic [ref=e855]:
+                        - generic [ref=e856]: 4:47
+                        - img [ref=e859]
+                - button "Kids share funny jokes like \"Where does a mouse park their boat?\" and \"Why did the ketchup scream?\"" [ref=e862] [cursor=pointer]:
+                  - generic [ref=e866]: Kids share funny jokes like "Where does a mouse park their boat?" and "Why did the ketchup scream?"
+              - generic [ref=e872]:
+                - generic [ref=e873]:
+                  - generic [ref=e874]:
+                    - link "Jokes For Kids that are really funny in English! TRY NOT TO ... YouTube Fuzzy Puppet Mar 22, 2025" [ref=e876] [cursor=pointer]:
+                      - /url: https://www.youtube.com/watch?v=cwunRPy-24A
+                      - heading "Jokes For Kids that are really funny in English! TRY NOT TO ... YouTube Fuzzy Puppet Mar 22, 2025" [level=3] [ref=e877]:
+                        - generic [ref=e880]: Jokes For Kids that are really funny in English! TRY NOT TO ...
+                        - generic [ref=e882]:
+                          - generic [ref=e883]:
+                            - text: YouTube
+                            - generic [ref=e884]: · Fuzzy Puppet
+                          - generic [ref=e885]: Mar 22, 2025
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic:
+                              - text: YouTube
+                              - generic: · Fuzzy Puppet
+                        - button "About this result" [ref=e886] [cursor=pointer]:
+                          - img [ref=e889]
+                  - button "Jokes For Kids that are really funny in English! TRY NOT TO ... by Fuzzy Puppet on YouTube. Play on Google. 5:36" [ref=e891] [cursor=pointer]:
+                    - generic [ref=e892]:
+                      - img [ref=e898]
+                      - generic [ref=e901]:
+                        - generic [ref=e902]: 5:36
+                        - img [ref=e905]
+                - button "Laugh at jokes like \"What do you call an alligator in a vest? An investigator\" and \"Why did the picture go to jail? Because it was framed.\"" [ref=e908] [cursor=pointer]:
+                  - generic [ref=e912]: Laugh at jokes like "What do you call an alligator in a vest? An investigator" and "Why did the picture go to jail? Because it was framed."
+              - generic [ref=e918]:
+                - generic [ref=e919]:
+                  - generic [ref=e920]:
+                    - 'link "Get Ready to Laugh: Silly Jokes for Kids That''ll Make You ... YouTube Funny Soup May 16, 2025" [ref=e922] [cursor=pointer]':
+                      - /url: https://www.youtube.com/watch?v=WXhHgT_lzRY
+                      - 'heading "Get Ready to Laugh: Silly Jokes for Kids That''ll Make You ... YouTube Funny Soup May 16, 2025" [level=3] [ref=e923]':
+                        - generic [ref=e926]: "Get Ready to Laugh: Silly Jokes for Kids That'll Make You ..."
+                        - generic [ref=e928]:
+                          - generic [ref=e929]:
+                            - text: YouTube
+                            - generic [ref=e930]: · Funny Soup
+                          - generic [ref=e931]: May 16, 2025
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic:
+                              - text: YouTube
+                              - generic: · Funny Soup
+                        - button "About this result" [ref=e932] [cursor=pointer]:
+                          - img [ref=e935]
+                  - 'button "Get Ready to Laugh: Silly Jokes for Kids That''ll Make You ... by Funny Soup on YouTube. Play on Google. 8:05" [ref=e937] [cursor=pointer]':
+                    - generic [ref=e938]:
+                      - img [ref=e944]
+                      - generic [ref=e947]:
+                        - generic [ref=e948]: 8:05
+                        - img [ref=e951]
+                - 'button "Funny jokes for kids: teddy bear stuffed, cow musician, banana doctor, sleeping dinosaur, scientist experiments, tissue dance, palm tree, broom late, tuba toothpaste, corn, bulldozer, alligator investigator, monkey key, squirrel climb tree, walls meet at corner, gummy bear, zero and eight, chicken band, belly button button, bowl credit card, fish in schools, can opener, clock, birds in love, karate pig, eggs cracking up, space party." [ref=e954] [cursor=pointer]':
+                  - generic [ref=e958]: "Funny jokes for kids: teddy bear stuffed, cow musician, banana doctor, sleeping dinosaur, scientist experiments, tissue dance, palm tree, broom late, tuba toothpaste, corn, bulldozer, alligator investigator, monkey key, squirrel climb tree, walls meet at corner, gummy bear, zero and eight, chicken band, belly button button, bowl credit card, fish in schools, can opener, clock, birds in love, karate pig, eggs cracking up, space party."
+            - link "View all videos" [ref=e961] [cursor=pointer]:
+              - /url: /search?sca_esv=c4a9854c715d4f5d&udm=7&q=jokes+for+kids&sa=X&ved=2ahUKEwjV_OzPssaUAxXqFzQIHd3TKsAQ8ccDKAJ6BAhDEAQ
+              - separator [ref=e962]
+              - generic [ref=e963]:
+                - generic [ref=e964]: View all
+                - img [ref=e966]
+          - generic [ref=e970]:
+            - heading "Web results" [level=2] [ref=e971]
+            - generic [ref=e972]:
+              - generic [ref=e975]:
+                - link "80+ Jokes for Kids That Are Clean and Hilarious Entertain Your Toddler https://entertainyourtoddler.com › best-jokes-for-kids" [ref=e977] [cursor=pointer]:
+                  - /url: https://entertainyourtoddler.com/best-jokes-for-kids/
+                  - heading "80+ Jokes for Kids That Are Clean and Hilarious" [level=3] [ref=e978]
+                  - generic [ref=e983]:
+                    - generic [ref=e985]: Entertain Your Toddler
+                    - generic [ref=e987]: https://entertainyourtoddler.com › best-jokes-for-kids
+                - button "About this result" [ref=e988] [cursor=pointer]:
+                  - img [ref=e991]
+              - generic [ref=e994]:
+                - generic [ref=e995]:
+                  - emphasis [ref=e996]: Why did we first decide to put candles on top of a birthday cake
+                  - text: "? It was too hard to blow them out when they were on the bottom."
+                - link "Read more" [ref=e997] [cursor=pointer]:
+                  - /url: https://entertainyourtoddler.com/best-jokes-for-kids/#:~:text=Why%20did%20we%20first%20decide,they%20were%20on%20the%20bottom.
+          - region "Ads" [ref=e1001]:
+            - generic [ref=e1002]:
+              - heading "Sponsored result" [level=2] [ref=e1009]
+              - generic [ref=e1010]:
+                - generic [ref=e1022]:
+                  - generic [ref=e1023]:
+                    - link "200 Best Jokes for Kids That Will Make Them Laugh Out Loud Country Living https://www.countryliving.com" [ref=e1024] [cursor=pointer]:
+                      - /url: https://www.countryliving.com/life/entertainment/a30756797/jokes-for-kids/
+                      - heading "200 Best Jokes for Kids That Will Make Them Laugh Out Loud" [level=3] [ref=e1025]
+                      - generic [ref=e1031]:
+                        - generic [ref=e1033]: Country Living
+                        - generic [ref=e1034]: https://www.countryliving.com
+                    - button "Why this ad?" [ref=e1037] [cursor=pointer]:
+                      - img [ref=e1039]
+                  - generic [ref=e1043]: These cute and funny jokes for kids will have your whole family laughing. From kid-friendly one-liners to knock-knock jokes, there's a gag for every occasion. From kid-friendly one-liners to knock-knock jokes, there's a gag for every occasion. Best of 2026. Editor's Top Picks. Editor's Choice.
+                  - generic [ref=e1048]: 1M+ visits in past month
+                - button "Hide sponsored result" [ref=e1050] [cursor=pointer]:
+                  - separator [ref=e1051]
+                  - generic [ref=e1052]:
+                    - generic [ref=e1053]: Hide sponsored result
+                    - img [ref=e1055]
+        - generic [ref=e1058]:
+          - generic [ref=e1063]:
+            - heading "People also search for" [level=2] [ref=e1065]
+            - generic [ref=e1067]:
+              - generic [ref=e1068]:
+                - link "Jokes for Kids Book" [ref=e1072] [cursor=pointer]:
+                  - /url: /search?sca_esv=c4a9854c715d4f5d&q=Jokes+for+Kids+Book&sa=X&ved=2ahUKEwjV_OzPssaUAxXqFzQIHd3TKsAQ1QJ6BAg5EAE
+                  - generic [ref=e1073]:
+                    - generic [ref=e1078]: Jokes for Kids Book
+                    - img [ref=e1082]
+                - link "Funny jokes for kids 8 9" [ref=e1087] [cursor=pointer]:
+                  - /url: /search?sca_esv=c4a9854c715d4f5d&q=Funny+jokes+for+kids+8+9&sa=X&ved=2ahUKEwjV_OzPssaUAxXqFzQIHd3TKsAQ1QJ6BAhJEAE
+                  - generic [ref=e1088]:
+                    - generic [ref=e1093]: Funny jokes for kids 8 9
+                    - img [ref=e1097]
+                - link "Funny jokes for kids 10 11" [ref=e1102] [cursor=pointer]:
+                  - /url: /search?sca_esv=c4a9854c715d4f5d&q=Funny+jokes+for+kids+10+11&sa=X&ved=2ahUKEwjV_OzPssaUAxXqFzQIHd3TKsAQ1QJ6BAhHEAE
+                  - generic [ref=e1103]:
+                    - generic [ref=e1108]: Funny jokes for kids 10 11
+                    - img [ref=e1112]
+                - link "100 jokes for kids" [ref=e1117] [cursor=pointer]:
+                  - /url: /search?sca_esv=c4a9854c715d4f5d&q=100+jokes+for+kids&sa=X&ved=2ahUKEwjV_OzPssaUAxXqFzQIHd3TKsAQ1QJ6BAhFEAE
+                  - generic [ref=e1118]:
+                    - generic [ref=e1123]: 100 jokes for kids
+                    - img [ref=e1127]
+              - generic [ref=e1129]:
+                - link "Jokes for 6 7 year olds" [ref=e1133] [cursor=pointer]:
+                  - /url: /search?sca_esv=c4a9854c715d4f5d&q=Jokes+for+6+7+year+olds&sa=X&ved=2ahUKEwjV_OzPssaUAxXqFzQIHd3TKsAQ1QJ6BAhEEAE
+                  - generic [ref=e1134]:
+                    - generic [ref=e1139]: Jokes for 6 7 year olds
+                    - img [ref=e1143]
+                - link "Short funny jokes for kids 10 11 with answers" [ref=e1148] [cursor=pointer]:
+                  - /url: /search?sca_esv=c4a9854c715d4f5d&q=Short+funny+jokes+for+kids+10+11+with+answers&sa=X&ved=2ahUKEwjV_OzPssaUAxXqFzQIHd3TKsAQ1QJ6BAhCEAE
+                  - generic [ref=e1149]:
+                    - generic [ref=e1154]: Short funny jokes for kids 10 11 with answers
+                    - img [ref=e1158]
+                - link "Knock knock jokes for kids" [ref=e1163] [cursor=pointer]:
+                  - /url: /search?sca_esv=c4a9854c715d4f5d&q=Knock+knock+jokes+for+kids&sa=X&ved=2ahUKEwjV_OzPssaUAxXqFzQIHd3TKsAQ1QJ6BAhBEAE
+                  - generic [ref=e1164]:
+                    - generic [ref=e1169]: Knock knock jokes for kids
+                    - img [ref=e1173]
+                - link "Jokes for kids in English" [ref=e1178] [cursor=pointer]:
+                  - /url: /search?sca_esv=c4a9854c715d4f5d&q=Jokes+for+kids+in+English&sa=X&ved=2ahUKEwjV_OzPssaUAxXqFzQIHd3TKsAQ1QJ6BAg7EAE
+                  - generic [ref=e1179]:
+                    - generic [ref=e1184]: Jokes for kids in English
+                    - img [ref=e1188]
+          - navigation [ref=e1190]:
+            - heading "Page Navigation" [level=1] [ref=e1191]
+            - text: "1"
+            - link "Page 2" [ref=e1194] [cursor=pointer]:
+              - /url: /search?q=jokes+for+kids&sca_esv=c4a9854c715d4f5d&ei=eeMMapXcGOqv0PEP3aergQw&start=10&sa=N&sstk=AU9db-AkCuk4x6x_A4z5JNNFd6KpkJzF0a2VXSFbiA30WLOJAyuNZcfcot6b5xCv49AlJAvZuA4ZQcCMXTleABGs5tFDFOPThvTpqQ&ved=2ahUKEwjV_OzPssaUAxXqFzQIHd3TKsAQ8tMDegQISBAE
+              - text: "2"
+            - link "Page 3" [ref=e1196] [cursor=pointer]:
+              - /url: /search?q=jokes+for+kids&sca_esv=c4a9854c715d4f5d&ei=eeMMapXcGOqv0PEP3aergQw&start=20&sa=N&sstk=AU9db-AkCuk4x6x_A4z5JNNFd6KpkJzF0a2VXSFbiA30WLOJAyuNZcfcot6b5xCv49AlJAvZuA4ZQcCMXTleABGs5tFDFOPThvTpqQ&ved=2ahUKEwjV_OzPssaUAxXqFzQIHd3TKsAQ8tMDegQISBAG
+              - text: "3"
+            - link "Page 4" [ref=e1198] [cursor=pointer]:
+              - /url: /search?q=jokes+for+kids&sca_esv=c4a9854c715d4f5d&ei=eeMMapXcGOqv0PEP3aergQw&start=30&sa=N&sstk=AU9db-AkCuk4x6x_A4z5JNNFd6KpkJzF0a2VXSFbiA30WLOJAyuNZcfcot6b5xCv49AlJAvZuA4ZQcCMXTleABGs5tFDFOPThvTpqQ&ved=2ahUKEwjV_OzPssaUAxXqFzQIHd3TKsAQ8tMDegQISBAI
+              - text: "4"
+            - link "Page 5" [ref=e1200] [cursor=pointer]:
+              - /url: /search?q=jokes+for+kids&sca_esv=c4a9854c715d4f5d&ei=eeMMapXcGOqv0PEP3aergQw&start=40&sa=N&sstk=AU9db-AkCuk4x6x_A4z5JNNFd6KpkJzF0a2VXSFbiA30WLOJAyuNZcfcot6b5xCv49AlJAvZuA4ZQcCMXTleABGs5tFDFOPThvTpqQ&ved=2ahUKEwjV_OzPssaUAxXqFzQIHd3TKsAQ8tMDegQISBAK
+              - text: "5"
+            - link "Page 6" [ref=e1202] [cursor=pointer]:
+              - /url: /search?q=jokes+for+kids&sca_esv=c4a9854c715d4f5d&ei=eeMMapXcGOqv0PEP3aergQw&start=50&sa=N&sstk=AU9db-AkCuk4x6x_A4z5JNNFd6KpkJzF0a2VXSFbiA30WLOJAyuNZcfcot6b5xCv49AlJAvZuA4ZQcCMXTleABGs5tFDFOPThvTpqQ&ved=2ahUKEwjV_OzPssaUAxXqFzQIHd3TKsAQ8tMDegQISBAM
+              - text: "6"
+            - link "Page 7" [ref=e1204] [cursor=pointer]:
+              - /url: /search?q=jokes+for+kids&sca_esv=c4a9854c715d4f5d&ei=eeMMapXcGOqv0PEP3aergQw&start=60&sa=N&sstk=AU9db-AkCuk4x6x_A4z5JNNFd6KpkJzF0a2VXSFbiA30WLOJAyuNZcfcot6b5xCv49AlJAvZuA4ZQcCMXTleABGs5tFDFOPThvTpqQ&ved=2ahUKEwjV_OzPssaUAxXqFzQIHd3TKsAQ8tMDegQISBAO
+              - text: "7"
+            - link "Page 8" [ref=e1206] [cursor=pointer]:
+              - /url: /search?q=jokes+for+kids&sca_esv=c4a9854c715d4f5d&ei=eeMMapXcGOqv0PEP3aergQw&start=70&sa=N&sstk=AU9db-AkCuk4x6x_A4z5JNNFd6KpkJzF0a2VXSFbiA30WLOJAyuNZcfcot6b5xCv49AlJAvZuA4ZQcCMXTleABGs5tFDFOPThvTpqQ&ved=2ahUKEwjV_OzPssaUAxXqFzQIHd3TKsAQ8tMDegQISBAQ
+              - text: "8"
+            - link "Page 9" [ref=e1208] [cursor=pointer]:
+              - /url: /search?q=jokes+for+kids&sca_esv=c4a9854c715d4f5d&ei=eeMMapXcGOqv0PEP3aergQw&start=80&sa=N&sstk=AU9db-AkCuk4x6x_A4z5JNNFd6KpkJzF0a2VXSFbiA30WLOJAyuNZcfcot6b5xCv49AlJAvZuA4ZQcCMXTleABGs5tFDFOPThvTpqQ&ved=2ahUKEwjV_OzPssaUAxXqFzQIHd3TKsAQ8tMDegQISBAS
+              - text: "9"
+            - link "Page 10" [ref=e1210] [cursor=pointer]:
+              - /url: /search?q=jokes+for+kids&sca_esv=c4a9854c715d4f5d&ei=eeMMapXcGOqv0PEP3aergQw&start=90&sa=N&sstk=AU9db-AkCuk4x6x_A4z5JNNFd6KpkJzF0a2VXSFbiA30WLOJAyuNZcfcot6b5xCv49AlJAvZuA4ZQcCMXTleABGs5tFDFOPThvTpqQ&ved=2ahUKEwjV_OzPssaUAxXqFzQIHd3TKsAQ8tMDegQISBAU
+              - text: "10"
+            - heading "Next" [level=2] [ref=e1212]:
+              - link "Next" [ref=e1213] [cursor=pointer]:
+                - /url: /search?q=jokes+for+kids&sca_esv=c4a9854c715d4f5d&ei=eeMMapXcGOqv0PEP3aergQw&start=10&sa=N&sstk=AU9db-AkCuk4x6x_A4z5JNNFd6KpkJzF0a2VXSFbiA30WLOJAyuNZcfcot6b5xCv49AlJAvZuA4ZQcCMXTleABGs5tFDFOPThvTpqQ&ved=2ahUKEwjV_OzPssaUAxXqFzQIHd3TKsAQ8NMDegQISBAW
+                - generic [ref=e1215]: Next
+        - navigation
+    - contentinfo [ref=e1216]:
+      - heading "Footer Links" [level=1] [ref=e1217]
+      - generic [ref=e1221]:
+        - generic [ref=e1225]:
+          - button "94583, San Ramon, CA - From your IP address" [ref=e1227] [cursor=pointer]:
+            - generic [ref=e1228]: 94583, San Ramon, CA
+            - generic [ref=e1230]:
+              - text: "-"
+              - generic [ref=e1231]: From your IP address
+          - text: "-"
+          - button "Update location" [ref=e1233] [cursor=pointer]: Update location
+        - generic [ref=e1236]:
+          - link "Help" [ref=e1237] [cursor=pointer]:
+            - /url: https://support.google.com/websearch/?p=ws_results_help&hl=en&fg=1
+          - link "Send feedback" [ref=e1238] [cursor=pointer]:
+            - /url: "#"
+          - link "Privacy" [ref=e1239] [cursor=pointer]:
+            - /url: https://policies.google.com/privacy?hl=en&fg=1
+          - link "Terms" [ref=e1240] [cursor=pointer]:
+            - /url: https://policies.google.com/terms?hl=en&fg=1
