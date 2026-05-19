@@ -1,0 +1,182 @@
+:root {
+  color-scheme: dark;
+  --bg: #08111f;
+  --card: rgba(255, 255, 255, 0.09);
+  --card-border: rgba(255, 255, 255, 0.18);
+  --text: #f8fafc;
+  --muted: #b6c3d1;
+  --accent: #facc15;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+  background: radial-gradient(circle at top left, #183b72, var(--bg) 46%, #040812);
+  color: var(--text);
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+button, canvas { font: inherit; }
+
+.page {
+  width: min(1180px, calc(100vw - 32px));
+  margin: 0 auto;
+  padding: 34px 0 48px;
+}
+
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.eyebrow {
+  color: var(--accent);
+  margin: 0 0 6px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2.8rem, 8vw, 6rem);
+  line-height: 0.9;
+  letter-spacing: -0.07em;
+}
+
+.subtitle {
+  max-width: 780px;
+  margin: 14px 0 0;
+  color: var(--muted);
+  font-size: 1.08rem;
+  line-height: 1.6;
+}
+
+kbd {
+  border: 1px solid rgba(255,255,255,0.25);
+  background: rgba(255,255,255,0.12);
+  border-radius: 7px;
+  padding: 2px 7px;
+  color: #fff;
+}
+
+.status {
+  white-space: nowrap;
+  border: 1px solid var(--card-border);
+  background: var(--card);
+  border-radius: 999px;
+  padding: 10px 14px;
+  color: var(--muted);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.22);
+}
+
+.status.connected { color: #86efac; }
+.status.reconnecting { color: #fde68a; }
+
+.gameGrid {
+  display: grid;
+  grid-template-columns: minmax(320px, 430px) 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.canvasButton {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: 28px;
+  overflow: hidden;
+  cursor: pointer;
+  background: transparent;
+  box-shadow: 0 32px 90px rgba(0,0,0,0.48), 0 0 0 1px rgba(255,255,255,0.18);
+}
+
+.canvasButton:focus-visible {
+  outline: 4px solid #facc15;
+  outline-offset: 5px;
+}
+
+canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.panel {
+  min-height: 420px;
+  border: 1px solid var(--card-border);
+  background: linear-gradient(180deg, rgba(255,255,255,0.13), rgba(255,255,255,0.06));
+  backdrop-filter: blur(18px);
+  border-radius: 28px;
+  padding: 24px;
+  box-shadow: 0 32px 90px rgba(0,0,0,0.28);
+}
+
+h2 {
+  margin: 0 0 16px;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #d9e6f5;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px 18px;
+  padding-bottom: 20px;
+  color: var(--muted);
+}
+
+.stats strong { color: #fff; }
+
+.controls {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 26px;
+}
+
+.controls button {
+  border: 0;
+  border-radius: 14px;
+  padding: 12px 18px;
+  font-weight: 800;
+  cursor: pointer;
+  color: #111827;
+  background: #facc15;
+}
+
+.controls button + button {
+  background: #dbeafe;
+}
+
+.events {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.events li {
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(0,0,0,0.18);
+  color: #dbeafe;
+  border-radius: 12px;
+  padding: 10px 12px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.86rem;
+}
+
+@media (max-width: 860px) {
+  .hero { display: block; }
+  .status { display: inline-block; margin-top: 18px; }
+  .gameGrid { grid-template-columns: 1fr; }
+}

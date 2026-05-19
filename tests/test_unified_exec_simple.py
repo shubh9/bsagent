@@ -11,7 +11,7 @@ from typing import Any
 import pytest
 
 import tools
-from unified_exec import PexpectTerminalBackend, process_manager
+from unified_exec import OutputBuffer, PexpectTerminalBackend, process_manager
 
 
 PYTHON = shlex.quote(sys.executable)
@@ -75,6 +75,18 @@ def _payload(result: dict[str, Any]) -> dict[str, Any]:
     return json.loads(result["output"])
 
 
+def test_output_buffer_caps_and_reports_truncation() -> None:
+    buffer = OutputBuffer(max_chars=10)
+
+    buffer.append("hello")
+    buffer.append(" world")
+    snapshot = buffer.snapshot_all(100)
+
+    assert "ello world" in snapshot.output
+    assert snapshot.original_char_count == 11
+    assert snapshot.truncated
+
+
 def test_pexpect_backend_runs_short_command(tmp_path: Path) -> None:
     session = PexpectTerminalBackend().spawn("echo hello", tmp_path)
 
@@ -128,30 +140,53 @@ def test_fast_exec_command_does_not_return_session_id(tmp_path: Path) -> None:
 
 
 def test_long_command_returns_session_id_and_can_be_polled(tmp_path: Path) -> None:
-    command = (
-        f"{PYTHON} -u -c \"import time; print('start', flush=True); "
-        "time.sleep(1); print('done', flush=True)\""
-    )
-    start_results = asyncio.run(
-        tools.dispatch_tools([_exec_call("call-1", command, yield_time_ms=100)], tmp_path)
-    )
+    async def scenario() -> None:
+        command = (
+            f"{PYTHON} -u -c \"import time; print('start', flush=True); "
+            "time.sleep(1); print('done', flush=True)\""
+        )
+        start_results = await tools.dispatch_tools(
+            [_exec_call("call-1", command, yield_time_ms=100)], tmp_path
+        )
 
-    start_payload = _payload(start_results[0])
-    assert start_payload["exit_code"] is None
-    assert "start" in start_payload["output"]
-    session_id = start_payload["session_id"]
+        start_payload = _payload(start_results[0])
+        assert start_payload["exit_code"] is None
+        assert "start" in start_payload["output"]
+        session_id = start_payload["session_id"]
 
-    poll_results = asyncio.run(
-        tools.dispatch_tools(
+        poll_results = await tools.dispatch_tools(
             [_write_call("call-2", session_id, "", yield_time_ms=2500)],
             tmp_path,
         )
-    )
-    poll_payload = _payload(poll_results[0])
+        poll_payload = _payload(poll_results[0])
 
-    assert poll_payload["exit_code"] == 0
-    assert "done" in poll_payload["output"]
-    assert await_count() == 0
+        assert poll_payload["exit_code"] == 0
+        assert "done" in poll_payload["output"]
+        assert await process_manager.session_count() == 0
+
+    asyncio.run(scenario())
+
+
+def test_background_output_is_available_on_later_poll(tmp_path: Path) -> None:
+    async def scenario() -> None:
+        command = (
+            f"{PYTHON} -u -c \"import time; print('start', flush=True); "
+            "time.sleep(.3); print('background', flush=True); time.sleep(5)\""
+        )
+        start_results = await tools.dispatch_tools(
+            [_exec_call("call-1", command, yield_time_ms=100)], tmp_path
+        )
+        session_id = _payload(start_results[0])["session_id"]
+        await asyncio.sleep(0.6)
+
+        poll_results = await tools.dispatch_tools(
+            [_write_call("call-2", session_id, "", yield_time_ms=100)],
+            tmp_path,
+        )
+
+        assert "background" in _payload(poll_results[0])["output"]
+
+    asyncio.run(scenario())
 
 
 def await_count() -> int:
@@ -159,48 +194,49 @@ def await_count() -> int:
 
 
 def test_interactive_stdin(tmp_path: Path) -> None:
-    command = f"{PYTHON} -u -c \"name=input('Name: '); print('hi ' + name)\""
-    start_results = asyncio.run(
-        tools.dispatch_tools([_exec_call("call-1", command, yield_time_ms=200)], tmp_path)
-    )
-    session_id = _payload(start_results[0])["session_id"]
+    async def scenario() -> None:
+        command = f"{PYTHON} -u -c \"name=input('Name: '); print('hi ' + name)\""
+        start_results = await tools.dispatch_tools(
+            [_exec_call("call-1", command, yield_time_ms=200)], tmp_path
+        )
+        session_id = _payload(start_results[0])["session_id"]
 
-    write_results = asyncio.run(
-        tools.dispatch_tools(
+        write_results = await tools.dispatch_tools(
             [_write_call("call-2", session_id, "Bob\n", yield_time_ms=1000)],
             tmp_path,
         )
-    )
+        payload = _payload(write_results[0])
+        assert payload["exit_code"] == 0
+        assert "hi Bob" in payload["output"]
 
-    payload = _payload(write_results[0])
-    assert payload["exit_code"] == 0
-    assert "hi Bob" in payload["output"]
+    asyncio.run(scenario())
 
 
 def test_same_session_write_calls_are_serialized(tmp_path: Path) -> None:
-    command = (
-        f"{PYTHON} -u -c \"import sys,time; print('ready', flush=True); "
-        "line=sys.stdin.readline(); time.sleep(.2); print('one ' + line.strip(), flush=True); "
-        "line=sys.stdin.readline(); print('two ' + line.strip(), flush=True)\""
-    )
-    start_results = asyncio.run(
-        tools.dispatch_tools([_exec_call("call-1", command, yield_time_ms=100)], tmp_path)
-    )
-    session_id = _payload(start_results[0])["session_id"]
+    async def scenario() -> None:
+        command = (
+            f"{PYTHON} -u -c \"import sys,time; print('ready', flush=True); "
+            "line=sys.stdin.readline(); time.sleep(.2); print('one ' + line.strip(), flush=True); "
+            "line=sys.stdin.readline(); print('two ' + line.strip(), flush=True)\""
+        )
+        start_results = await tools.dispatch_tools(
+            [_exec_call("call-1", command, yield_time_ms=100)], tmp_path
+        )
+        session_id = _payload(start_results[0])["session_id"]
 
-    results = asyncio.run(
-        tools.dispatch_tools(
+        results = await tools.dispatch_tools(
             [
                 _write_call("call-2", session_id, "A\n", yield_time_ms=500),
                 _write_call("call-3", session_id, "B\n", yield_time_ms=1000),
             ],
             tmp_path,
         )
-    )
-    combined_output = "".join(_payload(result)["output"] for result in results)
+        combined_output = "".join(_payload(result)["output"] for result in results)
 
-    assert "one A" in combined_output
-    assert "two B" in combined_output
+        assert "one A" in combined_output
+        assert "two B" in combined_output
+
+    asyncio.run(scenario())
 
 
 def test_apply_patch_still_works(tmp_path: Path) -> None:
@@ -305,6 +341,31 @@ def test_terminate_all_cleans_up_running_ptys(tmp_path: Path) -> None:
     asyncio.run(process_manager.terminate_all())
 
     assert await_count() == 0
+
+
+def test_process_manager_lists_and_terminates_one_session(tmp_path: Path) -> None:
+    async def scenario() -> None:
+        results = await tools.dispatch_tools(
+            [
+                _exec_call(
+                    "call-1",
+                    f"{PYTHON} -c \"import time; time.sleep(10)\"",
+                    yield_time_ms=100,
+                )
+            ],
+            tmp_path,
+        )
+        session_id = _payload(results[0])["session_id"]
+
+        sessions = await process_manager.list_sessions()
+        assert [session.session_id for session in sessions] == [session_id]
+        assert sessions[0].alive
+
+        assert await process_manager.terminate(session_id)
+        assert await process_manager.session_count() == 0
+        assert not await process_manager.terminate(session_id)
+
+    asyncio.run(scenario())
 
 
 def test_unknown_tool_returns_model_correctable_error(tmp_path: Path) -> None:

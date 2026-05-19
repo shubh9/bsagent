@@ -11,16 +11,14 @@ from __future__ import annotations
 
 import asyncio
 import json
-import os
 import subprocess
 import time
 from collections import deque
 from contextlib import asynccontextmanager
 from pathlib import Path
-from collections.abc import Callable
 from typing import Any, AsyncIterator, Literal
 
-from unified_exec import process_manager
+from unified_exec import OutputSnapshot, process_manager
 
 
 # ─── Error types ──────────────────────────────────────────────────────────────
@@ -191,38 +189,11 @@ _tool_lock = FairRWLock()
 # ─── Tool parallelism policy ---------------------------------------------------
 
 ToolParallelism = Literal["parallel", "exclusive"]
-ToolParallelismPolicy = ToolParallelism | Callable[[], ToolParallelism]
 
 TOOL_PARALLEL_CONFIG: dict[str, set[str]] = {
     "parallel_tools": {"exec_command", "write_stdin"},
     "exclusive_tools": {"apply_patch"},
 }
-
-
-def _env_flag_enabled(name: str, *, default: bool) -> bool:
-    value = os.environ.get(name)
-    if value is None:
-        return default
-    return value.strip().lower() not in {"0", "false", "no", "off"}
-
-
-def _shell_command_parallelism() -> ToolParallelism:
-    if "shell_command" in TOOL_PARALLEL_CONFIG["exclusive_tools"]:
-        return "exclusive"
-    env_value = os.environ.get("BSAGENT_PARALLEL_SHELL_COMMANDS")
-    if env_value is not None:
-        return (
-            "parallel"
-            if _env_flag_enabled("BSAGENT_PARALLEL_SHELL_COMMANDS", default=False)
-            else "exclusive"
-        )
-    if not _env_flag_enabled("BSAGENT_PARALLEL_SHELL_COMMANDS", default=True):
-        return "exclusive"
-    return (
-        "parallel"
-        if "shell_command" in TOOL_PARALLEL_CONFIG["parallel_tools"]
-        else "exclusive"
-    )
 
 
 def _configured_tool_parallelism(tool_name: str) -> ToolParallelism:
@@ -235,12 +206,7 @@ def _configured_tool_parallelism(tool_name: str) -> ToolParallelism:
 
 # Unknown tools default to exclusive. This keeps new side-effectful tools safe
 # until they explicitly opt into parallel execution.
-TOOL_PARALLELISM: dict[str, ToolParallelismPolicy] = {
-    "shell_command": _shell_command_parallelism,
-    "exec_command": lambda: _configured_tool_parallelism("exec_command"),
-    "write_stdin": lambda: _configured_tool_parallelism("write_stdin"),
-    "apply_patch": lambda: _configured_tool_parallelism("apply_patch"),
-}
+TOOL_PARALLELISM: dict[str, ToolParallelism] = {}
 
 # ─── Tool schemas (exact codex names and parameter shapes) ───────────────────
 
@@ -392,6 +358,29 @@ def _cap_text(text: str, max_output_tokens: int | None = None) -> str:
 APPROX_CHARS_PER_TOKEN = 4
 
 
+def _max_output_chars(max_output_tokens: int) -> int:
+    return min(OUTPUT_CAP, max(0, max_output_tokens) * APPROX_CHARS_PER_TOKEN)
+
+
+def _exec_payload(
+    *,
+    snapshot: OutputSnapshot,
+    exit_code: int | None,
+    started: float,
+    session_id: int | None = None,
+) -> str:
+    payload: dict[str, Any] = {
+        "exit_code": exit_code,
+        "output": snapshot.output,
+        "wall_time_seconds": round(time.monotonic() - started, 3),
+        "original_char_count": snapshot.original_char_count,
+        "truncated": snapshot.truncated,
+    }
+    if exit_code is None and session_id is not None:
+        payload["session_id"] = session_id
+    return json.dumps(payload)
+
+
 async def _run_exec_command(
     command: str,
     cwd: Path,
@@ -401,20 +390,25 @@ async def _run_exec_command(
 ) -> str:
     started = time.monotonic()
     session_id = await process_manager.allocate_id()
-    managed = await process_manager.spawn(session_id, command, cwd)
-    read = await asyncio.to_thread(
-        managed.session.read_until_idle_or_exit,
-        yield_time_ms / 1000,
-    )
-    payload: dict[str, Any] = {
-        "exit_code": read.exit_code,
-        "output": _cap_text(read.output, max_output_tokens),
-        "wall_time_seconds": round(time.monotonic() - started, 3),
-    }
-    if read.alive:
+    try:
+        managed = await process_manager.spawn(session_id, command, cwd)
+    except BaseException:
+        await process_manager.remove(session_id)
+        raise
+
+    await managed.wait_until_quiet_or_exit(yield_time_ms / 1000)
+    snapshot = managed.snapshot_since_last(_max_output_chars(max_output_tokens))
+
+    if managed.exit_code is None:
         await process_manager.store(managed)
-        payload["session_id"] = session_id
-    return json.dumps(payload)
+        return _exec_payload(
+            snapshot=snapshot,
+            exit_code=None,
+            started=started,
+            session_id=session_id,
+        )
+
+    return _exec_payload(snapshot=snapshot, exit_code=managed.exit_code, started=started)
 
 
 async def _run_write_stdin(
@@ -430,21 +424,25 @@ async def _run_write_stdin(
         raise ToolCallError.respond_to_model(f"unknown session_id: {session_id}")
 
     async with managed.lock:
-        await asyncio.to_thread(managed.session.write, chars)
-        read = await asyncio.to_thread(
-            managed.session.read_until_idle_or_exit,
-            yield_time_ms / 1000,
-        )
-        payload: dict[str, Any] = {
-            "exit_code": read.exit_code,
-            "output": _cap_text(read.output, max_output_tokens),
-            "wall_time_seconds": round(time.monotonic() - started, 3),
-        }
-        if read.alive:
-            payload["session_id"] = session_id
-        else:
+        if chars:
+            await managed.write(chars)
+        await managed.wait_until_quiet_or_exit(yield_time_ms / 1000)
+        snapshot = managed.snapshot_since_last(_max_output_chars(max_output_tokens))
+
+        if managed.exit_code is not None:
             await process_manager.remove(session_id)
-        return json.dumps(payload)
+            return _exec_payload(
+                snapshot=snapshot,
+                exit_code=managed.exit_code,
+                started=started,
+            )
+
+        return _exec_payload(
+            snapshot=snapshot,
+            exit_code=None,
+            started=started,
+            session_id=session_id,
+        )
 
 
 def _apply_patch(patch: str, workdir: Path) -> str:
@@ -580,8 +578,8 @@ async def dispatch_tools(
 
 
 def _tool_parallelism(tc: dict[str, Any]) -> ToolParallelism:
-    policy = TOOL_PARALLELISM.get(tc.get("name", ""), "exclusive")
-    return policy() if callable(policy) else policy
+    tool_name = tc.get("name", "")
+    return TOOL_PARALLELISM.get(tool_name, _configured_tool_parallelism(tool_name))
 
 
 def tool_supports_parallel(tool_name: str) -> bool:

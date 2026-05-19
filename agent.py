@@ -15,7 +15,7 @@ from pathlib import Path
 from openai import OpenAI
 
 from loop import continue_agent, run_agent
-from unified_exec import process_manager
+from unified_exec import SessionInfo, process_manager
 
 
 # ─── Bootstrap ────────────────────────────────────────────────────────────────
@@ -49,9 +49,53 @@ MODEL = os.environ.get("AGENT_MODEL", "gpt-5.5")
 # ─── REPL ─────────────────────────────────────────────────────────────────────
 
 
+def _format_session(info: SessionInfo) -> str:
+    age = int(max(0, time_now() - info.started_at))
+    status = "running" if info.alive else f"exit={info.exit_code}"
+    return (
+        f"{info.session_id}  {status}  age={age}s  "
+        f"cwd={info.cwd}  output={info.output_chars} chars  cmd={info.command}"
+    )
+
+
+def time_now() -> float:
+    import time
+
+    return time.monotonic()
+
+
+async def _handle_repl_command(user_input: str) -> bool:
+    if user_input == "/ps":
+        sessions = await process_manager.list_sessions()
+        if not sessions:
+            print("no background sessions")
+        else:
+            for session in sessions:
+                print(_format_session(session))
+        return True
+
+    if user_input == "/stop":
+        await process_manager.terminate_all()
+        print("stopped all background sessions")
+        return True
+
+    if user_input.startswith("/stop "):
+        raw_session_id = user_input.removeprefix("/stop ").strip()
+        try:
+            session_id = int(raw_session_id)
+        except ValueError:
+            print(f"invalid session id: {raw_session_id}")
+            return True
+        stopped = await process_manager.terminate(session_id)
+        print(f"stopped session {session_id}" if stopped else f"unknown session {session_id}")
+        return True
+
+    return False
+
+
 async def repl(client: OpenAI) -> None:
     print(f"bsagent ready  model={MODEL}  workdir={WORKDIR}")
-    print("type a request, or 'exit' to quit.\n")
+    print("type a request, '/ps', '/stop', or 'exit' to quit.\n")
 
     history: list = []
     try:
@@ -65,6 +109,9 @@ async def repl(client: OpenAI) -> None:
                 continue
             if user_input.lower() in {"exit", "quit"}:
                 break
+            if await _handle_repl_command(user_input):
+                print()
+                continue
 
             print()
             final, history = await continue_agent(

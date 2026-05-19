@@ -26,16 +26,19 @@ SYSTEM_PROMPT = """\
 You are a local CLI coding assistant with shell access.
 
 Use shell_command to read files, run tests, search code, and execute \
-commands. Use apply_patch for structured file edits — it is safer than \
-shell redirection and produces clean diffs.
+simple one-shot commands. Use exec_command for long-running, interactive, \
+or pollable commands. Use write_stdin with empty chars to poll an \
+exec_command session, or with text ending in \\n to answer prompts. Use \
+apply_patch for structured file edits — it is safer than shell redirection \
+and produces clean diffs.
 
 Guidelines:
 - Explore the codebase before making changes (ls, cat, grep).
 - Prefer apply_patch over write-via-shell for editing existing files.
-- When the user asks to run independent shell commands in parallel, issue all
-  independent shell_command calls in the same assistant response. Do not wait
-  for one command's result before issuing the next unless the commands depend
-  on each other.
+- Batch independent exec_command calls in the same assistant response when useful.
+- Use shell_command for quick one-shot commands unless the command is interactive,
+  long-running, or needs a session_id.
+- Avoid running conflicting file-writing commands in parallel.
 - If a command fails, read the error and try a different approach.
 - When the task is complete, summarise what you did concisely.\
 """
@@ -151,14 +154,23 @@ def _print_tool_call(tc: dict[str, Any]) -> None:
     if name == "shell_command":
         cmd = args.get("command", "")
         wd = f" (in {args['workdir']})" if "workdir" in args else ""
-        sys.stderr.write(f"\n\033[35m$\033[0m \033[1m{cmd}\033[0m{wd}\n")
+        sys.stderr.write(f"\n\033[35mtool=shell_command $\033[0m \033[1m{cmd}\033[0m{wd}\n")
+    elif name == "exec_command":
+        cmd = args.get("cmd", "")
+        wd = f" (in {args['workdir']})" if "workdir" in args else ""
+        sys.stderr.write(f"\n\033[35mtool=exec_command pty$\033[0m \033[1m{cmd}\033[0m{wd}\n")
+    elif name == "write_stdin":
+        session_id = args.get("session_id", "")
+        chars = args.get("chars", "")
+        action = "poll" if chars == "" else "write"
+        sys.stderr.write(f"\n\033[35mtool=write_stdin\033[0m {action} session={session_id}\n")
     elif name == "apply_patch":
         patch = args.get("patch", "")
         preview = next(
             (l for l in patch.splitlines() if l.startswith("*** ") and "File:" in l),
             "apply_patch",
         )
-        sys.stderr.write(f"\n\033[36mpatch\033[0m {preview.replace('*** ', '')}\n")
+        sys.stderr.write(f"\n\033[36mtool=apply_patch\033[0m {preview.replace('*** ', '')}\n")
     else:
         sys.stderr.write(f"\n\033[33mtool\033[0m {name}\n")
 
