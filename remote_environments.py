@@ -20,6 +20,7 @@ from pathlib import Path
 from typing import Any
 
 import remote_billing
+from _utils import atomic_write_json, now_iso
 from tool_progress import LongRunningProgress, TOOL_ETA_SECONDS
 
 REGISTRY_DIR = Path.home() / ".bsagent" / "remote_environments"
@@ -62,7 +63,7 @@ def start_environment(
         "image": image,
         "size": size,
         "ttl_minutes": int(ttl_minutes),
-        "created_at": _now_iso(),
+        "created_at": now_iso(),
         "status": "provisioning",
         "command_ids": [],
     }
@@ -219,7 +220,7 @@ def stop_environment(
             timeout=120,
         )
     metadata["status"] = "stopped"
-    metadata["stopped_at"] = _now_iso()
+    metadata["stopped_at"] = now_iso()
     _write_registry(metadata)
     remote_billing.finalize_environment(metadata, stopped_reason=stopped_reason)
     remote_billing.stop_heartbeat(environment_id)
@@ -552,11 +553,7 @@ def _read_registry(environment_id: str) -> dict[str, Any]:
 
 
 def _write_registry(metadata: dict[str, Any]) -> None:
-    REGISTRY_DIR.mkdir(parents=True, exist_ok=True)
-    path = _registry_path(str(metadata["id"]))
-    tmp = path.with_suffix(".json.tmp")
-    tmp.write_text(json.dumps(metadata, indent=2, sort_keys=True) + "\n", encoding="utf-8")
-    tmp.replace(path)
+    atomic_write_json(_registry_path(str(metadata["id"])), metadata)
 
 
 def _ensure_active(metadata: dict[str, Any]) -> None:
@@ -582,9 +579,6 @@ def _new_id(prefix: str) -> str:
     stamp = datetime.now(timezone.utc).strftime("%Y%m%d%H%M%S")
     return f"{prefix}_{stamp}_{secrets.token_hex(3)}"
 
-
-def _now_iso() -> str:
-    return datetime.now(timezone.utc).isoformat()
 
 
 def _cap(text: str) -> str:

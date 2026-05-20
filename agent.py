@@ -13,11 +13,37 @@ import sys
 from pathlib import Path
 
 from openai import OpenAI
+from prompt_toolkit import PromptSession
+from prompt_toolkit.formatted_text import HTML
 
 from loop import continue_agent, run_agent
 from mcp_bridge import McpManager, default_mcp_server_specs
 from terminal_ui import open_terminal_viewer, print_session_summary
 from unified_exec import SessionInfo, process_manager
+
+# ─── Terminal count tracker ───────────────────────────────────────────────────
+
+_active_terminal_count = 0
+
+
+async def _poll_terminal_count() -> None:
+    """Background task: refreshes active terminal count every second."""
+    global _active_terminal_count
+    while True:
+        try:
+            sessions = await process_manager.list_sessions()
+            _active_terminal_count = sum(1 for s in sessions if s.alive)
+        except Exception:
+            pass
+        await asyncio.sleep(1)
+
+
+def _terminal_toolbar() -> HTML | str:
+    n = _active_terminal_count
+    if n == 0:
+        return ""
+    plural = "s" if n != 1 else ""
+    return HTML(f"<b>{n}</b> terminal{plural} running · /terminals to inspect")
 
 
 # ─── Bootstrap ────────────────────────────────────────────────────────────────
@@ -105,13 +131,17 @@ async def repl(client: OpenAI) -> None:
 
     history: list = []
     mcp_manager = McpManager(default_mcp_server_specs(WORKDIR))
+    prompt_session: PromptSession = PromptSession()
+    count_task = asyncio.create_task(_poll_terminal_count())
     try:
         for warning in await mcp_manager.start(WORKDIR):
             print(f"warning: {warning}", file=sys.stderr)
 
         while True:
             try:
-                user_input = input(">>> ").strip()
+                user_input = (
+                    await prompt_session.prompt_async(">>> ", bottom_toolbar=_terminal_toolbar)
+                ).strip()
             except (EOFError, KeyboardInterrupt):
                 print()
                 break
@@ -136,6 +166,7 @@ async def repl(client: OpenAI) -> None:
             await print_session_summary()
             print()
     finally:
+        count_task.cancel()
         await mcp_manager.aclose()
         await process_manager.terminate_all()
 

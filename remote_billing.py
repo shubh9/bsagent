@@ -1,18 +1,20 @@
 """
-Hacky local billing heartbeat for remote environments.
+Local billing heartbeat for remote environments.
 
-This is intentionally local-first: every heartbeat rewrites one JSON file with
-the latest uptime and estimated cost. A production version can replace
-``write_billing`` with an API call.
+Every heartbeat rewrites one JSON file with the latest uptime and estimated
+cost. Replace ``_write_billing_unlocked`` with an API call for production use.
 """
 
 from __future__ import annotations
 
-import json
 import threading
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Callable
+
+from _utils import atomic_write_json, now_iso
+
+import json
 
 BILLING_FILE = Path.home() / ".bsagent" / "remote_billing.json"
 HEARTBEAT_INTERVAL_SECONDS = 60
@@ -29,16 +31,15 @@ SIZE_PER_MINUTE_COST_USD: dict[str, float] = {
 }
 
 _lock = threading.Lock()
-_stop_events: dict[str, threading.Event] = {}
-_threads: dict[str, threading.Thread] = {}
+# Maps environment_id → (stop_event, thread)
+_sessions: dict[str, tuple[threading.Event, threading.Thread]] = {}
 
 
 def register_environment(metadata: dict[str, Any]) -> None:
     environment_id = str(metadata["id"])
     with _lock:
         data = _read_billing_unlocked()
-        environments = data.setdefault("environments", {})
-        environments[environment_id] = _record_from_metadata(metadata)
+        data.setdefault("environments", {})[environment_id] = _record_from_metadata(metadata)
         _recompute_totals(data)
         _write_billing_unlocked(data)
 
@@ -52,7 +53,6 @@ def start_heartbeat(
 ) -> None:
     stop_heartbeat(environment_id)
     stop_event = threading.Event()
-    _stop_events[environment_id] = stop_event
 
     def loop() -> None:
         while not stop_event.wait(HEARTBEAT_INTERVAL_SECONDS):
@@ -64,17 +64,15 @@ def start_heartbeat(
                     stop_environment=stop_environment,
                 )
             except Exception:
-                # Billing should never crash the agent loop.
                 continue
-            if environment_id not in _stop_events:
-                break
 
     thread = threading.Thread(
         target=loop,
         name=f"bsagent-billing-{environment_id}",
         daemon=True,
     )
-    _threads[environment_id] = thread
+    with _lock:
+        _sessions[environment_id] = (stop_event, thread)
     thread.start()
 
 
@@ -100,11 +98,15 @@ def heartbeat_once(
             record = _record_from_metadata(metadata)
             environments[environment_id] = record
 
+        # Skip update if finalize_environment already marked this stopped.
+        if record.get("status") == "stopped":
+            return dict(record)
+
         _update_record(record, metadata, alive=alive)
         if not alive:
             record["status"] = "unreachable"
             record["stopped_reason"] = "heartbeat_unreachable"
-            record["stopped_at"] = _now_iso()
+            record["stopped_at"] = now_iso()
 
         _recompute_totals(data)
         running_cost = float(data.get("running_estimated_cost_usd", 0.0))
@@ -138,22 +140,22 @@ def finalize_environment(
 
         _update_record(record, metadata, alive=False)
         record["status"] = "stopped"
-        record["stopped_at"] = str(metadata.get("stopped_at") or _now_iso())
+        record["stopped_at"] = str(metadata.get("stopped_at") or now_iso())
         record["stopped_reason"] = stopped_reason or record.get("stopped_reason")
         _recompute_totals(data)
         _write_billing_unlocked(data)
 
 
 def stop_heartbeat(environment_id: str) -> None:
-    stop_event = _stop_events.pop(environment_id, None)
-    if stop_event is not None:
-        stop_event.set()
-    _threads.pop(environment_id, None)
+    with _lock:
+        session = _sessions.pop(environment_id, None)
+    if session is not None:
+        session[0].set()
 
 
 def _record_from_metadata(metadata: dict[str, Any]) -> dict[str, Any]:
     size = str(metadata.get("size") or "")
-    started_at = str(metadata.get("created_at") or _now_iso())
+    started_at = str(metadata.get("created_at") or now_iso())
     return {
         "environment_id": metadata["id"],
         "droplet_id": metadata.get("droplet_id"),
@@ -206,11 +208,8 @@ def _read_billing_unlocked() -> dict[str, Any]:
 
 
 def _write_billing_unlocked(data: dict[str, Any]) -> None:
-    BILLING_FILE.parent.mkdir(parents=True, exist_ok=True)
-    data["updated_at"] = _now_iso()
-    tmp = BILLING_FILE.with_suffix(".json.tmp")
-    tmp.write_text(json.dumps(data, indent=2, sort_keys=True) + "\n", encoding="utf-8")
-    tmp.replace(BILLING_FILE)
+    data["updated_at"] = now_iso()
+    atomic_write_json(BILLING_FILE, data)
 
 
 def _recompute_totals(data: dict[str, Any]) -> None:
@@ -232,7 +231,3 @@ def _parse_iso(value: str) -> datetime | None:
         return datetime.fromisoformat(value)
     except ValueError:
         return None
-
-
-def _now_iso() -> str:
-    return datetime.now(timezone.utc).isoformat()

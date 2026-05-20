@@ -72,9 +72,10 @@ class LongRunningProgress:
         self._stop.set()
         if self._thread is not None:
             self._thread.join(timeout=2.0)
-        if self._status is not None:
-            self._status.stop()
-            self._status = None
+        with self._lock:
+            if self._status is not None:
+                self._status.stop()
+                self._status = None
         elapsed = int(time.monotonic() - self._started)
         if exc_type is None:
             self._print_done(elapsed)
@@ -83,8 +84,7 @@ class LongRunningProgress:
 
     def _tick_loop(self) -> None:
         while not self._stop.wait(self.tick_interval):
-            if self._status is not None:
-                self._refresh()
+            self._refresh()
 
     def _elapsed(self) -> int:
         return max(0, int(time.monotonic() - self._started))
@@ -97,6 +97,11 @@ class LongRunningProgress:
             f"{elapsed}s elapsed · ~{self.eta_seconds}s typical[/dim]"
         )
 
+    def _plain_message(self) -> str:
+        elapsed = self._elapsed()
+        phase = f" — {self.phase}" if self.phase else ""
+        return f"⏳ {self.label}{phase}  {elapsed}s elapsed · ~{self.eta_seconds}s typical"
+
     def _refresh(self) -> None:
         with self._lock:
             if self._status is not None:
@@ -105,7 +110,7 @@ class LongRunningProgress:
                 self._print_plain_line()
 
     def _print_plain_line(self) -> None:
-        line = self._message().replace("[dim]", "").replace("[/dim]", "")
+        line = self._plain_message()
         if line == self._last_plain_line:
             return
         self._last_plain_line = line
